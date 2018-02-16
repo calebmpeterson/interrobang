@@ -1,0 +1,21 @@
+{
+  "name": "zbang",
+  "version": "1.0.0",
+  "description": "Custom DDG bangs",
+  "main": "src/index.js",
+  "author": "caleb.peterson@cubicle6.com",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "gists": "^1.0.1",
+    "hapi": "^17.2.0",
+    "inert": "^5.1.0",
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.0"
+  }
+}
