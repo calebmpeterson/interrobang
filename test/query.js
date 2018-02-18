@@ -1,29 +1,35 @@
 const { expect } = require('chai')
 
-const { resolve } = require('../src/query')
+const { search } = require('../src/query')
 
-describe('default search behavior', () => {
+describe('default search engine is DuckDuckGo', () => {
+  it('should default to using DDG for search', () => {
+    expect(search({}, 'foo')).to.be.equal('https://www.duckduckgo.com/?q=foo')
+  })
+})
+
+describe('custom search behavior', () => {
   const config = {
-    'default-search-engine': `https://www.google.com/search?query={{{s}}}`
+    'search-engine': `https://www.google.com/search?query={{{s}}}`
   }
 
   it('should resolve the default search engine', () => {
-    expect(resolve(config, '')).to.be.equal('https://www.google.com/search?query=')
+    expect(search(config, '')).to.be.equal('https://www.google.com/search?query=')
   })
 
   it('should handle search queries', () => {
-    expect(resolve(config, 'foo')).to.be.equal('https://www.google.com/search?query=foo')
-    expect(resolve(config, 'foo bar')).to.be.equal('https://www.google.com/search?query=foo bar')
+    expect(search(config, 'foo')).to.be.equal('https://www.google.com/search?query=foo')
+    expect(search(config, 'foo bar')).to.be.equal('https://www.google.com/search?query=foo bar')
   })
 })
 
 describe('duckduckgo search bang fallback', () => {
   const config = {
-    'default-search-engine': 'https://www.google.com/search?={{{s}}}'
+    'search-engine': 'https://www.google.com/search?={{{s}}}'
   }
 
   it('should use duckduckgo for search bangs', () => {
-    expect(resolve(config, '!foo bar')).to.be.equal('https://www.duckduckgo.com/?q=!foo bar')
+    expect(search(config, '!foo bar')).to.be.equal('https://www.duckduckgo.com/?q=!foo bar')
   })
 })
 
@@ -35,6 +41,6 @@ describe('custom bang usage', () => {
   }
 
   it('should use custom bangs when defined', () => {
-    expect(resolve(config, '!weather 76137')).to.be.equal('https://www.weather.com/?q=76137')
+    expect(search(config, '!weather 76137')).to.be.equal('https://www.weather.com/?q=76137')
   })
 })
