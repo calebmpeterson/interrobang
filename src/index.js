@@ -27,47 +27,83 @@ async function getConfig(id) {
   });
 }
 
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: (request, reply) => {
-    return `Hello, world`;
-  }
-});
+async function initialize() {
+  await server.register(require('inert'));
 
-server.route({
-  method: 'GET',
-  path: '/{gist}/config',
-  handler: async (request, reply) => {
-    const config = await getConfig(request.params.gist);
-    return config;
-  }
-});
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: (request, reply) => {
+      return `Hello, world`;
+    }
+  });
 
-server.route({
-  method: 'GET',
-  path: '/{gist}/url/{splat*}',
-  handler: async (request, reply) =>{
-    const config = await getConfig(request.params.gist);
-    const target = search(config, request.params.splat);
-    return target;
-  }
-});
+  server.route({
+    method: 'GET',
+    path: '/assets/bootstrap/css/{splat*}',
+    handler: {
+      directory: {
+        path: './node_modules/bootswatch/dist/flatly'
+      }
+    }
+  });
 
-server.route({
-  method: 'GET',
-  path: '/{gist}/{splat*}',
-  handler: async (request, reply) =>{
-    const config = await getConfig(request.params.gist);
-    const target = search(config, request.params.splat);
-    return reply.redirect(target);
-  }
-});
+  server.route({
+    method: 'GET',
+    path: '/assets/bootstrap/{splat*}',
+    handler: {
+      directory: {
+        path: './node_modules/bootstrap/dist/'
+      }
+    }
+  });
 
-server.start((error) => {
-  if (error) {
-    throw error;
-  }
+  server.route({
+    method: 'GET',
+    path: '/assets/jquery/{splat*}',
+    handler: {
+      directory: {
+        path: './node_modules/jquery/'
+      }
+    }
+  });
 
-  console.log(`Server running on port ${PORT}`)
-});
+  server.route({
+    method: 'GET',
+    path: '/{gist}/config',
+    handler: async (request, reply) => {
+      const config = await getConfig(request.params.gist);
+      return config;
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/{gist}/url/{splat*}',
+    handler: async (request, reply) =>{
+      const config = await getConfig(request.params.gist);
+      const target = search(config, request.params.splat);
+      return target;
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/{gist}/{splat*}',
+    handler: async (request, reply) =>{
+      const config = await getConfig(request.params.gist);
+      const target = search(config, request.params.splat);
+      return reply.redirect(target);
+    }
+  });
+
+  await server.start((error) => {
+    if (error) {
+      throw error;
+    }
+
+    console.log(`Server running on port ${PORT}`)
+  });
+}
+
+initialize();
