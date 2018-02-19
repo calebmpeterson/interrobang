@@ -1,5 +1,11 @@
 const { Server } = require('hapi');
+const ReactViews = require('hapi-react-views');
+
 const Gists = require('gists');
+
+require('babel-core/register')({
+  presets: ['react', 'env']
+});
 
 const { get } = require('lodash');
 
@@ -29,12 +35,22 @@ async function getConfig(id) {
 
 async function initialize() {
   await server.register(require('inert'));
+  await server.register(require('vision'));
+
+  server.views({
+    engines: {
+      jsx: ReactViews
+    },
+    compileOptions: {},
+    relativeTo: __dirname,
+    path: 'views'
+  });
 
   server.route({
     method: 'GET',
     path: '/',
     handler: (request, reply) => {
-      return `Hello, world`;
+      return reply.view('index');
     }
   });
 
@@ -60,11 +76,39 @@ async function initialize() {
 
   server.route({
     method: 'GET',
+    path: '/assets/mdi/{splat*}',
+    handler: {
+      directory: {
+        path: './node_modules/mdi/'
+      }
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/assets/jquery/{splat*}',
     handler: {
       directory: {
         path: './node_modules/jquery/'
       }
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/assets/{splat*}',
+    handler: {
+      directory: {
+        path: './assets/'
+      }
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/{gist}',
+    handler: (request, reply) => {
+      return reply.view('index', { gist: request.params.gist });
     }
   });
 
@@ -89,10 +133,10 @@ async function initialize() {
 
   server.route({
     method: 'GET',
-    path: '/{gist}/{splat*}',
-    handler: async (request, reply) =>{
+    path: '/{gist}/search',
+    handler: async (request, reply) => {
       const config = await getConfig(request.params.gist);
-      const target = search(config, request.params.splat);
+      const target = search(config, request.query.query);
       return reply.redirect(target);
     }
   });
@@ -102,7 +146,7 @@ async function initialize() {
       throw error;
     }
 
-    console.log(`Server running on port ${PORT}`)
+    console.log(`Server running on port ${PORT}`);
   });
 }
 
