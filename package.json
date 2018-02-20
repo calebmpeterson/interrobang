@@ -33,6 +33,7 @@
     "bootstrap": "4.0.0",
     "bootswatch": "^4.0.0",
     "gists": "^1.0.1",
+    "handlebars": "^4.0.11",
     "hapi": "^17.2.0",
     "hapi-react-views": "^10.0.0",
     "inert": "^5.1.0",

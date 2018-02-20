@@ -1,5 +1,6 @@
 const { Server } = require('hapi');
 const ReactViews = require('hapi-react-views');
+const Handlebars = require('handlebars');
 
 const Gists = require('gists');
 
@@ -10,6 +11,7 @@ require('babel-core/register')({
 const { get } = require('lodash');
 
 const { search } = require('./query');
+const openSearchXml = require('./views/open-search');
 
 const PORT = 3333;
 const server = new Server({ port: PORT });
@@ -50,7 +52,7 @@ async function initialize() {
     method: 'GET',
     path: '/',
     handler: (request, reply) => {
-      return reply.view('index');
+      return reply.view('setup');
     }
   });
 
@@ -106,9 +108,25 @@ async function initialize() {
 
   server.route({
     method: 'GET',
+    path: '/setup',
+    handler: (request, reply) => {
+      return reply.redirect(`/${request.query.gist}`);
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/{gist}',
     handler: (request, reply) => {
       return reply.view('index', { gist: request.params.gist });
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/{gist}/open-search.xml',
+    handler: (request, reply) => {
+      return openSearchXml({ gist: request.params.gist });
     }
   });
 
