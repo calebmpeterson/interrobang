@@ -38,10 +38,10 @@
     "hapi": "^17.2.0",
     "hapi-react-views": "^10.0.0",
     "inert": "^5.1.0",
-    "jquery": "1.9.1",
+    "jquery": "3.2.1",
     "lodash": "^4.17.5",
     "mdi": "^2.1.19",
-    "popper.js": "^1.12.9",
+    "popper.js": "1.12.9",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "vision": "^5.3.1"

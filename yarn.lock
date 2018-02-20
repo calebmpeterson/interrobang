@@ -1821,9 +1821,9 @@ joi@13.x.x:
     isemail "3.x.x"
     topo "3.x.x"
 
-jquery@1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-1.9.1.tgz#e4cd4835faaefbade535857613c0fc3ff2adaf34"
+jquery@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 
 jquery@>=1.9.1:
   version "3.3.1"
@@ -2309,7 +2309,7 @@ podium@3.x.x:
     hoek "5.x.x"
     joi "13.x.x"
 
-popper.js@^1.12.9:
+popper.js@1.12.9, popper.js@^1.12.9:
   version "1.12.9"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.12.9.tgz#0dfbc2dff96c451bb332edcfcfaaf566d331d5b3"
 
