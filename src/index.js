@@ -13,7 +13,7 @@ const { get } = require('lodash');
 const { search } = require('./query');
 const openSearchXml = require('./views/open-search');
 
-const PORT = 3333;
+const PORT = process.env.PORT || 3333;
 const server = new Server({ port: PORT });
 
 const CONFIG_PATH = ['files', 'config.json', 'content'];
