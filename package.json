@@ -8,6 +8,7 @@
   "private": true,
   "scripts": {
     "start": "npx better-npm-run start:development",
+    "start:production": "npx better-npm-run start:production",
     "test": "npx mocha",
     "test:watch": "npx mocha --watch"
   },
