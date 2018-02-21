@@ -1,5 +1,7 @@
 const React = require('react');
 
+const Footer = require('./components/Footer');
+
 class Index extends React.Component {
   render() {
     return (
@@ -13,8 +15,8 @@ class Index extends React.Component {
         <body>
           <div className="container search-form-container">
             <div className="row">
-              <div className="offset-sm-2 col-sm-8 offset-md-3 col-md-6">
-                <h1 className="display-1">Interrobang<span className="">&#8253;</span></h1>
+              <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <h1 className="display-3 text-center">Interrobang<span className="">&#8253;</span></h1>
                 <form className="form" method="GET" action={`/${this.props.gist}/search`}>
                   <div className="input-group">
                     <div className="input-group-prepend">
@@ -34,6 +36,7 @@ class Index extends React.Component {
               </div>
             </div>
           </div>
+          <Footer fixedBottom />
         </body>
       </html>
     )

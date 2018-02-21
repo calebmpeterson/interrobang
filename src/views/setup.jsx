@@ -12,9 +12,9 @@ class Index extends React.Component {
         </head>
         <body>
           <div className="container search-form-container">
-            <div className="row">
-              <div className="offset-sm-2 col-sm-8 offset-md-3 col-md-6">
-                <h1 className="display-1">Interrobang<span className="">&#8253;</span></h1>
+            <div className="row align-items-center">
+              <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <h1 className="display-3 text-center">Interrobang<span className="">&#8253;</span></h1>
                 <form className="form" method="GET" action={`/setup`}>
                   <div className="input-group">
                     <div className="input-group-prepend">
