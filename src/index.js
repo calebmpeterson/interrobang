@@ -126,7 +126,9 @@ async function initialize() {
     method: 'GET',
     path: '/{gist}/open-search.xml',
     handler: (request, reply) => {
-      return openSearchXml({ gist: request.params.gist });
+      const response = reply.response(openSearchXml({ gist: request.params.gist }));
+      response.type('application/xml');
+      return response;
     }
   });
 

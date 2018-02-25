@@ -6,11 +6,15 @@
   "author": "caleb.peterson@cubicle6.com",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "8.x"
+  },
   "scripts": {
     "start": "npx better-npm-run start:development",
     "start:production": "npx better-npm-run start:production",
     "test": "npx mocha",
-    "test:watch": "npx mocha --watch"
+    "test:watch": "npx mocha --watch",
+    "cf:push": "cf push interrobang"
   },
   "betterScripts": {
     "start:development": {
