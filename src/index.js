@@ -10,6 +10,7 @@ require('babel-core/register')({
 
 const { get } = require('lodash');
 
+const routes = require('./routes');
 const { search } = require('./query');
 const openSearchXml = require('./views/open-search');
 
@@ -48,71 +49,7 @@ async function initialize() {
     path: 'views'
   });
 
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: (request, reply) => {
-      return reply.view('setup');
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/assets/bootstrap/css/{splat*}',
-    handler: {
-      directory: {
-        path: './node_modules/bootswatch/dist/flatly'
-      }
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/assets/bootstrap/{splat*}',
-    handler: {
-      directory: {
-        path: './node_modules/bootstrap/dist/'
-      }
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/assets/mdi/{splat*}',
-    handler: {
-      directory: {
-        path: './node_modules/mdi/'
-      }
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/assets/jquery/{splat*}',
-    handler: {
-      directory: {
-        path: './node_modules/jquery/'
-      }
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/assets/{splat*}',
-    handler: {
-      directory: {
-        path: './assets/'
-      }
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/setup',
-    handler: (request, reply) => {
-      return reply.redirect(`/${request.query.gist}`);
-    }
-  });
+  routes(server);
 
   server.route({
     method: 'GET',
