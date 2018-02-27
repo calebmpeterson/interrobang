@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+const { isObject, isEmpty } = require('lodash');
 const normalizedPath = require('path').join(__dirname, 'routes');
 
 module.exports = function loadRoutes(server) {
@@ -6,10 +8,15 @@ module.exports = function loadRoutes(server) {
 
     try {
       const route = require(`./routes/${filename}`);
-      server.route(route);
+      if (isObject(route) && !isEmpty(route)) {
+        server.route(route);
+      }
+      else {
+        console.log(chalk`{yellow Invalid route in ${filename}}`);
+      }
     }
     catch (e) {
-      console.error(`ERROR failed to load froute from ${filename}`, e);
+      console.error(chalk`{red ERROR failed to load froute from ${filename}}`, e);
     }
   });
 };
