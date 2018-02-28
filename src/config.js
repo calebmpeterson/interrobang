@@ -4,6 +4,14 @@ const Gists = require('gists');
 const CONFIG_PATH = ['files', 'config.json', 'content'];
 const DEFAULT_CONFIG = '{}';
 
+class ConfigParsingError extends Error {
+  constructor(params) {
+    super(params.message);
+    this.message = params.message;
+    this.config = params.config;
+  }
+}
+
 async function getConfig(id) {
   return new Promise((resolve, reject) => {
     const gist = new Gists();
@@ -14,7 +22,15 @@ async function getConfig(id) {
       }
       else {
         const config = get(result, CONFIG_PATH, DEFAULT_CONFIG);
-        resolve(JSON.parse(config));
+        try {
+          resolve(JSON.parse(config));
+        }
+        catch (e) {
+          reject(new ConfigParsingError({
+            message: `Failed to parse config.json`,
+            config
+          }));
+        }
       }
     });
   });
