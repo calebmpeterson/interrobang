@@ -1,7 +1,8 @@
-const { get, merge } = require('lodash');
+const { get, has, merge } = require('lodash');
 const Gists = require('gists');
 
-const CONFIG_PATH = ['files', 'config.json', 'content'];
+const CONFIG_PATH_1 = ['files', 'interrobang.json', 'content'];
+const CONFIG_PATH_2 = ['files', 'config.json', 'content'];
 const DEFAULT_CONFIG = '{}';
 
 class ConfigParsingError extends Error {
@@ -10,6 +11,16 @@ class ConfigParsingError extends Error {
     this.message = params.message;
     this.config = params.config;
   }
+}
+
+function getConfigFromGist(gist) {
+  if (has(gist, CONFIG_PATH_1)) {
+    return get(gist, CONFIG_PATH_1);
+  }
+  if (has(gist, CONFIG_PATH_2)) {
+    return get(gist, CONFIG_PATH_2);
+  }
+  return DEFAULT_CONFIG;
 }
 
 function createExtendedConfig(gistId) {
@@ -29,7 +40,7 @@ async function getConfig(id) {
         reject(error);
       }
       else {
-        const configJSON = get(result, CONFIG_PATH, DEFAULT_CONFIG);
+        const configJSON = getConfigFromGist(result);
         try {
           const config = JSON.parse(configJSON);
           const extendedConfig = merge({}, config, createExtendedConfig(id));

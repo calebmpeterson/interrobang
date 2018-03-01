@@ -1,7 +1,7 @@
 module.exports = {
   method: 'GET',
-  path: '/',
+  path: '/setup',
   handler: (request, reply) => {
-    return reply.view('landing');
+    return reply.view('setup-start');
   }
 };
