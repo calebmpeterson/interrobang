@@ -1,4 +1,4 @@
-const { get } = require('lodash');
+const { get, merge } = require('lodash');
 const Gists = require('gists');
 
 const CONFIG_PATH = ['files', 'config.json', 'content'];
@@ -12,23 +12,33 @@ class ConfigParsingError extends Error {
   }
 }
 
+function createExtendedConfig(gistId) {
+  return {
+    'bangs': {
+      '!config': `/${gistId}/config/edit`
+    }
+  };
+}
+
 async function getConfig(id) {
   return new Promise((resolve, reject) => {
     const gist = new Gists();
     gist.download({ id }, (error, result) => {
       if (error) {
-        console.error(`Failed to fetch Gist ${id}`, error);
+        console.error(chalk`{red Failed to fetch Gist ${id}}`, error);
         reject(error);
       }
       else {
-        const config = get(result, CONFIG_PATH, DEFAULT_CONFIG);
+        const configJSON = get(result, CONFIG_PATH, DEFAULT_CONFIG);
         try {
-          resolve(JSON.parse(config));
+          const config = JSON.parse(configJSON);
+          const extendedConfig = merge({}, config, createExtendedConfig(id));
+          resolve(extendedConfig);
         }
         catch (e) {
           reject(new ConfigParsingError({
             message: `Failed to parse config.json`,
-            config
+            config: configJSON
           }));
         }
       }

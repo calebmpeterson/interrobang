@@ -30,15 +30,15 @@ class Index extends React.Component {
                     </div>
                   </div>
                   <small className="form-text text-muted">
-                    Custom search <em>!bangs</em>. DuckDuckGo default <em>!bangs</em>. Pick your search engine.
+                    Custom search <em>!bangs</em>. DuckDuckGo default <em>!bangs</em>. Pick your search engine. <a href={`/${this.props.gist}/config/edit`}>Edit configuration</a>.
                   </small>
                 </form>
 
                 <div className="card border border-danger mt-3">
                   <div className="card-header">
                     <h5 className="float-left">{this.props.message}</h5>
-                    <a href={`https://gist.github.com/${this.props.gist}`} target="_blank" className="btn btn-sm btn-danger float-right">
-                      Edit Gist <i className="mdi mdi-github-circle" />
+                    <a href={`/${this.props.gist}/config/edit`} target="_blank" className="btn btn-sm btn-danger float-right">
+                      Edit Configuration <i className="mdi mdi-github-circle" />
                     </a>
                   </div>
                   <div className="card-body">

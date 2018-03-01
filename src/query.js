@@ -9,7 +9,7 @@ function search(config, query) {
     const withoutBang = query.substring(1);
     const parts = withoutBang.split(' ');
     const bang = parts[0];
-    console.log(config, bang, get(config, ['bangs', bang]));
+
     if (has(config, ['bangs', bang])) {
       console.log(`query is a custom search bang: ${bang}`);
       const bangQuery = get(config, ['bangs', bang]);

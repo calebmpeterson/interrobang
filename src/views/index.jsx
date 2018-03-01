@@ -30,7 +30,7 @@ class Index extends React.Component {
                     </div>
                   </div>
                   <small className="form-text text-muted">
-                    Custom search <em>!bangs</em>. DuckDuckGo default <em>!bangs</em>. Pick your search engine.
+                    Custom search <em>!bangs</em>. DuckDuckGo default <em>!bangs</em>. Pick your search engine. <a href={`/${this.props.gist}/config/edit`}>Edit configuration</a>.
                   </small>
                 </form>
               </div>

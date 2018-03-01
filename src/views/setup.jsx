@@ -22,7 +22,7 @@ class Index extends React.Component {
                         <i className="mdi mdi-github-circle" />
                       </span>
                     </div>
-                    <input name="gist" className="form-control" type="text" placeholder="Public GitHub Gist ID" autoFocus />
+                    <input name="gist" className="form-control" type="text" placeholder="Public GitHub Gist ID" defaultValue="" autoFocus />
                     <div className="input-group-append">
                       <button type="submit" className="btn btn-secondary">Setup</button>
                     </div>
