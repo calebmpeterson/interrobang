@@ -1,3 +1,7 @@
 .search-form-container {
   margin-top: 15%;
 }
+
+pre {
+  tab-size: 2;
+}

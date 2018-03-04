@@ -1,0 +1,7 @@
+{
+  "bangs": {
+    "img": "https://www.unsplash.com/search/photos/{{{s}}}",
+    "css": "https://devdocs.io/css/{{{s}}}"
+  },
+  "search-engine": "https://www.google.com/search?q={{{s}}}"
+}

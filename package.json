@@ -14,7 +14,8 @@
     "start:production": "npx better-npm-run start:production",
     "test": "npx mocha",
     "test:watch": "npx mocha --watch",
-    "cf:push": "cf push interrobang"
+    "cf:push": "cf push interrobang",
+    "cf:logs": "cf logs interrobang --"
   },
   "betterScripts": {
     "start:development": {
