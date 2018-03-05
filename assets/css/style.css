@@ -5,3 +5,7 @@
 pre {
   tab-size: 2;
 }
+
+code {
+  white-space: pre;
+}
