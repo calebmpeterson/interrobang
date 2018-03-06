@@ -1,9 +1,12 @@
-const { get, has, merge } = require('lodash');
+const { get, has, merge, size } = require('lodash');
 const Gists = require('gists');
 
 const CONFIG_PATH_1 = ['files', 'interrobang.json', 'content'];
 const CONFIG_PATH_2 = ['files', 'config.json', 'content'];
 const DEFAULT_CONFIG = '{}';
+
+const GIST_URL_PATTERN = /https:\/\/gist\.github\.com\/(.*)\/(.*)/;
+const GIST_ID_INDEX = 2;
 
 class ConfigParsingError extends Error {
   constructor(params) {
@@ -11,6 +14,14 @@ class ConfigParsingError extends Error {
     this.message = params.message;
     this.config = params.config;
   }
+}
+
+function getGistIdFromURL(url) {
+  const match = GIST_URL_PATTERN.exec(url);
+  if (size(match) === 3) {
+    return get(match, GIST_ID_INDEX);
+  }
+  return '';
 }
 
 function getConfigFromGist(gist) {
@@ -58,5 +69,6 @@ async function getConfig(id) {
 }
 
 module.exports = {
+  getGistIdFromURL,
   getConfig
 }
