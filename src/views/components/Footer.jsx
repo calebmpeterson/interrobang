@@ -12,9 +12,9 @@ class Footer extends React.Component {
           {delim}
           Made by Caleb Peterson with <i className="mdi mdi-nodejs text-success"></i> in Texas
           {delim}
-          <a href="https://www.github.com/calebmpeterson/interrobang" target="_blank">Source on GitHub</a>
-          {delim}
           <a href="mailto:caleb.peterson@cubicle6.com">Contact me</a>
+          {delim}
+          <a href="https://www.github.com/calebmpeterson/interrobang" target="_blank">Source on GitHub</a>
         </small>
       </div>
     );

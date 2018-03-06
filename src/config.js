@@ -1,4 +1,4 @@
-const { get, has, merge, size } = require('lodash');
+const { get, has, merge, size, isEmpty } = require('lodash');
 const Gists = require('gists');
 
 const CONFIG_PATH_1 = ['files', 'interrobang.json', 'content'];
@@ -17,11 +17,14 @@ class ConfigParsingError extends Error {
 }
 
 function getGistIdFromURL(url) {
+  if (isEmpty(url)) {
+    return null;
+  }
   const match = GIST_URL_PATTERN.exec(url);
   if (size(match) === 3) {
     return get(match, GIST_ID_INDEX);
   }
-  return '';
+  return null;
 }
 
 function getConfigFromGist(gist) {

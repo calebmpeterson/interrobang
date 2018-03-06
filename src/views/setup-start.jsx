@@ -13,6 +13,10 @@ class Index extends React.Component {
     const stepBodyClassName = `card-body`;
     const exampleGistURL = `https://gist.github.com/calebmpeterson/e711f4f0a92ee500f3ebd68ea5fb130d`;
 
+    const hasError = this.props.error;
+    const inputClassName = hasError ? 'form-control is-invalid' : 'form-control';
+    const inputFeedback = hasError ? (<div className="invalid-feedback">{this.props.error}</div>) : null;
+
     return (
       <html>
         <head>
@@ -22,11 +26,11 @@ class Index extends React.Component {
           <link rel="stylesheet" href="/assets/css/style.css" />
         </head>
         <body>
-          <div className="container">
+          <div className="container my-5">
             <div className="row align-items-center">
               <div className={colClassName}>
                 <h1 className="display-4 text-center">
-                  Setup Interrobang<span className="">&#8253;</span>
+                  Setup Interrobang
                 </h1>
               </div>
             </div>
@@ -90,8 +94,9 @@ class Index extends React.Component {
 
             <div className="row">
               <div className={colClassName}>
-                <h4 className="p-3">Create your Interrobang</h4>
+                <h4 className="mt-5 pb-3">Create your Interrobang</h4>
 
+                <p>Paste your Gist's URL here:</p>
                 <form className="form" method="GET" action={`/setup/complete`}>
                   <div className="form-group">
                     <div className="input-group">
@@ -101,15 +106,17 @@ class Index extends React.Component {
                         </span>
                       </div>
 
-                      <input name="gist"
-                             className="form-control"
+                      <input name="gistURL"
+                             className={inputClassName}
                              type="text"
                              placeholder="Public GitHub Gist URL"
-                             defaultValue="" autoFocus />
+                             defaultValue={this.props.gistURL || ""} autoFocus />
 
                       <div className="input-group-append">
-                        <button type="submit" className="btn btn-secondary">Setup</button>
+                        <button type="submit" className="btn btn-success">Setup</button>
                       </div>
+
+                      {inputFeedback}
                     </div>
                   </div>
                 </form>
