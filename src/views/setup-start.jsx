@@ -54,9 +54,7 @@ class Index extends React.Component {
                     <p>A simple example <code>interrobang.json</code></p>
                     <pre><code>{EXAMPLE_CONFIG_JSON}</code></pre>
                   </div>
-                  <div className={stepBodyClassName}>
-                    <h4>Explanation</h4>
-                  </div>
+
                   <div className="">
                     <table className="table">
                       <thead>
@@ -91,35 +89,30 @@ class Index extends React.Component {
             </div>
 
             <div className="row">
-              <div className={stepContainerClassName}>
-                <div className="card">
-                  <div className={stepHeaderClassName}>
-                    <h4>Create your Interrobang</h4>
-                  </div>
-                  <div className={stepBodyClassName}>
-                    <form className="form" method="GET" action={`/setup/complete`}>
-                      <div className="form-group">
-                        <div className="input-group">
-                          <div className="input-group-prepend">
-                            <span className="input-group-text">
-                              <i className="mdi mdi-github-circle" />
-                            </span>
-                          </div>
+              <div className={colClassName}>
+                <h4 className="p-3">Create your Interrobang</h4>
 
-                          <input name="gist"
-                                 className="form-control"
-                                 type="text"
-                                 placeholder="Public GitHub Gist URL"
-                                 defaultValue="" autoFocus />
-
-                          <div className="input-group-append">
-                            <button type="submit" className="btn btn-secondary">Setup</button>
-                          </div>
-                        </div>
+                <form className="form" method="GET" action={`/setup/complete`}>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="mdi mdi-github-circle" />
+                        </span>
                       </div>
-                    </form>
+
+                      <input name="gist"
+                             className="form-control"
+                             type="text"
+                             placeholder="Public GitHub Gist URL"
+                             defaultValue="" autoFocus />
+
+                      <div className="input-group-append">
+                        <button type="submit" className="btn btn-secondary">Setup</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
