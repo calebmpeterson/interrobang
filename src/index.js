@@ -12,6 +12,8 @@ const { get } = require('lodash');
 
 const routes = require('./routes');
 
+require('./resources/loaders/markdown-loader');
+
 const PORT = process.env.PORT || 3333;
 const server = new Server({ port: PORT });
 
