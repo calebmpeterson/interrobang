@@ -59,15 +59,26 @@ class Index extends React.Component {
               </Heading>
               <Markdown source={withSearch} />
             </Content>
+          </div>
 
-            <Content className="text-center">
-              <h2>
-                <Icon icon="rocket" /> Get started
-              </h2>
-              <p><strong>No signup required.</strong> Just create a public Gist on GitHub and you're ready to go!</p>
-              <a href="/setup" className="btn btn-lg btn-block btn-success">Create your Interrobang</a>
-            </Content>
+          <div className="bg-success text-white">
+            <div className="container bg-success p-5">
+              <Content className="text-center">
+                <h1 className="display-1">
+                  <Icon icon="rocket" />
+                </h1>
+                <h2>
+                  Get started
+                </h2>
+                <p><strong>No signup required.</strong> Just create a public Gist on GitHub and you're ready to go!</p>
+                <a href="/setup" className="btn btn-lg btn-block btn-light text-uppercase">
+                  Create your Interrobang <Icon icon="chevron-double-right" />
+                </a>
+              </Content>
+            </div>
+          </div>
 
+          <div className="container py-5">
             <Content>
               <Heading>
                 <Icon icon="find-replace" /> Recover an existing configuration
