@@ -28,9 +28,10 @@ class Index extends React.Component {
           <link rel="stylesheet" href="/assets/css/style.css" />
         </head>
         <body>
-          <div className="container search-form-container">
+          <div className="container">
             <div className="row align-items-center">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                <img className="img-fluid" src="/assets/logo.svg" />
                 <h1 className="display-3 text-center">Interrobang</h1>
                 <h3 className="text-muted text-center">Skip the search engine!</h3>
                 <p className="lead text-center">
