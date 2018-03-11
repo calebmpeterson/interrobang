@@ -1,6 +1,7 @@
 const React = require('react');
 const Markdown = require('react-markdown');
 
+const OmniBar = require('./components/OmniBar');
 const Footer = require('./components/Footer');
 const Icon = require('./components/Icon');
 
@@ -12,7 +13,7 @@ class Index extends React.Component {
   render() {
     const Heading = (props) => <h4>{props.children}</h4>;
     const Content = (props) => (
-      <div className={`row my-5 ${props.className}`}>
+      <div className={`row my-5 ${props.className || ''}`}>
         <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8">
           {props.children}
         </div>
@@ -28,7 +29,7 @@ class Index extends React.Component {
           <link rel="stylesheet" href="/assets/css/style.css" />
         </head>
         <body>
-          <div className="container">
+          <div className="container mt-5">
             <div className="row align-items-center">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <img className="img-fluid" src="/assets/logo.svg" />
@@ -37,6 +38,14 @@ class Index extends React.Component {
                 <p className="lead text-center">
                   Customizable, site-specific searches<br />directly from your browser's search input
                 </p>
+              </div>
+            </div>
+
+            <div className="container my-5 py-5">
+              <div className="row align-items-center">
+                <div className="offset-md-1 col-md-10">
+                  <OmniBar />
+                </div>
               </div>
             </div>
 
@@ -68,11 +77,11 @@ class Index extends React.Component {
                 <h1 className="display-1">
                   <Icon icon="rocket" />
                 </h1>
-                <h2>
-                  Get started
-                </h2>
-                <p><strong>No signup required.</strong> Just create a public Gist on GitHub and you're ready to go!</p>
-                <a href="/setup" className="btn btn-lg btn-block btn-light text-uppercase">
+                <h1 className="display-3">
+                  Get Started
+                </h1>
+                <p className="lead"><strong>No signup required.</strong> Just create a public Gist on GitHub and you're ready to go!</p>
+                <a href="/setup" className="btn btn-lg btn-block btn-light">
                   Create your Interrobang <Icon icon="chevron-double-right" />
                 </a>
               </Content>
@@ -97,8 +106,7 @@ class Index extends React.Component {
                          className="form-control"
                          type="text"
                          placeholder="Public GitHub Gist URL"
-                         defaultValue=""
-                         autoFocus />
+                         defaultValue="" />
 
                   <div className="input-group-append">
                     <button type="submit" className="btn btn-secondary">Recover</button>
@@ -109,6 +117,10 @@ class Index extends React.Component {
           </div>
 
           <Footer />
+
+          <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
+          <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
+          <script src="/assets/js/landing.js"></script>
         </body>
       </html>
     )

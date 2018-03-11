@@ -1,15 +1,20 @@
 import React from 'react';
 
-export default function OmniBar(props) {  
+import Icon from './Icon';
+
+function OmniBar(props) {
   return (
-    <div className="container">
-
-      <div className="card">
-
+    <div className="">
+      <div className="card border-success omnibar">
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
             <li className="nav-item">
               <a className="nav-link active" href="#">New Tab <small>&times;</small></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">
+                <Icon icon="mdi mdi-plus" />
+              </a>
             </li>
           </ul>
         </div>
@@ -26,13 +31,13 @@ export default function OmniBar(props) {
               <i className="mdi mdi-refresh"></i>
             </button>
 
-            <div className="input-group align-self-stretch" style="flex-grow: 1;">
+            <div className="input-group align-self-stretch" style={{flexGrow: 1}}>
               <div className="input-group-prepend">
                   <span className="input-group-text">
                     <i className="mdi mdi-magnify"></i>
                   </span>
               </div>
-              <input type="text" className="form-control" placeholder="">
+              <input id="search-input" type="text" className="form-control" placeholder="" />
             </div>
 
             <button className="btn btn-outline-secondary ml-1">
@@ -45,3 +50,5 @@ export default function OmniBar(props) {
     </div>
   );
 }
+
+module.exports = OmniBar;
