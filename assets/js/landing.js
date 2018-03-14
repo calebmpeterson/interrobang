@@ -1,5 +1,5 @@
 $(function () {
-  var interval = 100;
+  var interval = 90;
 
   var examples = [
     '!amazon mechanical keyboards',
@@ -8,9 +8,9 @@ $(function () {
   ];
 
   var explanations = [
-    'Search the entire Amazon.com catalog directly',
-    'Find answers to your programming questions on StackOverflow',
-    'Directly search GitHub.com'
+    'Search the entire Amazon.com catalog',
+    'Find answers to your programming questions on StackOverflow.com',
+    'Directly search GitHub.com repositories'
   ];
 
   var exampleIndex = 0;
@@ -20,8 +20,6 @@ $(function () {
 
   function tick() {
     var searchQuery = $searchInput.val();
-
-    console.log('tick', exampleIndex, searchQuery);
 
     if (examples[exampleIndex].length === searchQuery.length) {
       $omnibar
@@ -33,8 +31,12 @@ $(function () {
 
       setTimeout(function () {
         exampleIndex = (exampleIndex + 1) % examples.length;
-        $omnibar.popover('hide').popover('dispose');
+
+        $omnibar
+          .popover('hide')
+          .popover('dispose');
         $searchInput.val('');
+
         setTimeout(tick, interval);
       }, 5000);
 
@@ -47,4 +49,8 @@ $(function () {
   }
 
   setTimeout(tick, interval);
+
+  $('a[href="#"]').on('click', function (event) {
+    event.preventDefault();
+  });
 });

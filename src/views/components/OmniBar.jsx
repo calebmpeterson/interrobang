@@ -5,7 +5,7 @@ import Icon from './Icon';
 function OmniBar(props) {
   return (
     <div className="">
-      <div className="card border-success omnibar">
+      <div className="card border-default omnibar">
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
             <li className="nav-item">

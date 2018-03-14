@@ -3,15 +3,53 @@
 }
 
 .omnibar {
+  margin-bottom: 5rem;
   box-shadow:
     0px 4px 15px 1px rgba(0,0,0,0.05),
     0px 1px 3px 1px rgba(0,0,0,0.05);
+}
+
+.chevron-top {
+  background-image: url(/assets/chevron-top.svg);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 8rem;
+}
+
+.chevron-bottom {
+  background-image: url(/assets/chevron-bottom.svg);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.chevron {
+  border-left-width: 100px;
+  border-right-width: 100px;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-top-width: 40px;
+  border-top-style: solid;
+  margin: auto;
+  width: 200px;
+}
+
+.feature p,
+.feature li {
+  font-size: 120%;
 }
 
 .popover {
   box-shadow:
     0px 4px 15px 1px rgba(0,0,0,0.05),
     0px 3px 6px 1px rgba(0,0,0,0.10);
+}
+
+.popover {
+  font-size: 1.1rem;
+  text-align: center;
 }
 
 .btn {
