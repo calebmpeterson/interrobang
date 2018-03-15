@@ -31,7 +31,7 @@ class Index extends React.Component {
           <link rel="stylesheet" href="/assets/css/style.css" />
         </head>
         <body>
-          <div className="bg-primary text-white chevron-top">
+          <div className="bg-primary text-white">
             <div className="container pt-5">
               <div className="row align-items-center">
                 <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
@@ -53,6 +53,8 @@ class Index extends React.Component {
               </div>
             </div>
           </div>
+
+          <div className="bg-primary chevron-top" />
 
           <div className="container">
             <Content className="my-5 py-5 feature">
@@ -83,8 +85,10 @@ class Index extends React.Component {
             </Content>
           </div>
 
-          <div className="bg-success text-white chevron-bottom" style={{paddingTop: '18rem', paddingBottom: '8rem'}}>
-            <div className="container pb-5">
+          <div className="bg-success chevron-bottom" />
+
+          <div className="bg-success text-white">
+            <div className="container" style={{marginBottom: '-5rem'}}>
               <Content className="text-center">
                 <h1 className="display-3">
                   Get Started
@@ -97,7 +101,7 @@ class Index extends React.Component {
             </div>
           </div>
 
-          <div className="bg-success chevron-top" style={{paddingBottom: '8rem'}}/>
+          <div className="bg-success chevron-top" />
 
           <div className="">
             <div className="container py-5">
@@ -130,6 +134,10 @@ class Index extends React.Component {
           </div>
 
           <Footer />
+
+          <Footer>
+            Chevron graphics licensed CC-BY 3.0 from <a href="https://html5up.net/directive">HTML5UP.net</a>
+          </Footer>
 
           <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
           <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
