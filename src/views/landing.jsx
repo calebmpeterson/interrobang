@@ -55,21 +55,21 @@ class Index extends React.Component {
           </div>
 
           <div className="container">
-            <Content className="my-5 feature">
+            <Content className="my-5 py-5 feature">
               <Heading>
                 Personalize the power of DuckDuckGo's search !bangs
               </Heading>
               <Markdown source={personalize} />
             </Content>
 
-            <Content className="my-5 feature">
+            <Content className="my-5 py-5 feature">
               <Heading>
                 Keep using the DuckDuckGo search !bangs you know and love
               </Heading>
               <Markdown source={withDefaults} />
             </Content>
 
-            <Content className="my-5 feature">
+            <Content className="my-5 py-5 feature">
               <Heading>
                 Keep using your favorite search engine
               </Heading>
@@ -77,13 +77,13 @@ class Index extends React.Component {
             </Content>
 
             <Content className="text-center text-success">
-              <h1 className="display-1">
+              <h1 className="display-1 rocket-launch">
                 <Icon icon="rocket" />
               </h1>
             </Content>
           </div>
 
-          <div className="bg-success text-white chevron-bottom" style={{paddingTop: '14rem'}}>
+          <div className="bg-success text-white chevron-bottom" style={{paddingTop: '18rem', paddingBottom: '8rem'}}>
             <div className="container pb-5">
               <Content className="text-center">
                 <h1 className="display-3">
@@ -96,6 +96,8 @@ class Index extends React.Component {
               </Content>
             </div>
           </div>
+
+          <div className="bg-success chevron-top" style={{paddingBottom: '8rem'}}/>
 
           <div className="">
             <div className="container py-5">

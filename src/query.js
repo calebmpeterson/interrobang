@@ -1,4 +1,4 @@
-const { get, has, startsWith, tail } = require('lodash');
+const { get, has, startsWith, join, tail } = require('lodash');
 
 const QUERY = '{{{s}}}';
 const DUCK_DUCK_GO_QUERY = 'https://www.duckduckgo.com/?q={{{s}}}';
@@ -13,7 +13,7 @@ function search(config, query) {
     if (has(config, ['bangs', bang])) {
       console.log(`query is a custom search bang: ${bang}`);
       const bangQuery = get(config, ['bangs', bang]);
-      return bangQuery.replace(QUERY, tail(parts));
+      return bangQuery.replace(QUERY, join(tail(parts), ' '));
     }
     console.log(`query is a search bang: ${bang}`);
     return DUCK_DUCK_GO_QUERY.replace(QUERY, query);

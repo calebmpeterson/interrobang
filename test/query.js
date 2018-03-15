@@ -4,7 +4,7 @@ const { search } = require('../src/query')
 
 describe('default search engine is DuckDuckGo', () => {
   it('should default to using DDG for search', () => {
-    expect(search({}, 'foo')).to.be.equal('https://www.duckduckgo.com/?q=foo')
+    expect(search({}, 'foo bar')).to.be.equal('https://www.duckduckgo.com/?q=foo bar')
   })
 })
 
@@ -29,7 +29,7 @@ describe('duckduckgo search bang fallback', () => {
   }
 
   it('should use duckduckgo for search bangs', () => {
-    expect(search(config, '!foo bar')).to.be.equal('https://www.duckduckgo.com/?q=!foo bar')
+    expect(search(config, '!foo bar baz')).to.be.equal('https://www.duckduckgo.com/?q=!foo bar baz')
   })
 })
 
@@ -41,6 +41,6 @@ describe('custom bang usage', () => {
   }
 
   it('should use custom bangs when defined', () => {
-    expect(search(config, '!weather 76137')).to.be.equal('https://www.weather.com/?q=76137')
+    expect(search(config, '!weather fort worth tx')).to.be.equal('https://www.weather.com/?q=fort worth tx')
   })
 })
