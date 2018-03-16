@@ -14,6 +14,7 @@ class Index extends React.Component {
     const Heading = (props) => (
       <h3 className="text-primary">{props.children}</h3>
     );
+
     const Content = (props) => (
       <div className={`row ${props.className || ''}`}>
         <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8">
@@ -52,9 +53,9 @@ class Index extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="bg-primary chevron-top" />
+            <div className="chevron-top" />
+          </div>
 
           <div className="container">
             <Content className="my-5 py-5 feature">
