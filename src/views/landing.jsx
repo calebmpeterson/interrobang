@@ -38,7 +38,7 @@ class Index extends React.Component {
                   <img className="img-fluid logo" src="/assets/logo.svg" />
                   <h1 className="display-3 text-center">Interrobang</h1>
                   <h3 className="text-center">Skip the search engine!</h3>
-                  <p className="lead text-center">
+                  <p className="lead text-center text-muted">
                     Customizable, site-specific searches<br />directly from your browser's search input
                   </p>
                 </div>
