@@ -94,7 +94,7 @@ class Index extends React.Component {
                   Get Started
                 </h1>
                 <p className="lead"><strong>No signup required.</strong> Just create a public Gist on GitHub and you're ready to go!</p>
-                <a href="/setup" className="btn btn-lg btn-block btn-light">
+                <a href="/setup" className="btn btn-lg btn-block btn-light shadow-6dp">
                   Create your Interrobang <Icon icon="chevron-double-right" />
                 </a>
               </Content>
@@ -109,7 +109,9 @@ class Index extends React.Component {
                 <Heading>
                   <Icon icon="find-replace" /> Recover an existing configuration
                 </Heading>
+
                 <p className="lead">Already have your Interrobang configured? Just enter the public Gist URL here:</p>
+
                 <form className="form" method="GET" action={`/setup`}>
                   <div className="input-group">
                     <div className="input-group-prepend">
