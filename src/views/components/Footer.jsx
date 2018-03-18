@@ -1,10 +1,14 @@
 const React = require('react');
 
+const { getApplicationName, getApplicationVersion } = require('../../env');
+
 const delim = (<span> &bull; </span>);
+
+const nameAndVersion = `${getApplicationName()} ${getApplicationVersion()}`;
 
 const DefaultFooterContent = () => (
   <span>
-    <a href="/">Interrobang</a>
+    <a href="/" data-toggle="tooltip" data-placement="top" title={nameAndVersion}>Interrobang</a>
     {delim}
     Made by Caleb Peterson with <i className="mdi mdi-nodejs text-success"></i> in Texas
     {delim}
@@ -22,7 +26,8 @@ class Footer extends React.Component {
       <div className={`footer text-center text-muted p-2 ${fixedBottomClassName}`}>
         <small>
           {children || (<DefaultFooterContent />)}
-        </small>
+      </small>
+        <script type="text/javascript" defer src="/assets/js/enable-tooltips.js" />
       </div>
     );
   }
