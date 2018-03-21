@@ -26,7 +26,7 @@ class Footer extends React.Component {
       <div className={`footer text-center text-muted p-2 ${fixedBottomClassName}`}>
         <small>
           {children || (<DefaultFooterContent />)}
-      </small>
+        </small>
         <script type="text/javascript" defer src="/assets/js/enable-tooltips.js" />
       </div>
     );

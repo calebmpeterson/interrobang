@@ -1,5 +1,6 @@
 const React = require('react');
 
+const SetupProgress = require('./components/SetupProgress');
 const Footer = require('./components/Footer');
 
 const EXAMPLE_CONFIG = require('../resources/example-config.json');
@@ -32,6 +33,12 @@ class Index extends React.Component {
                 <h1 className="display-4 text-center">
                   Setup Interrobang
                 </h1>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className={stepContainerClassName}>
+                <SetupProgress step={1} />
               </div>
             </div>
 
@@ -97,9 +104,9 @@ class Index extends React.Component {
                 <h4 className="mt-5 pb-3">Create your Interrobang</h4>
 
                 <p>Paste your Gist's URL here:</p>
-                <form className="form" method="GET" action={`/setup/complete`}>
+                <form className="form" method="GET" action={`/setup/check`}>
                   <div className="form-group">
-                    <div className="input-group">
+                    <div className="input-group input-group-lg">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
                           <i className="mdi mdi-github-circle" />
@@ -110,10 +117,11 @@ class Index extends React.Component {
                              className={inputClassName}
                              type="text"
                              placeholder="Public GitHub Gist URL"
-                             defaultValue={this.props.gistURL || ""} autoFocus />
+                             defaultValue={this.props.gistURL || ""}
+                             autoFocus={hasError} />
 
                       <div className="input-group-append">
-                        <button type="submit" className="btn btn-success">Setup</button>
+                        <button type="submit" className="btn btn-success">Setup &raquo;</button>
                       </div>
 
                       {inputFeedback}
@@ -125,9 +133,12 @@ class Index extends React.Component {
           </div>
 
           <Footer />
+
+          <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossOrigin="anonymous"></script>
+          <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
         </body>
       </html>
-    )
+    );
   }
 }
 

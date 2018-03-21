@@ -2,16 +2,10 @@ const { getGistIdFromURL } = require('../config');
 
 module.exports = {
   method: 'GET',
-  path: '/setup/complete',
+  path: '/setup/complete/{gist}',
   handler: (request, reply) => {
-    const gistURL = request.query.gistURL;
-    const gistId = getGistIdFromURL(gistURL);
-    if (gistId) {
-    console.log(`Setup ${gistURL}`);
-      return reply.redirect(`/${request.query.gist}`);
-    }
-    else {
-      return reply.view('setup-start', { gistURL, error: `'${gistURL}' is an invalid public GitHub Gist URL` });
-    }
+    const gistId = request.params.gist;
+    console.log(`Complete setup for '${gistId}'`);
+    return reply.redirect(`/${gistId}`);
   }
 };
