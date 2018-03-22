@@ -1,0 +1,13 @@
+<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="256px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" viewBox="0 0 256000 256001" width="256px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css">
+   <![CDATA[
+    .fil8 {fill:none}
+    .fil3 {fill:#5AB055}
+    .fil2 {fill:#61BC5B}
+    .fil7 {fill:#DF3A32}
+    .fil6 {fill:#EACA05}
+    .fil0 {fill:#EF3F36}
+    .fil1 {fill:#FCD900}
+    .fil4 {fill:white}
+    .fil5 {fill:url(#id0)}
+   ]]>
+  </style><linearGradient gradientUnits="userSpaceOnUse" id="id0" x1="127357" x2="127357" y1="81424.3" y2="176182"><stop offset="0" style="stop-opacity:1; stop-color:#86BBE5"/><stop offset="1" style="stop-opacity:1; stop-color:#1072BA"/></linearGradient></defs><g id="Layer_x0020_1"><g id="_397929784"><path class="fil0" d="M127674 24c0,0 75179,-3375 115037,72192l-121434 0c0,0 -22917,-739 -42494,27063 -5623,11669 -11668,23689 -4884,47380 -9772,-16555 -51877,-89873 -51877,-89873 0,0 29699,-53775 105651,-56762l1 0z"/><path class="fil1" d="M238810 191858c0,0 -34691,66815 -120029,63511 10545,-18242 60735,-105161 60735,-105161 0,0 12126,-19471 -2179,-50331 -7277,-10720 -14693,-21932 -38591,-27907 19226,-175 103755,0 103755,0 0,0 31667,52615 -3691,119888l0 0z"/><path class="fil2" d="M17066 192384c0,0 -40525,-63440 5025,-135703 10510,18242 60699,105161 60699,105161 0,0 10826,20246 44673,23267 12900,-949 26325,-1758 43478,-19436 -9457,16731 -51880,89837 -51880,89837 0,0 -61436,1124 -101996,-63126l1 0z"/><path class="fil3" d="M118747 256001l17080 -71277c0,0 18769,-1478 34516,-18735 -9772,17189 -51596,90012 -51596,90012l0 0z"/><path class="fil4" d="M70454 128803c0,-31421 25483,-56903 56903,-56903 31421,0 56904,25482 56904,56903 0,31422 -25483,56903 -56904,56903 -31420,-35 -56903,-25481 -56903,-56903z"/><path class="fil5" d="M79979 128803c0,-26150 21193,-47379 47378,-47379 26150,0 47379,21195 47379,47379 0,26150 -21193,47379 -47379,47379 -26149,0 -47378,-21229 -47378,-47379z"/><path class="fil6" d="M242465 72005l-70331 20632c0,0 -10613,-15571 -33424,-20632 19789,-105 103755,0 103755,0z"/><path class="fil7" d="M72528 144057c-9877,-17116 -50506,-87271 -50506,-87271l52088 51526c0,0 -5344,11002 -3339,26747l1756 8998 1 0z"/></g></g><rect class="fil8" height="256000" width="256000"/></svg>
