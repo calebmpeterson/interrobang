@@ -4,12 +4,21 @@ const Icon = require('./components/Icon');
 const If = require('./helpers/If');
 const BackBehavior = require('./helpers/BackBehavior');
 const SetupProgress = require('./components/SetupProgress');
+const Modal = require('./components/Modal');
 const Footer = require('./components/Footer');
 
-const { SETUP_BROWSER_URL } = require('../env');
+const { SETUP_BROWSER_URL, SETUP_CHROME_URL, SETUP_SAFARI_URL, SETUP_EDGE_URL, SETUP_FIREFOX_URL } = require('../env');
 
 class Index extends React.Component {
   render() {
+    const BrowserButton = (props) => (
+      <div>
+        <a href={props.href} target="_blank" className="btn btn-link" data-toggle="tooltip" title={props.title}>
+          <Icon className="browser-icon" icon={props.icon} />
+        </a>
+      </div>
+    );
+
     return (
       <html>
         <head>
@@ -40,14 +49,25 @@ class Index extends React.Component {
                   <Icon icon="checkbox-marked-circle-outline" /> Your configuration looks great!
                 </p>
                 <p className="lead">
-                  Next, you need to tell your browser about your Interrobang by following these instructions (<strong>opens a new window</strong>):
+                  Next, you need to tell your browser about your Interrobang by following the instructions for your browser.
                 </p>
-                <p className="lead">
-                  Once you're done, come back here and we'll wrap things up...
+                <div className="row text-center my-5">
+                  <div className="col-3">
+                    <BrowserButton icon="google-chrome" title="Google Chrome" href={SETUP_CHROME_URL} />
+                  </div>
+                  <div className="col-3">
+                    <BrowserButton icon="edge" title="Microsoft Edge" href={SETUP_EDGE_URL} />
+                  </div>
+                  <div className="col-3">
+                    <BrowserButton icon="apple-safari" title="Apple Safari" href={SETUP_SAFARI_URL} />
+                  </div>
+                  <div className="col-3">
+                    <BrowserButton icon="firefox" title="Mozilla Firefox" href={SETUP_FIREFOX_URL} />
+                  </div>
+                </div>
+                <p className="lead font-weight-bold">
+                  When you're done, come back here and wrap things up...
                 </p>
-                <a href={SETUP_BROWSER_URL} target="_blank" className="btn btn-lg btn-block btn-primary shadow-6dp">
-                  Configure Your Browser
-                </a>
               </div>
             </div>
 

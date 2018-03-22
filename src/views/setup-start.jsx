@@ -16,7 +16,7 @@ class Index extends React.Component {
 
     const hasError = this.props.error;
     const inputClassName = hasError ? 'form-control is-invalid' : 'form-control';
-    const inputFeedback = hasError ? (<div className="invalid-feedback">{this.props.error}</div>) : null;
+    const inputFeedback = hasError ? (<div className="text-danger">{this.props.error}</div>) : null;
 
     return (
       <html>
@@ -31,7 +31,7 @@ class Index extends React.Component {
             <div className="row align-items-center">
               <div className={colClassName}>
                 <h1 className="display-4 text-center">
-                  Setup Interrobang
+                  Create Your Configuration
                 </h1>
               </div>
             </div>
@@ -104,7 +104,7 @@ class Index extends React.Component {
                 <h4 className="mt-5 pb-3">Create your Interrobang</h4>
 
                 <p>Paste your Gist's URL here:</p>
-                <form className="form" method="GET" action={`/setup/check`}>
+                <form className="form rounded shadow-16dp" method="GET" action={`/setup/check`}>
                   <div className="form-group">
                     <div className="input-group input-group-lg">
                       <div className="input-group-prepend">
@@ -123,11 +123,13 @@ class Index extends React.Component {
                       <div className="input-group-append">
                         <button type="submit" className="btn btn-success">Setup &raquo;</button>
                       </div>
-
-                      {inputFeedback}
                     </div>
                   </div>
                 </form>
+
+                <div className="mt-3">
+                  {inputFeedback}
+                </div>
               </div>
             </div>
           </div>

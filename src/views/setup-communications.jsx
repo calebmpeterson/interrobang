@@ -36,7 +36,7 @@ class Index extends React.Component {
             <div className="row mt-5">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <p className="lead">
-                  One last thing... <em>and it's totally optional</em>. Would you like to receive occasional email updates on Interrobang development?
+                  One last thing... and <em className="font-weight-bold">it's totally optional</em>. Would you like to receive occasional email updates on Interrobang development?
                 </p>
                 <NewsletterForm />
               </div>
