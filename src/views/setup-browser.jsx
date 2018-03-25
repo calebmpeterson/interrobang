@@ -13,7 +13,7 @@ class Index extends React.Component {
   render() {
     const BrowserButton = (props) => (
       <div>
-        <a href={props.href} target="_blank" className="btn btn-link" data-toggle="tooltip" title={props.title}>
+        <a href={props.href} target="_blank" className="d-inline-block" data-toggle="tooltip" title={props.title}>
           <Icon className="browser-icon" icon={props.icon} />
         </a>
       </div>
