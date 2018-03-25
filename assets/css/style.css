@@ -23,7 +23,7 @@
   background-image: url(/assets/chevron-bottom.svg);
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   padding-bottom: 18rem;
 }
 
