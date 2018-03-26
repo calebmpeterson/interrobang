@@ -22,6 +22,9 @@ class Layout extends React.Component {
         </head>
         <body>
           {this.props.children}
+          <pre className="d-none">
+            {JSON.stringify(this.props, null, '\t')}
+          </pre>
         </body>
       </html>
     );
