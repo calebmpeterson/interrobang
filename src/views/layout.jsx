@@ -23,7 +23,8 @@ class Layout extends React.Component {
         <body>
           {this.props.children}
           <pre className="d-none">
-            {JSON.stringify(this.props, null, '\t')}
+            {__dirname}
+            {__filename}
           </pre>
         </body>
       </html>
