@@ -1,6 +1,6 @@
 const { get } = require('lodash');
 
-console.log(process.env.VCAP_APPLICATION);
+console.log(get(JSON.parse(process.env.VCAP_APPLICATION), 'name'));
 
 function getApplicationName() {
   return get(process.env, ['VCAP_APPLICATION', 'name'], 'Interrobang');
