@@ -12,7 +12,7 @@ const withSearch = require('../resources/with-search.md');
 class Index extends React.Component {
   render() {
     const Heading = (props) => (
-      <h3 className="text-primary">{props.children}</h3>
+      <h3 className={props.className || "text-primary"}>{props.children}</h3>
     );
 
     const Content = (props) => (
@@ -105,9 +105,9 @@ class Index extends React.Component {
           <div className="bg-success chevron-top" />
 
           <div className="">
-            <div className="container py-5">
+            <div className="container py-5 my-5">
               <Content className="text-center text-muted">
-                <Heading>
+                <Heading className="text-muted">
                   <Icon icon="find-replace" /> Recover an existing configuration
                 </Heading>
 
