@@ -15,6 +15,8 @@ const DefaultFooterContent = () => (
     <a href="mailto:caleb.peterson@cubicle6.com">Contact me</a>
     {delim}
     <a href="https://www.github.com/calebmpeterson/interrobang" target="_blank">Source on GitHub</a>
+    {delim}
+    <a href="http://www.uptimedoctor.com/publicreport/25lngu4k/156281" target="_blank">Status</a>
   </span>
 );
 
