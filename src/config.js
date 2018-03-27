@@ -40,6 +40,7 @@ function getConfigFromGist(gist) {
 function createExtendedConfig(gistId) {
   return {
     'bangs': {
+      '!': `/${gistId}`,
       '!config': `/${gistId}/config/edit`
     }
   };

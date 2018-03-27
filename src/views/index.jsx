@@ -37,7 +37,7 @@ class Index extends React.Component {
             <div className="row mt-4 text-center">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <small className="text-muted">
-                  Custom search <em>!bangs</em>. DuckDuckGo default <em>!bangs</em>. Pick your search engine. <a href={`/${this.props.gist}/config/edit`}>Edit configuration</a>.
+                  Custom search <em>!bangs</em>. DuckDuckGo default <em>!bangs</em>. Pick your search engine. <a href={`/${this.props.gist}/config/edit`}>Edit your configuration</a>.
                 </small>
               </div>
             </div>
