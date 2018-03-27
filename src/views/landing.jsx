@@ -59,17 +59,21 @@ class Index extends React.Component {
 
           <div className="container">
             <Content className="my-5 py-5 feature">
-              <Heading>
-                Personalize the power of search
-              </Heading>
-              <Markdown source={personalize} />
-            </Content>
-
-            <Content className="my-5 py-5 feature">
+              <h5 className="text-muted mb-5">What are <em>!bangs</em>?</h5>
               <Heading>
                 Search on thousands of sites directly
               </Heading>
               <Markdown source={withDefaults} />
+              <hr/>
+            </Content>
+
+            <Content className="my-5 py-5 feature">
+              <h5 className="text-muted mb-5">Make <em>!bangs</em> your own...</h5>
+              <Heading>
+                Personalize the power of search
+              </Heading>
+              <Markdown source={personalize} />
+              <hr/>
             </Content>
 
             <Content className="my-5 py-5 feature">
@@ -77,6 +81,7 @@ class Index extends React.Component {
                 Keep using your favorite search engine
               </Heading>
               <Markdown source={withSearch} />
+              <hr/>
             </Content>
 
             <Content className="text-center text-success">

@@ -22,6 +22,9 @@ class Layout extends React.Component {
         </head>
         <body>
           {this.props.children}
+
+          <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossOrigin="anonymous"></script>
+          <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
         </body>
       </html>
     );
