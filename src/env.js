@@ -1,6 +1,6 @@
 const { get } = require('lodash');
 
-const vcapApplication = JSON.parse(process.env.VCAP_APPLICATION);
+const vcapApplication = process.env.VCAP_APPLICATION && JSON.parse(process.env.VCAP_APPLICATION);
 
 console.log('Name:   ', get(vcapApplication, 'name'));
 console.log('Version:', get(vcapApplication, 'version'));

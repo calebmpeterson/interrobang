@@ -60,14 +60,14 @@ class Index extends React.Component {
           <div className="container">
             <Content className="my-5 py-5 feature">
               <Heading>
-                Personalize the power of DuckDuckGo's search !bangs
+                Personalize the power of search
               </Heading>
               <Markdown source={personalize} />
             </Content>
 
             <Content className="my-5 py-5 feature">
               <Heading>
-                Keep using the DuckDuckGo search !bangs you know and love
+                Search on thousands of sites directly
               </Heading>
               <Markdown source={withDefaults} />
             </Content>
