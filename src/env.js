@@ -6,11 +6,11 @@ console.log('Name:   ', get(vcapApplication, 'name'));
 console.log('Version:', get(vcapApplication, 'version'));
 
 function getApplicationName() {
-  return get(process.env, ['VCAP_APPLICATION', 'name'], 'Interrobang');
+  return get(vcapApplication, ['name'], 'Interrobang');
 }
 
 function getApplicationVersion() {
-  return get(process.env, ['VCAP_APPLICATION', 'version'], 'DEV');
+  return get(vcapApplication, ['version'], 'DEV');
 }
 
 module.exports = {
