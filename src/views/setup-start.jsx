@@ -1,5 +1,6 @@
 const React = require('react');
 
+const Layout = require('./layout');
 const SetupProgress = require('./components/SetupProgress');
 const Footer = require('./components/Footer');
 
@@ -19,14 +20,7 @@ class Index extends React.Component {
     const inputFeedback = hasError ? (<div className="text-danger">{this.props.error}</div>) : null;
 
     return (
-      <html>
-        <head>
-          <title>Setup Interrobang</title>
-          <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
-          <link rel="stylesheet" href="/assets/mdi/css/materialdesignicons.min.css" />
-          <link rel="stylesheet" href="/assets/css/style.css" />
-        </head>
-        <body>
+      <Layout title="Setup Interrobang">
           <div className="container my-5">
             <div className="row align-items-center">
               <div className={colClassName}>
@@ -135,11 +129,7 @@ class Index extends React.Component {
           </div>
 
           <Footer />
-
-          <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossOrigin="anonymous"></script>
-          <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
-        </body>
-      </html>
+      </Layout>
     );
   }
 }

@@ -10,6 +10,7 @@ require('babel-polyfill');
 
 const { get } = require('lodash');
 
+const extensions = require('./extensions');
 const routes = require('./routes');
 
 require('./resources/loaders/markdown-loader');
@@ -30,6 +31,7 @@ async function initialize() {
     path: 'views'
   });
 
+  extensions(server);
   routes(server);
 
   await server.start((error) => {

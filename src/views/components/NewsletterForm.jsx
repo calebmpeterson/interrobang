@@ -24,7 +24,7 @@ class NewsletterForm extends React.Component {
 
           { /* Keep the bots away... */ }
           <div style={{position: 'absolute', left: -5000}} aria-hidden="true">
-            <input type="text" name="b_db3c56f3d58860c250de92d92_fad5559749" tabindex="-1" value="" />
+            <input type="text" name="b_db3c56f3d58860c250de92d92_fad5559749" tabIndex="-1" value="" />
           </div>
         </div>
       </form>

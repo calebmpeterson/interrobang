@@ -7,9 +7,15 @@ module.exports = {
   method: 'GET',
   path: '/{gist}/search',
   handler: async (request, reply) => {
+    const { gist } = request.params;
+    const { query } = request.query;
+
+    const visitor = request.server.methods.getAnalyticsVisitor(request);
+    visitor.event('Search', gist, query).send();
+
     try {
-      const config = await getConfig(request.params.gist);
-      const target = search(config, request.query.query);
+      const config = await getConfig(gist);
+      const target = search(config, query);
       return reply.redirect(target);
     }
     catch (e) {

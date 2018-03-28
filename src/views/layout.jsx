@@ -12,6 +12,7 @@ class Layout extends React.Component {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+          <link rel="icon" href="/assets/img/favicon.ico" />
           <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
           <link rel="stylesheet" href="/assets/mdi/css/materialdesignicons.min.css" />
           <link rel="stylesheet" href="/assets/css/style.css" />
@@ -21,10 +22,10 @@ class Layout extends React.Component {
           </If>
         </head>
         <body>
-          {this.props.children}
-
           <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossOrigin="anonymous"></script>
           <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
+
+          {this.props.children}
         </body>
       </html>
     );

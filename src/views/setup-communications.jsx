@@ -1,5 +1,6 @@
 const React = require('react');
 
+const Layout = require('./layout');
 const Icon = require('./components/Icon');
 const If = require('./helpers/If');
 const BackBehavior = require('./helpers/BackBehavior');
@@ -12,14 +13,7 @@ const { SETUP_BROWSER_URL } = require('../env');
 class Index extends React.Component {
   render() {
     return (
-      <html>
-        <head>
-          <title>Keep Updated on Interrobang Development</title>
-          <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
-          <link rel="stylesheet" href="/assets/mdi/css/materialdesignicons.min.css" />
-          <link rel="stylesheet" href="/assets/css/style.css" />
-        </head>
-        <body>
+      <Layout title="Keep Updated on Interrobang Development">
           <div className="container search-form-container">
             <div className="row">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
@@ -57,12 +51,9 @@ class Index extends React.Component {
           </div>
 
           <Footer fixedBottom />
-
-          <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"></script>
-          <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
           <script src="/assets/js/setup-browser.js"></script>
-        </body>
-      </html>
+
+      </Layout>
     );
   }
 }

@@ -1,6 +1,7 @@
 const React = require('react');
 const Markdown = require('react-markdown');
 
+const Layout = require('./layout');
 const OmniBar = require('./components/OmniBar');
 const Footer = require('./components/Footer');
 const Icon = require('./components/Icon');
@@ -24,14 +25,7 @@ class Index extends React.Component {
     );
 
     return (
-      <html>
-        <head>
-          <title>Interrobang</title>
-          <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
-          <link rel="stylesheet" href="/assets/mdi/css/materialdesignicons.min.css" />
-          <link rel="stylesheet" href="/assets/css/style.css" />
-        </head>
-        <body>
+      <Layout title="Interrobang">
           <div className="bg-primary text-white">
             <div className="container pt-5">
               <div className="row align-items-center">
@@ -147,11 +141,8 @@ class Index extends React.Component {
             Chevron graphics licensed CC-BY 3.0 from <a href="https://html5up.net/directive">HTML5UP.net</a>
           </Footer>
 
-          <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossOrigin="anonymous"></script>
-          <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
-          <script src="/assets/js/landing.js"></script>
-        </body>
-      </html>
+          <script defer src="/assets/js/landing.js"></script>
+      </Layout>
     );
   }
 }

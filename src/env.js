@@ -2,8 +2,10 @@ const { get } = require('lodash');
 
 const vcapApplication = process.env.VCAP_APPLICATION && JSON.parse(process.env.VCAP_APPLICATION);
 
-console.log('Name:   ', get(vcapApplication, 'name'));
-console.log('Version:', get(vcapApplication, 'version'));
+if (vcapApplication) {
+  console.log('Name:   ', get(vcapApplication, 'name'));
+  console.log('Version:', get(vcapApplication, 'version'));
+}
 
 function getApplicationName() {
   return get(vcapApplication, ['name'], 'Interrobang');
@@ -14,6 +16,7 @@ function getApplicationVersion() {
 }
 
 module.exports = {
+  UA_ACCOUNT_ID: 'UA-116565361-1',
   getApplicationName,
   getApplicationVersion,
   SETUP_BROWSER_URL: 'https://www.howtogeek.com/114176/HOW-TO-EASILY-CREATE-SEARCH-PLUGINS-ADD-ANY-SEARCH-ENGINE-TO-YOUR-BROWSER/',
