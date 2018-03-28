@@ -1,4 +1,4 @@
-const { get, startsWith, first, isEmpty, isString, isArray } = require('lodash');
+const { get, startsWith, first, isEqual, isEmpty, isString, isArray } = require('lodash');
 const ua = require('universal-analytics');
 const uuid = require('uuid/v4');
 
@@ -7,6 +7,7 @@ const { UA_ACCOUNT_ID } = require('../env');
 const GA_COOKIE = 'ga';
 
 const isAssetRequest = (request) => startsWith(request.url.pathname, '/assets');
+const isPingRequest = (request) => isEqual(request.url.pathname, '/ping');
 
 const getClientId = (request) => {
   const clientIdState = request.state.ga;
