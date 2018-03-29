@@ -4,7 +4,7 @@ const { search } = require('../src/query')
 
 describe('default search engine is DuckDuckGo', () => {
   it('should default to using DDG for search', () => {
-    expect(search({}, 'foo bar')).to.be.equal('https://www.duckduckgo.com/?q=foo bar')
+    expect(search({}, 'foo bar')).to.be.deep.equal({ target: 'https://www.duckduckgo.com/?q=foo bar', bang: 'search-engine' })
   })
 })
 
@@ -14,12 +14,12 @@ describe('custom search behavior', () => {
   }
 
   it('should resolve the default search engine', () => {
-    expect(search(config, '')).to.be.equal('https://www.google.com/search?query=')
+    expect(search(config, '')).to.be.deep.equal({ target: 'https://www.google.com/search?query=', bang: 'search-engine' })
   })
 
   it('should handle search queries', () => {
-    expect(search(config, 'foo')).to.be.equal('https://www.google.com/search?query=foo')
-    expect(search(config, 'foo bar')).to.be.equal('https://www.google.com/search?query=foo bar')
+    expect(search(config, 'foo')).to.be.deep.equal({ target: 'https://www.google.com/search?query=foo', bang: 'search-engine' })
+    expect(search(config, 'foo bar')).to.be.deep.equal({ target: 'https://www.google.com/search?query=foo bar', bang: 'search-engine' })
   })
 })
 
@@ -29,7 +29,7 @@ describe('duckduckgo search bang fallback', () => {
   }
 
   it('should use duckduckgo for search bangs', () => {
-    expect(search(config, '!foo bar baz')).to.be.equal('https://www.duckduckgo.com/?q=!foo bar baz')
+    expect(search(config, '!foo bar baz')).to.be.deep.equal({ target: 'https://www.duckduckgo.com/?q=!foo bar baz', bang: 'foo' })
   })
 })
 
@@ -41,6 +41,6 @@ describe('custom bang usage', () => {
   }
 
   it('should use custom bangs when defined', () => {
-    expect(search(config, '!weather fort worth tx')).to.be.equal('https://www.weather.com/?q=fort worth tx')
+    expect(search(config, '!weather fort worth tx')).to.be.deep.equal({ target: 'https://www.weather.com/?q=fort worth tx', bang: 'weather' })
   })
 })

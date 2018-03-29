@@ -10,13 +10,14 @@ module.exports = {
     const { gist } = request.params;
     const { query } = request.query;
 
-    const visitor = request.server.methods.getAnalyticsVisitor(request);
-    visitor.event('Search', gist, query).send();
-
     try {
       const config = await getConfig(gist);
-      const target = search(config, query);
-      return reply.redirect(target);
+      const result = search(config, query);
+
+      const visitor = request.server.methods.getAnalyticsVisitor(request);
+      visitor.event('Search', gist, result.bang).send();
+
+      return reply.redirect(result.target);
     }
     catch (e) {
       console.error(chalk`{red ${e.message}}`);
