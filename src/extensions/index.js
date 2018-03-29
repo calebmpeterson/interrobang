@@ -51,7 +51,7 @@ module.exports = function (server) {
       try {
         const { pathname } = request.url;
         const { path } = request.route;
-        if (!isAssetRequest(request)) {
+        if (!isAssetRequest(request) && !isPingRequest(request)) {
           console.log('Request', request.route.path, request.url.pathname);
 
           const visitor = request.server.methods.getAnalyticsVisitor(request);
