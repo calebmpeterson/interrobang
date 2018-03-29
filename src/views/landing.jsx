@@ -26,14 +26,14 @@ class Index extends React.Component {
 
     return (
       <Layout title="Interrobang">
-          <div className="bg-primary text-white">
+          <div className="bg-success-to-primary-gradient text-white">
             <div className="container pt-5">
               <div className="row align-items-center">
                 <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                   <img className="img-fluid logo" src="/assets/logo.svg" />
                   <h1 className="display-3 text-center">Interrobang</h1>
                   <h3 className="text-center">Skip the search engine!</h3>
-                  <p className="lead text-center text-muted">
+                  <p className="lead text-center">
                     Customizable, site-specific searches<br />directly from your browser's search input
                   </p>
                 </div>
@@ -93,7 +93,10 @@ class Index extends React.Component {
                 <h1 className="display-3">
                   Get Started
                 </h1>
-                <p className="lead"><strong>No signup required.</strong> Just create a public Gist on GitHub and you're ready to go!</p>
+                <p className="lead">
+                  <strong className="font-weight-bold">No signup required.</strong>&nbsp;
+                  Create a public Gist on GitHub and you're ready to go!
+                </p>
                 <a href="/setup" className="btn btn-lg btn-block btn-light shadow-6dp">
                   Create your Interrobang <Icon icon="chevron-double-right" />
                 </a>
@@ -110,7 +113,10 @@ class Index extends React.Component {
                   <Icon icon="find-replace" /> Recover an existing configuration
                 </Heading>
 
-                <p className="lead">Already have your Interrobang configured? Just enter the public Gist URL here:</p>
+                <p className="lead">
+                  Already have your Interrobang configured? <br />
+                  Enter the public Gist URL here:
+                </p>
 
                 <form className="form" method="GET" action={`/setup`}>
                   <div className="input-group">
