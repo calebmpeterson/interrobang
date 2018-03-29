@@ -8,8 +8,13 @@ class SetupProgress extends React.Component {
     const percentage = 100.0 * step / STEPS;
     const complete = `${percentage}%`;
     return (
-      <div className="progress">
-        <div className="progress-bar bg-success" style={{width: complete}}/>
+      <div>
+        <p className="text-center text-muted">
+          Step {step} of {STEPS}
+        </p>
+        <div className="progress">
+          <div className="progress-bar bg-success" style={{width: complete}}/>
+        </div>
       </div>
     );
   }

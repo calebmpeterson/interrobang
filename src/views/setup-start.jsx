@@ -93,11 +93,9 @@ class Index extends React.Component {
               </div>
             </div>
 
-            <div className="row">
+            <div className="row mt-5">
               <div className={colClassName}>
-                <h4 className="mt-5 pb-3">Create your Interrobang</h4>
-
-                <p>Paste your Gist's URL here:</p>
+                <p className="lead">Paste your Gist's URL here:</p>
                 <form className="form rounded shadow-16dp" method="GET" action={`/setup/check`}>
                   <div className="form-group">
                     <div className="input-group input-group-lg">

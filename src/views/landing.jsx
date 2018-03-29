@@ -97,9 +97,11 @@ class Index extends React.Component {
                   <strong className="font-weight-bold">No signup required.</strong>&nbsp;
                   Create a public Gist on GitHub and you're ready to go!
                 </p>
-                <a href="/setup" className="btn btn-lg btn-block btn-light shadow-6dp">
-                  Create your Interrobang <Icon icon="chevron-double-right" />
-                </a>
+                <div className="shadow-6dp rounded">
+                  <a href="/setup" className="btn btn-lg btn-block btn-light">
+                    Create your Interrobang <Icon icon="chevron-double-right" />
+                  </a>
+                </div>
               </Content>
             </div>
           </div>
