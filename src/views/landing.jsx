@@ -36,22 +36,28 @@ class Index extends React.Component {
                   <p className="lead text-center">
                     Customizable, site-specific searches<br />directly from your browser's search input
                   </p>
-                </div>
-              </div>
 
-              <div className="container mt-5 py-5">
-                <div className="row align-items-center">
-                  <div className="offset-md-1 col-md-10">
-                    <OmniBar />
-                  </div>
+                  <a href="#more-target" className="smooth-scroll">
+                    <div className="text-center more-wrapper">
+                      <Icon icon="chevron-down" className="text-white more" />
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div className="chevron-top" />
+            <div className="chevron-top" id="more-target" />
           </div>
 
           <div className="container">
+            <div className="container mt-5 py-5">
+              <div className="row align-items-center">
+                <div className="offset-md-1 col-md-10">
+                  <OmniBar />
+                </div>
+              </div>
+            </div>
+
             <Content className="my-5 py-5 feature">
               <h5 className="text-muted mb-5">What are <em>!bangs</em>?</h5>
               <Heading>

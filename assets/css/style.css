@@ -2,6 +2,31 @@
   margin-top: 15%;
 }
 
+.more-wrapper {
+  font-size: 600%;
+  margin-top: 6rem;
+  margin-bottom: -8rem;
+}
+.more {
+  position: relative;
+  animation: more 2s ease infinite;
+}
+
+@keyframes more {
+  0% {
+    opacity: 0.0;
+    top: -5rem;
+  }
+  90% {
+    opacity: 1.0;
+    top: 5rem;
+  }
+  100% {
+    opacity: 0.0;
+    top: 5rem;
+  }
+}
+
 .omnibar {
   margin-bottom: 5rem;
 }
@@ -46,6 +71,7 @@
 .popover {
   font-size: 1.1rem;
   text-align: center;
+  max-width: 400px;
 }
 
 .btn {

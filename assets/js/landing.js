@@ -53,4 +53,13 @@ $(function () {
   $('a[href="#"]').on('click', function (event) {
     event.preventDefault();
   });
+
+  $('.smooth-scroll').on('click', function (event) {
+    event.preventDefault();
+    var target = $(this).attr('href');
+    document.querySelector(target).scrollIntoView({
+      block: 'start',
+      behavior: 'smooth'
+    });
+  });
 });
