@@ -16,16 +16,10 @@ class Index extends React.Component {
 
                 <form className="form rounded shadow-16dp" method="GET" action={`/${this.props.gist}/search`}>
                   <div className="input-group input-group-lg">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <i className="mdi mdi-magnify" />
-                      </span>
-                    </div>
-                    <input name="query" className="form-control" type="text" placeholder="What do you wish of me?" autoFocus />
+                    <input name="query" className="form-control is-valid" type="text" placeholder="What do you wish of me?" autoFocus />
                     <div className="input-group-append">
-                      <button type="submit" className="btn btn-primary">
-                        <span className="d-none d-xl-inline">Search&nbsp;</span>
-                        <Icon icon="chevron-double-right" />
+                      <button type="submit" className="btn btn-success" data-toggle="tooltip" data-placement="right" title="Search">
+                        <Icon icon="magnify" />
                       </button>
                     </div>
                   </div>

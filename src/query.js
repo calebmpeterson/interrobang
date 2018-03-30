@@ -33,4 +33,4 @@ function search(config, query) {
 
 module.exports = {
   search
-}
+};
