@@ -22,7 +22,7 @@ class Index extends React.Component {
 
     return (
       <Layout title="Tell Your Browser About Interrobang">
-          <div className="container search-form-container">
+          <div className="container my-5">
             <div className="row">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <h1 className="display-4 text-center">Tell Your Browser</h1>
@@ -43,6 +43,22 @@ class Index extends React.Component {
                 <p className="lead">
                   Next, you need to tell your browser about your Interrobang by following the instructions for your browser.
                 </p>
+
+                <div className="my-5">
+                  <p className="lead">
+                    You'll need your Interrobang's search pattern:
+                  </p>
+
+                  <div className="input-group input-group-lg">
+                    <input className="form-control border-primary" readonly id="search-engine-url" data-gist={this.props.gist} />
+                    <div className="input-group-append">
+                      <button type="button" className="btn btn-primary" id="copy-search-engine-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+                        <Icon icon="clipboard-arrow-left" className="text-white" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="row text-center my-5">
                   <div className="col-3">
                     <BrowserButton icon="google-chrome" title="Google Chrome" href={SETUP_CHROME_URL} />
@@ -63,7 +79,7 @@ class Index extends React.Component {
               </div>
             </div>
 
-            <div className="row mt-5">
+            <div className="row mt-3 mb-5">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <div className="float-left text-left">
                   <BackBehavior>
@@ -77,10 +93,9 @@ class Index extends React.Component {
             </div>
           </div>
 
-          <Footer fixedBottom />
+          <Footer />
 
-          <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossOrigin="anonymous"></script>
-          <script src="/assets/bootstrap/js/bootstrap.bundle.js"></script>
+          <script src="/assets/js/with-back-behavior.js"></script>
           <script src="/assets/js/setup-browser.js"></script>
       </Layout>
     );

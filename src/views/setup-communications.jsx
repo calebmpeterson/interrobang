@@ -14,7 +14,7 @@ class Index extends React.Component {
   render() {
     return (
       <Layout title="Keep Updated on Interrobang Development">
-          <div className="container search-form-container">
+          <div className="container my-5">
             <div className="row">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <h1 className="display-4 text-center">Keep In Touch</h1>
@@ -50,9 +50,9 @@ class Index extends React.Component {
             </div>
           </div>
 
-          <Footer fixedBottom />
-          <script src="/assets/js/setup-browser.js"></script>
+          <Footer />
 
+          <script src="/assets/js/with-back-behavior.js"></script>
       </Layout>
     );
   }
