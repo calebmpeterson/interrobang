@@ -31,7 +31,7 @@ class Index extends React.Component {
               <div className="row align-items-center">
                 <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                   <img className="img-fluid logo" src="/assets/logo.svg" />
-                  <h1 className="display-3 text-center">Interrobang</h1>
+                  <h1 className="display-4 text-center">Interrobang</h1>
                   <h3 className="text-center">Skip the search engine!</h3>
                   <p className="lead text-center">
                     Customizable, site-specific searches<br />directly from your browser's search input
