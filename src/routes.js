@@ -12,7 +12,7 @@ module.exports = function loadRoutes(server) {
         server.route(route);
       }
       else {
-        console.log(chalk`{yellow Invalid route in ${filename}}`);
+        console.log(chalk`{yellow No route found in ${filename}}`);
       }
     }
     catch (e) {
