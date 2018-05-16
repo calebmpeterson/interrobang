@@ -12,7 +12,7 @@ class Index extends React.Component {
         <div className="container search-form-container">
             <div className="row">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-                <h1 className="display-3 text-center mb-5">Interrobang</h1>
+                <h1 className="display-4 text-center mb-5">Interrobang</h1>
 
                 <form className="form rounded shadow-16dp" method="GET" action={`/b/${this.props.userId}/search`}>
                   <div className="input-group input-group-lg">
