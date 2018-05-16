@@ -20,10 +20,10 @@ const DefaultFooterContent = () => (
 
 class Footer extends React.Component {
   render() {
-    const { children, fixedBottom } = this.props;
+    const { children, fixedBottom, className } = this.props;
     const fixedBottomClassName = fixedBottom ? 'fixed-bottom' : '';
     return (
-      <div className={`footer text-center text-muted p-2 ${fixedBottomClassName}`}>
+      <div className={`footer text-center p-2 ${className || ''} ${fixedBottomClassName}`}>
         <small>
           {children || (<DefaultFooterContent />)}
         </small>

@@ -25,7 +25,7 @@ class Index extends React.Component {
     );
 
     return (
-      <Layout title="Interrobang">
+      <Layout title="Interrobang" navbarVariant="light" canSignup canLogin>
           <div className="bg-success-to-primary-gradient text-white">
             <div className="container pt-5">
               <div className="row align-items-center">
@@ -84,27 +84,26 @@ class Index extends React.Component {
               <hr/>
             </Content>
 
-            <Content className="text-center text-success">
+            <Content className="text-center text-success d-none">
               <h1 className="display-1 rocket-launch">
                 <Icon icon="rocket" />
               </h1>
             </Content>
           </div>
 
-          <div className="bg-success chevron-bottom" />
+          <div className="bg-primary chevron-bottom" />
 
-          <div className="bg-success text-white">
-            <div className="container" style={{marginBottom: '-5rem'}}>
+          <div className="bg-primary text-white">
+            <div className="container py-5">
               <Content className="text-center">
                 <h1 className="display-3">
                   Get Started
                 </h1>
                 <p className="lead">
-                  <strong className="font-weight-bold">No signup required.</strong>&nbsp;
-                  Create a public Gist on GitHub and you're ready to go!
+                  Create a <strong className="font-weight-bold">FREE</strong> account and you're ready to go!
                 </p>
                 <div className="shadow-6dp rounded">
-                  <a href="/setup" className="btn btn-lg btn-block btn-light">
+                  <a href="/account/#register" className="btn btn-lg btn-block btn-light">
                     Create your Interrobang <Icon icon="chevron-double-right" />
                   </a>
                 </div>
@@ -112,9 +111,15 @@ class Index extends React.Component {
             </div>
           </div>
 
-          <div className="bg-success chevron-top" />
+          <div className="bg-primary pt-5 text-white">
+            <Footer />
 
-          <div className="">
+            <Footer>
+              Chevron graphics licensed CC-BY 3.0 from <a href="https://html5up.net/directive">HTML5UP.net</a>
+            </Footer>
+          </div>
+
+          <div className="d-none">
             <div className="container py-5 my-5">
               <Content className="text-center text-muted">
                 <Heading className="text-muted">
@@ -148,12 +153,6 @@ class Index extends React.Component {
               </Content>
             </div>
           </div>
-
-          <Footer />
-
-          <Footer>
-            Chevron graphics licensed CC-BY 3.0 from <a href="https://html5up.net/directive">HTML5UP.net</a>
-          </Footer>
 
           <script defer src="/assets/js/landing.js"></script>
       </Layout>

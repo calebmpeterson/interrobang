@@ -1,3 +1,6 @@
 {
-  "ext": "js jsx md"
+  "ext": "js jsx md",
+  "ignore": [
+    "src/client/**"
+  ]
 }
