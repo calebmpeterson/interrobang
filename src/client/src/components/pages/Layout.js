@@ -22,12 +22,12 @@ class Layout extends React.Component {
     const colClassName = column || 'col';
     return (
       <div>
-        <nav className="navbar navbar-expand-sm fixed-top navbar-light bg-white">
+        <nav className="navbar navbar-expand-sm fixed-top navbar-light bg-white shadow-2dp">
           <div className="container">
             <a className="navbar-brand mr-3" href="/">Interrobang</a>
 
             <If test={canSearch}>
-              <form className="form-inline" method="GET" action={`/b/${userId}/search`}>
+              <form className="form-inline d-none d-md-block" method="GET" action={`/b/${userId}/search`}>
                 <div className="input-group">
                   <input className="form-control" name="query" type="text" placeholder="Search..." />
                   <div className="input-group-append">
@@ -42,7 +42,7 @@ class Layout extends React.Component {
             <div className="mr-auto" />
 
             <If test={email}>
-              <span className="navbar-text">
+              <span className="navbar-text d-none d-md-block">
                 {email}
               </span>
             </If>
@@ -54,7 +54,7 @@ class Layout extends React.Component {
           </div>
         </nav>
 
-        <div className="container mt-5 pt-5">
+        <div className="container my-5 pt-5">
           <div className="row my-5">
             <div className={colClassName}>
               <h1 className="text-center">{this.props.title}</h1>

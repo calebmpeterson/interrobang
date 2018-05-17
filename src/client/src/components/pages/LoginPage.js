@@ -55,11 +55,20 @@ class LoginPage extends React.Component {
             Login
           </button>
 
-          <div className="mt-3">
+          <div className="mt-3 d-none d-md-block">
             <button type="button" className="btn btn-link w-50" onClick={this.props.viewAccountRecovery}>
               Forgot your password?
             </button>
             <button type="button" className="btn btn-link w-50" onClick={this.props.viewRegistration}>
+              Create an account
+            </button>
+          </div>
+
+          <div className="mt-3 d-md-none">
+            <button type="button" className="btn btn-block btn-link" onClick={this.props.viewAccountRecovery}>
+              Forgot your password?
+            </button>
+            <button type="button" className="btn btn-block btn-link" onClick={this.props.viewRegistration}>
               Create an account
             </button>
           </div>

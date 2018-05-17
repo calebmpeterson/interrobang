@@ -28,7 +28,7 @@ class Index extends React.Component {
       <Layout title="Interrobang" navbarVariant="light" canSignup canLogin>
           <div className="bg-success-to-primary-gradient text-white">
             <div className="container pt-5">
-              <div className="row align-items-center">
+              <div className="row align-items-center mt-5">
                 <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                   <img className="img-fluid logo" src="/assets/logo.svg" />
                   <h1 className="display-4 text-center">Interrobang</h1>
@@ -100,7 +100,7 @@ class Index extends React.Component {
                   Get Started
                 </h1>
                 <p className="lead">
-                  Create a <strong className="font-weight-bold">FREE</strong> account and you're ready to go!
+                  Create a <strong className="font-weight-bold">FREE</strong> account<br className="d-md-none" /> and you're ready to go!
                 </p>
                 <div className="shadow-6dp rounded">
                   <a href="/account/#register" className="btn btn-lg btn-block btn-light">

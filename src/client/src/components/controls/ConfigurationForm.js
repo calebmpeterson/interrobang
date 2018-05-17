@@ -45,11 +45,11 @@ const BangControlHeader = (props) => (
 
 const formControlClassName = (value, className = '') =>
       isEmpty(value)
-      ? `form-control border-danger ${className}`
+      ? `form-control ${className}`
       : `form-control ${className}`;
 
 const BangControl = (props) => (
-  <div className="row mb-3 bang-control">
+  <div className="row mb-3">
     <div className="col">
       <div className="input-group">
         <input name="bang" type="text" className={formControlClassName(props.bang)} placeholder="bang" value={props.bang} onChange={onUpdateBang(props.bang)} autoComplete="off" autoFocus />
@@ -93,13 +93,13 @@ export default class ConfigurationForm extends React.Component {
         <form>
           <div className="row">
             <div className="col">
-              <legend>Search !Bangs</legend>
+              <label><strong>Search !Bangs</strong></label>
             </div>
           </div>
           <div className="row">
             <div className="col">
               <p>
-                Use <code>{SEARCH_PARAM}</code> to indicate where your search query should go.&nbsp;
+                Use <code>{SEARCH_PARAM}</code> to indicate where your search query will be inserted.&nbsp;<br className="d-inline d-md-none"/>
                 e.g. <code>https://www.devdocs.io/#q={SEARCH_PARAM}</code>.
               </p>
             </div>
@@ -126,21 +126,25 @@ export default class ConfigurationForm extends React.Component {
             </If>
           </div>
 
-          <div className="mt-5" />
+          <hr className="mt-5" />
 
           <div className="row">
             <div className="col">
-              <legend>Default Search Engine</legend>
+              <label><strong>Default Search</strong></label>
               <p>
-                This is the default search pattern used when your query has no search <em>!bang</em><br/>
-                Use <code>{SEARCH_PARAM}</code> to indicate where your search query should go.&nbsp;
-                e.g. <code>https://www.duckduckgo.com/?q={SEARCH_PARAM}</code>.
+                This is the default search pattern used when your query has no search <em>!bang</em>
               </p>
             </div>
           </div>
           <div className="row">
             <div className="col">
               <input type="text" name="search-engine" className="form-control" placeholder="https://" value={searchEngine || ''} onChange={this.updateSearchEngine} />
+              <p className="text-muted">
+                <small>
+                  Use <code>{SEARCH_PARAM}</code> to indicate where your search query will be inserted.&nbsp;
+                  e.g. <code>https://www.duckduckgo.com/?q={SEARCH_PARAM}</code>.
+                </small>
+              </p>
             </div>
           </div>
 
