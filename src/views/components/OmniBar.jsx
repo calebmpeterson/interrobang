@@ -1,10 +1,40 @@
 import React from 'react';
 
 import Icon from './Icon';
+import If from './If';
 
-function OmniBar(props) {
+function OmniBarMobile(props) {
   return (
-    <div className="">
+    <div className="d-block d-md-none">
+      <div className="card border-default omnibar shadow-16dp">
+        <div className="p-2">
+          <form className="">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text">
+                  <Icon icon="home" />
+                </span>
+              </div>
+              <input id="search-input" type="text" className="form-control search-input" placeholder="" />
+              <div className="input-group-append">
+                <span className="input-group-text">
+                  <Icon icon="content-copy" />
+                </span>
+                <span className="input-group-text">
+                  <Icon icon="dots-vertical" />
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OmniBarDesktop(props) {
+  return (
+    <div className="d-none d-md-block">
       <div className="card border-default omnibar shadow-16dp">
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
@@ -37,7 +67,7 @@ function OmniBar(props) {
                     <i className="mdi mdi-magnify"></i>
                   </span>
               </div>
-              <input id="search-input" type="text" className="form-control" placeholder="" />
+              <input id="search-input" type="text" className="form-control search-input" placeholder="" />
             </div>
 
             <button className="btn btn-outline-secondary ml-1">
@@ -47,6 +77,15 @@ function OmniBar(props) {
         </div>
       </div>
 
+    </div>
+  );
+}
+
+function OmniBar(props) {
+  return (
+    <div>
+      <OmniBarMobile />
+      <OmniBarDesktop />
     </div>
   );
 }

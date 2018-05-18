@@ -16,7 +16,7 @@ $(function () {
   var exampleIndex = 0;
 
   var $omnibar = $('.omnibar');
-  var $searchInput = $('#search-input');
+  var $searchInput = $('.search-input');
 
   function tick() {
     var searchQuery = $searchInput.val();
