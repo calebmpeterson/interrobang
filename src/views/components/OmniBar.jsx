@@ -6,7 +6,7 @@ import If from './If';
 function OmniBarMobile(props) {
   return (
     <div className="d-block d-md-none">
-      <div className="card border-default omnibar shadow-16dp">
+      <div className="card border-default shadow-16dp">
         <div className="p-2">
           <form className="">
             <div className="input-group">
@@ -35,7 +35,7 @@ function OmniBarMobile(props) {
 function OmniBarDesktop(props) {
   return (
     <div className="d-none d-md-block">
-      <div className="card border-default omnibar shadow-16dp">
+      <div className="card border-default shadow-16dp">
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
             <li className="nav-item">
@@ -83,7 +83,7 @@ function OmniBarDesktop(props) {
 
 function OmniBar(props) {
   return (
-    <div>
+    <div className="omnibar">
       <OmniBarMobile />
       <OmniBarDesktop />
     </div>
