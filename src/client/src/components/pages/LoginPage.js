@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { isEmpty } from 'lodash';
 
-import { updateLoginUsername, updateLoginPassword, loginUser, viewRegistration } from '../../actions';
+import { updateLoginUsername, updateLoginPassword, loginUser, viewRegistration, viewAccountRecovery } from '../../actions';
 
 import Layout from './Layout';
 
@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       event.stopPropagation();
       dispatch(loginUser());
     },
-    viewRegistration: (event) => viewRegistration()
+    viewRegistration: (event) => viewRegistration(),
+    viewAccountRecovery: () => viewAccountRecovery()
   };
 };
 

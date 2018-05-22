@@ -36,6 +36,8 @@ class SetupCommunicationPage  extends React.Component {
                 <p className="lead">
                   One last thing... and <em className="font-weight-bold">it's totally optional</em>. Would you like to receive occasional email updates on Interrobang development?
                 </p>
+                <p className="lead">
+                  <span className="font-weight-bold">Your e-mail address will never be shared.</span> (We don't like spam either)</p>
               </div>
             </div>
 

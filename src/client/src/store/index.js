@@ -10,6 +10,7 @@ import view from '../reducers/view';
 import registration from '../reducers/registration';
 import login from '../reducers/login';
 import user from '../reducers/user';
+import recovery from '../reducers/recovery';
 import configuration from '../reducers/configuration';
 
 const store = createStore(
@@ -17,6 +18,7 @@ const store = createStore(
     view,
     registration,
     login,
+    recovery,
     user,
     configuration,
     router: routerReducer

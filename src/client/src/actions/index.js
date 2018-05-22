@@ -292,3 +292,50 @@ export const viewLandingPage = () => {
   const { user } = store.getState();
   window.location.href = createLandingURL(user);
 };
+
+export const viewAccountRecovery = () => {
+  dispatch({
+    type: ActionTypes.VIEW_ACCOUNT_RECOVERY
+  });
+  dispatch(push('/recover'));
+};
+
+export const updateRecoveryUsername = (username) => dispatch({
+  type: ActionTypes.UPDATE_RECOVERY_USERNAME,
+  username
+});
+
+export const recoverAccount = () => {
+  return dispatch((d, getState) => {
+    const { recovery } = getState();
+    const { username } = recovery;
+
+    dispatch({
+      type: ActionTypes.REQUEST_ACCOUNT_RECOVERY,
+      username
+    });
+
+    return BackendlessApi
+      .recover(username)
+      .then(
+        () => dispatch({
+          type: ActionTypes.REQUEST_ACCOUNT_RECOVERY_SUCCESS,
+          username
+        }),
+        error => dispatch({
+          type: ActionTypes.REQUEST_ACCOUNT_RECOVERY_FAILURE,
+          username,
+          error
+        })
+      );
+  });
+};
+
+
+export const viewAccountRecovered = () => {
+  dispatch({
+    type: ActionTypes.VIEW_ACCOUNT_RECOVERED
+  });
+
+  dispatch(push(`/recovered`));
+};

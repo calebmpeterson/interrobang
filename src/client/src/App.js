@@ -8,6 +8,7 @@ import store from './store';
 import './chronicles/Onboarding';
 import './chronicles/Login';
 import './chronicles/Logout';
+import './chronicles/AccountRecovery';
 
 import Root from './components/Root';
 

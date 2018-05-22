@@ -11,7 +11,8 @@ const DefaultFooterContent = () => (
     <a href="/" data-toggle="tooltip" data-placement="top" title={nameAndVersion}>Interrobang</a>
     {delim}
     Made by Caleb Peterson with <i className="mdi mdi-nodejs text-success"></i> in Texas
-    {delim}
+    <span className="d-none d-md-inline">{delim}</span>
+    <br className="d-md-none" />
     <a href="https://www.github.com/calebmpeterson/interrobang" target="_blank">Source on GitHub</a>
     {delim}
     <a href="http://www.uptimedoctor.com/publicreport/25lngu4k/156281" target="_blank">Status</a>

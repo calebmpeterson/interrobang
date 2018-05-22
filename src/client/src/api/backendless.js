@@ -42,6 +42,10 @@ async function logout() {
   return Backendless.UserService.logout();
 }
 
+async function recover(email) {
+  return Backendless.UserService.restorePassword(email);
+}
+
 async function updateSubscription(user, subscribed) {
   user['subscribed'] = subscribed;
   return Backendless.UserService.update(user);
@@ -121,6 +125,7 @@ export default {
   register,
   login,
   logout,
+  recover,
   updateSubscription,
   getCurrentUser,
   getUserToken,
