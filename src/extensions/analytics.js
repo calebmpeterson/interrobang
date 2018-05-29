@@ -10,7 +10,7 @@ const isAssetRequest = (request) => startsWith(request.url.pathname, '/assets');
 const isPingRequest = (request) => isEqual(request.url.pathname, '/ping');
 
 const getClientId = (request) => {
-  const clientIdState = request.state.ga;
+  const clientIdState = get(request, 'state.ga');
   if (isEmpty(clientIdState)) {
     return uuid();
   }
