@@ -24,6 +24,14 @@ class Index extends React.Component {
       </div>
     );
 
+    const Onward = () => (
+      <div className="text-center">
+        <h1 className="display-1 text-muted">
+          <Icon icon="chevron-down" />
+        </h1>
+      </div>
+    );
+
     return (
       <Layout title="Interrobang" navbarVariant="light" canSignup canLogin>
           <div className="bg-success-to-primary-gradient text-white">
@@ -64,24 +72,28 @@ class Index extends React.Component {
                 Search on thousands of sites directly
               </Heading>
               <Markdown source={withDefaults} />
-              <hr/>
+              <Onward />
             </Content>
+          </div>
 
+          <div className="container">
             <Content className="my-5 py-5 feature">
               <h5 className="text-muted mb-5">Make <em>!bangs</em> your own...</h5>
               <Heading>
                 Personalize the power of search
               </Heading>
               <Markdown source={personalize} />
-              <hr/>
+              <Onward />
             </Content>
+          </div>
 
+          <div className="container">
             <Content className="my-5 py-5 feature">
               <Heading>
                 Keep using your favorite search engine
               </Heading>
               <Markdown source={withSearch} />
-              <hr/>
+              <Onward />
             </Content>
 
             <Content className="text-center text-success d-none">
