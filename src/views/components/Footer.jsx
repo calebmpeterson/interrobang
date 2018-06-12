@@ -16,6 +16,8 @@ const DefaultFooterContent = () => (
     <a href="https://www.github.com/calebmpeterson/interrobang" target="_blank">Source on GitHub</a>
     {delim}
     <a href="http://www.uptimedoctor.com/publicreport/25lngu4k/156281" target="_blank">Status</a>
+    {delim}
+    <img src="https://app.codeship.com/projects/84685410-0b95-0136-a02e-3a0ed76fbcd7/status?branch=master" />
   </span>
 );
 
