@@ -339,3 +339,5 @@ export const viewAccountRecovered = () => {
 
   dispatch(push(`/recovered`));
 };
+
+export const viewBrowserConfiguration = () => dispatch(push(`/configuration/browser`));

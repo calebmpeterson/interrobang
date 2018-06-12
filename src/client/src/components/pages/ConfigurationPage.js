@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import map from 'lodash/map';
 
-import { viewLogin, saveConfiguration } from '../../actions';
+import { viewLogin, viewBrowserConfiguration, saveConfiguration } from '../../actions';
 
 import Layout from './Layout';
 import Icon from '../controls/Icon';
@@ -19,6 +19,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    viewBrowserConfiguration: (e) => {
+      e.preventDefault();
+      viewBrowserConfiguration();
+    }
   };
 };
 
@@ -52,6 +56,11 @@ class ConfigurationPage  extends React.Component {
           <ConfigurationForm {...this.props} />
 
           <div className="row">
+            <div className="col text-left">
+              <a className="btn btn-outline-primary" href="#" onClick={this.props.viewBrowserConfiguration}>
+                Browser Setup
+              </a>
+            </div>
             <div className="col text-right">
               <a href={`/b/${this.props.user.objectId}`} className="btn btn-outline-primary mr-3">Close</a>
               <button type="button" disabled={persisting || persisted} className="btn btn-success" onClick={saveConfiguration}>

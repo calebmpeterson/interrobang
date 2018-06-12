@@ -102,11 +102,11 @@ code {
 
 .bg-success-to-primary-gradient {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#18bc9c+0,2c3e50+100 */
-  background: #18bc9c; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #18bc9c 0%, #2c3e50 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #18bc9c 0%,#2c3e50 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #18bc9c 0%,#2c3e50 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#18bc9c', endColorstr='#2c3e50',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: $success; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, $success 0%, $primary 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, $success 0%,$primary 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, $success 0%,$primary 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$success}', endColorstr='#{$primary}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 /* Shadows - from getmdl.io */

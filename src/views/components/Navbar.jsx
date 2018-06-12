@@ -5,7 +5,7 @@ const If = require('./If');
 
 class Navbar extends React.Component {
   render() {
-    const { variant, canSignup, canLogin, canConfigure } = this.props;
+    const { variant, canSignup, canLogin, canSetup, canConfigure } = this.props;
     const navbarVariantClassName = variant === 'light' ? 'navbar-dark' : 'navbar-light';
 
     const primaryVariantButtonClassName = variant === 'light' ? 'btn-light' : 'btn-primary';
@@ -24,6 +24,12 @@ class Navbar extends React.Component {
           <If test={canSignup}>
             <a className={`btn ${primaryVariantButtonClassName} ml-2`} href="/account/#/register">
               Sign Up
+            </a>
+          </If>
+
+          <If test={canSetup}>
+            <a className={`btn btn-link mr-2`} href="/account/#/configuration/browser">
+              Setup Your Browser
             </a>
           </If>
 

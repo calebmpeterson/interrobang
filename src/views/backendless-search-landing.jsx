@@ -8,7 +8,7 @@ const Footer = require('./components/Footer');
 class Index extends React.Component {
   render() {
     return (
-      <Layout title="Interrobang" canConfigure>
+      <Layout title="Interrobang" canConfigure canSetup>
         <div className="container search-form-container">
             <div className="row">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">

@@ -9,6 +9,7 @@ import SetupCommunicationPage from './pages/SetupCommunicationPage';
 
 import LoginPage from './pages/LoginPage';
 import ConfigurationPage from './pages/ConfigurationPage';
+import BrowserPage from './pages/BrowserPage';
 
 import AccountRecoveryPage from './pages/AccountRecoveryPage';
 import AccountRecoveredPage from './pages/AccountRecoveredPage';
@@ -30,6 +31,7 @@ export default class Root extends React.Component {
 
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/configuration" component={ConfigurationPage} />
+            <Route exact path="/configuration/browser" component={BrowserPage} />
 
             <Route exact path="/recover" component={AccountRecoveryPage} />
             <Route exact path="/recovered" component={AccountRecoveredPage} />

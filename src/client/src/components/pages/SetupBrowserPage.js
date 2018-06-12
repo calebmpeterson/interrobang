@@ -39,7 +39,7 @@ class SetupBrowserPage extends React.Component {
     };
 
     return (
-      <Layout title="Tell Your Browser">
+      <Layout title="Setup Your Browser">
           <div className="container">
             <div className="row">
               <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
@@ -53,7 +53,7 @@ class SetupBrowserPage extends React.Component {
                   <Icon icon="checkbox-marked-circle-outline" /> Your configuration looks great!
                 </p>
                 <p className="lead">
-                  Next, you need to tell your browser about your Interrobang by following the instructions for your browser.
+                  Next, you need to tell your browser about your Interrobang by following the browser-specific instructions.
                 </p>
 
                 <div className="my-5">

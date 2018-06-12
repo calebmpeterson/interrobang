@@ -126,9 +126,7 @@ export default class ConfigurationForm extends React.Component {
             </If>
           </div>
 
-          <hr className="mt-5" />
-
-          <div className="row">
+          <div className="row mt-5">
             <div className="col">
               <label><strong>Default Search</strong></label>
               <p>
