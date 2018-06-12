@@ -57,9 +57,9 @@ class ConfigurationPage  extends React.Component {
 
           <div className="row">
             <div className="col text-left">
-              <a className="btn btn-outline-primary" href="#" onClick={this.props.viewBrowserConfiguration}>
+              <button className="btn btn-outline-primary" onClick={this.props.viewBrowserConfiguration}>
                 Browser Setup
-              </a>
+              </button>
             </div>
             <div className="col text-right">
               <a href={`/b/${this.props.user.objectId}`} className="btn btn-outline-primary mr-3">Close</a>
