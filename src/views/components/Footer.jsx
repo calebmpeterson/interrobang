@@ -10,7 +10,7 @@ const DefaultFooterContent = () => (
   <span>
     <a href="/" data-toggle="tooltip" data-placement="top" title={nameAndVersion}>Interrobang</a>
     {delim}
-    Made by Caleb Peterson with <i className="mdi mdi-nodejs text-success"></i> in Texas
+    Made by Caleb Peterson with <i className="mdi mdi-nodejs text-success"></i> and <i className="mdi mdi-react text-success"></i> in Texas
     <span className="d-none d-md-inline">{delim}</span>
     <br className="d-md-none" />
     <a href="https://www.github.com/calebmpeterson/interrobang" target="_blank">Source on GitHub</a>
