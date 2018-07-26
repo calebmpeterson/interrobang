@@ -45,7 +45,7 @@ class BrowserPage extends React.Component {
     };
 
     return (
-      <Layout title="Setup Your Browser">
+      <Layout title="Setup Your Browser" canLogout canSearch>
         <div className="container">
           <div className="row mt-5">
             <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
