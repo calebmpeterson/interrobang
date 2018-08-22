@@ -86,7 +86,7 @@ export default class ConfigurationForm extends React.Component {
     const sortedBangs = sortBy(bangs, (bang) => get(bang, 'bang'));
 
     let index = 0;
-    const bangControls = map(sortedBangs, (bang) => (
+    const bangControls = map(bangs, (bang) => (
       <BangControl key={index++} bang={get(bang, 'bang')} pattern={get(bang, 'pattern')} />
     ));
 
