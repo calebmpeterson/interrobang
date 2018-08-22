@@ -3,7 +3,6 @@ import React from 'react';
 import get from 'lodash/get';
 import map from 'lodash/map';
 import isEmpty from 'lodash/isEmpty';
-import sortBy from 'lodash/sortBy';
 
 import { addBang, updateBang, updateBangPattern, deleteBang, updateSearchEngine } from '../../actions';
 
@@ -83,7 +82,6 @@ export default class ConfigurationForm extends React.Component {
 
     const searchEngine = get(config, 'search-engine');
     const bangs = map(get(config, 'bangs'), (pattern, bang) => ({ bang, pattern }));
-    const sortedBangs = sortBy(bangs, (bang) => get(bang, 'bang'));
 
     let index = 0;
     const bangControls = map(bangs, (bang) => (
