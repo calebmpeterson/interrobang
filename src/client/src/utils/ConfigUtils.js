@@ -1,4 +1,4 @@
-import { map } from 'lodash';
+import { assign, map } from 'lodash';
 
 function bangToRecord(pattern, bamg) {
   return { bang, pattern };
@@ -13,7 +13,7 @@ function addIndexToRecord(record, index) {
 }
 
 export function serializeBangs(array) {
-  return { ...map(array, recordToBang) };
+  return assign({}, ...map(array, recordToBang));
 }
 
 export function deserializeBangs(object) {
