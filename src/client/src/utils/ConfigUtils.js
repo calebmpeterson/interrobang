@@ -1,6 +1,6 @@
 import { assign, map } from 'lodash';
 
-function bangToRecord(pattern, bamg) {
+function bangToRecord(pattern, bang) {
   return { bang, pattern };
 }
 
