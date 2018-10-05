@@ -16,11 +16,24 @@ const routes = require('./routes');
 require('./resources/loaders/markdown-loader');
 
 const PORT = process.env.PORT || 3333;
-const server = new Server({ port: PORT });
+const server = new Server({
+  port: PORT,
+  debug: {
+    log: ['error'],
+    request: ['error']
+  }
+});
 
 async function initialize() {
   await server.register(require('inert'));
   await server.register(require('vision'));
+
+  await server.register({
+    plugin: require('hapi-dev-errors'),
+    options: {
+      showErrors: process.env.NODE_ENV !== 'production'
+    }
+  });
 
   server.views({
     engines: {

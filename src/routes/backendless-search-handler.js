@@ -17,7 +17,7 @@ module.exports = {
       const visitor = request.server.methods.getAnalyticsVisitor(request);
       visitor.event('Search', userId, result.bang).send();
 
-      return reply.redirect(result.target);
+      return reply.redirect(encodeURI(result.target));
     }
     catch (e) {
       console.error(chalk`{red ${e.message}}`);

@@ -44,3 +44,9 @@ describe('custom bang usage', () => {
     expect(search(config, '!weather fort worth tx')).to.be.deep.equal({ target: 'https://www.weather.com/?q=fort worth tx', bang: 'weather' })
   })
 })
+
+describe('funny character usage', () => {
+  it('should perform a default search', () => {
+    expect(search({}, 'ć')).to.be.deep.equal({ target: 'https://www.duckduckgo.com/?q=ć', bang: 'search-engine' })
+  })
+})
