@@ -1,4 +1,4 @@
-import { assign, map } from 'lodash';
+import { assign, map, sortBy } from 'lodash';
 
 function bangToRecord(pattern, bang) {
   return { bang, pattern };
@@ -19,4 +19,8 @@ export function serializeBangs(array) {
 export function deserializeBangs(object) {
   const records = map(object, bangToRecord);
   return map(records, addIndexToRecord);
+}
+
+export function sortRecords(records) {
+  return sortBy(records, 'bang');
 }
