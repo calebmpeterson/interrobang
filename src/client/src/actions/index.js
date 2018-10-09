@@ -5,6 +5,8 @@ import store from '../store';
 import BackendlessApi from '../api/backendless';
 import { createLandingURL } from '../api/backendless';
 
+import ActionCreators from './creators';
+
 const { dispatch } = store;
 
 export const viewRegistration = () => dispatch(push('/register'));
@@ -262,31 +264,15 @@ export const saveConfiguration = ({ setup }) => {
   });
 };
 
-export const addBang = () => dispatch({
-  type: ActionTypes.ADD_BANG
-});
+export const addBang = () => dispatch(ActionCreators.addBang());
 
-export const updateBang = (oldBang, newBang) => dispatch({
-  type: ActionTypes.UPDATE_BANG,
-  oldBang,
-  newBang
-});
+export const updateBang = (oldBang, newBang) => dispatch(ActionCreators.updateBang(oldBang, newBang));
 
-export const updateBangPattern = (bang, pattern) => dispatch({
-  type: ActionTypes.UPDATE_BANG_PATTERN,
-  bang,
-  pattern
-});
+export const updateBangPattern = (bang, pattern) => dispatch(ActionCreators.updateBangPattern(bang, pattern));
 
-export const deleteBang = (bang) => dispatch({
-  type: ActionTypes.DELETE_BANG,
-  bang
-});
+export const deleteBang = (bang) => dispatch(ActionCreators.deleteBang(bang));
 
-export const updateSearchEngine = (pattern) => dispatch({
-  type: ActionTypes.UPDATE_SEARCH_ENGINE,
-  pattern
-});
+export const updateSearchEngine = (pattern) => dispatch(ActionCreators.updateSearchEngine(pattern));
 
 export const viewLandingPage = () => {
   const { user } = store.getState();
