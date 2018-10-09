@@ -10,8 +10,7 @@ describe('account recovery state management', () => {
   it('cannot proceed until given a username', () => {
     expect(recovery(undefined, { type: ActionTypes.UPDATE_RECOVERY_USERNAME, username: '' })).toMatchObject({ canProceed: false });
 
-    expect(recovery(undefined, { type: ActionTypes.UPDATE_RECOVERY_USERNAME, username: 'caleb@cubicle6.com' })).toMatchObject({ canProceed: true, username: 
-'caleb@cubicle6.com' });
+    expect(recovery(undefined, { type: ActionTypes.UPDATE_RECOVERY_USERNAME, username: 'caleb@cubicle6.com' })).toMatchObject({ canProceed: true, username: 'caleb@cubicle6.com' });
   });
 
   it('clears any error when a recovery request suceeds', () => {
