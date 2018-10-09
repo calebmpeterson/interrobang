@@ -34,6 +34,7 @@ describe("configuration state management", () => {
 
   reducer("handles configuration loading", {
     before: { records: [] },
+    // TODO extract and use an ActionCreator
     action: {
       type: ActionTypes.REQUEST_CONFIGURATION_SUCCESS,
       config: { bangs: { foo: "" } }
