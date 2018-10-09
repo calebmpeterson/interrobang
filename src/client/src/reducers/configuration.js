@@ -9,6 +9,8 @@ import unset from "lodash/unset";
 
 import ActionTypes from "../constants/ActionTypes";
 
+import { deserializeBangs } from "../utils/ConfigUtils";
+
 const DEFAULT_ERROR_MESSAGE = `Failed to load configuration`;
 
 const DEFAULT_STATE = {
@@ -56,7 +58,8 @@ export default function(state = DEFAULT_STATE, action) {
         loading: false,
         loaded: true,
         error: undefined,
-        config: action.config
+        config: action.config,
+        records: deserializeBangs(action.config.bangs)
       };
 
     case ActionTypes.REQUEST_CONFIGURATION_FAILURE:

@@ -1,4 +1,5 @@
 import ActionCreators from "../actions/creators";
+import ActionTypes from "../constants/ActionTypes";
 import configuration, { ONBOARDING_CONFIGURATION } from "./configuration";
 
 import { harness } from "../utils/TestUtils";
@@ -31,7 +32,17 @@ describe("configuration state management", () => {
     }
   });
 
-  it("handles configuration loading", () => {});
+  reducer("handles configuration loading", {
+    before: { records: [] },
+    action: {
+      type: ActionTypes.REQUEST_CONFIGURATION_SUCCESS,
+      config: { bangs: { foo: "" } }
+    },
+    after: {
+      config: { bangs: { foo: "" } },
+      records: [{ index: 0, bang: "foo", pattern: "" }]
+    }
+  });
 
   reducer("handles updating the default search pattern", {
     before: { config: { "search-engine": "foo" } },
