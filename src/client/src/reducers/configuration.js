@@ -1,8 +1,13 @@
-import get from 'lodash/get';
-import merge from 'lodash/merge';
-import unset from 'lodash/unset';
+import assign from "lodash/assign";
+import get from "lodash/get";
+import map from "lodash/map";
+import merge from "lodash/merge";
+import reject from "lodash/reject";
+import set from "lodash/set";
+import size from "lodash/size";
+import unset from "lodash/unset";
 
-import ActionTypes from '../constants/ActionTypes';
+import ActionTypes from "../constants/ActionTypes";
 
 const DEFAULT_ERROR_MESSAGE = `Failed to load configuration`;
 
@@ -12,22 +17,23 @@ const DEFAULT_STATE = {
   persisting: false,
   persisted: false,
   error: undefined,
-  config: undefined
+  config: undefined,
+  records: []
 };
 
 const EMPTY_CONFIGURATION = {
-  "bangs": {},
+  bangs: {},
   "search-engine": ""
 };
 
 export const ONBOARDING_CONFIGURATION = {
-  "bangs": {
+  bangs: {
     "": ""
   },
   "search-engine": "https://www.google.com/search?q={{{s}}}"
 };
 
-export default function (state = DEFAULT_STATE, action) {
+export default function(state = DEFAULT_STATE, action) {
   switch (action.type) {
     case ActionTypes.REGISTER_USER_SUCCESS:
       return {
@@ -57,7 +63,7 @@ export default function (state = DEFAULT_STATE, action) {
       return {
         loading: false,
         loaded: false,
-        error: get(action, 'error.message', DEFAULT_ERROR_MESSAGE),
+        error: get(action, "error.message", DEFAULT_ERROR_MESSAGE),
         config: EMPTY_CONFIGURATION
       };
 
@@ -71,30 +77,63 @@ export default function (state = DEFAULT_STATE, action) {
       return merge({}, state, {
         persisting: false,
         persisted: false,
-        error: get(action, 'error.message', action.error)
+        error: get(action, "error.message", action.error)
       });
 
     case ActionTypes.ADD_BANG:
-      return merge({}, state, { persisted: false, config: { bangs: { "": "" } } });
+      return merge({}, state, {
+        persisted: false,
+        config: { bangs: { "": "" } },
+        records: [
+          ...(state.records || []),
+          { index: size(state.records), bang: "", pattern: "" }
+        ]
+      });
 
     case ActionTypes.UPDATE_BANG:
       const { newBang, oldBang } = action;
-      const patternToKeep = get(state, ['config', 'bangs', oldBang], '');
-      const newState = merge({}, state, { persisted: false, config: { bangs: { [newBang]: patternToKeep } } });
-      unset(newState, ['config', 'bangs', oldBang]);
+      const patternToKeep = get(state, ["config", "bangs", oldBang], "");
+      const newState = merge({}, state, {
+        persisted: false,
+        config: { bangs: { [newBang]: patternToKeep } },
+        records: map(state.records, record => {
+          return record.bang === oldBang
+            ? assign({}, record, { bang: newBang })
+            : record;
+        })
+      });
+      unset(newState, ["config", "bangs", oldBang]);
       return newState;
 
     case ActionTypes.UPDATE_BANG_PATTERN:
       const { bang, pattern } = action;
-      return merge({}, state, { persisted: false, config: { bangs: { [bang]: pattern } } });
+      return merge({}, state, {
+        persisted: false,
+        config: { bangs: { [bang]: pattern } },
+        records: map(state.records, record => {
+          return record.bang === bang
+            ? assign({}, record, { pattern })
+            : record;
+        })
+      });
 
     case ActionTypes.DELETE_BANG:
-      const withoutBang = merge({}, state, { persisted: false });
-      unset(withoutBang, ['config', 'bangs', action.bang]);
+      const records = reject(
+        state.records,
+        record => record.bang === action.bang
+      );
+      const withoutBang = merge({}, state, {
+        persisted: false
+      });
+      unset(withoutBang, ["config", "bangs", action.bang]);
+      set(withoutBang, ["records"], records);
       return withoutBang;
 
     case ActionTypes.UPDATE_SEARCH_ENGINE:
-      return merge({}, state, { persisted: false, config: { 'search-engine': action.pattern } });
+      return merge({}, state, {
+        persisted: false,
+        config: { "search-engine": action.pattern }
+      });
 
     default:
       return state;

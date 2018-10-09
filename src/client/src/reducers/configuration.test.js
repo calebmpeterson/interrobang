@@ -1,12 +1,12 @@
-import ActionCreators from '../actions/creators';
-import configuration, { ONBOARDING_CONFIGURATION } from './configuration';
+import ActionCreators from "../actions/creators";
+import configuration, { ONBOARDING_CONFIGURATION } from "./configuration";
 
-import { harness } from '../utils/TestUtils';
+import { harness } from "../utils/TestUtils";
 
 const reducer = harness(configuration);
 
-describe('configuration state management', () => {
-  reducer('has default state', {
+describe("configuration state management", () => {
+  reducer("has default state", {
     before: undefined,
     action: {},
     after: {
@@ -19,61 +19,91 @@ describe('configuration state management', () => {
     }
   });
 
-  reducer('handles default configuration when onboarding', {
+  reducer("handles default configuration when onboarding", {
     before: {},
-    action: ActionCreators.registerUserSuccess({}, 'test@example.com', 's3cr3t'),
+    action: ActionCreators.registerUserSuccess(
+      {},
+      "test@example.com",
+      "s3cr3t"
+    ),
     after: {
       config: ONBOARDING_CONFIGURATION
     }
   });
 
-  it('handles configuration loading', () => {
+  it("handles configuration loading", () => {});
 
+  reducer("handles updating the default search pattern", {
+    before: { config: { "search-engine": "foo" } },
+    action: ActionCreators.updateSearchEngine("bar"),
+    after: { config: { "search-engine": "bar" } }
   });
 
-  reducer('handles updating the default search pattern', {
-    before: { config: { 'search-engine': 'foo' } },
-    action: ActionCreators.updateSearchEngine('bar'),
-    after: { config: { 'search-engine': 'bar' } }
-  });
-
-  reducer('handles adding a new bang (which is empty be default)', {
+  reducer("handles adding a new bang (which is empty be default)", {
     before: { config: { bangs: {} } },
     action: ActionCreators.addBang(),
     after: {
       config: {
-        bangs: { '': '' }
-      }
+        bangs: { "": "" }
+      },
+      records: [{ index: 0, bang: "", pattern: "" }]
     }
   });
 
-  reducer('handles updating an existing bang', {
-    before: { config: { bangs: { '': '' } } },
-    action: ActionCreators.updateBang('', 'foo'),
+  reducer("handles updating an existing bang", {
+    before: {
+      config: { bangs: { "": "" } },
+      records: [{ index: 0, bang: "", pattern: "" }]
+    },
+    action: ActionCreators.updateBang("", "foo"),
     after: {
       config: {
-        bangs: { 'foo': '' }
-      }
+        bangs: { foo: "" }
+      },
+      records: [{ index: 0, bang: "foo", pattern: "" }]
     }
   });
 
-  reducer('handles updating an existing bang pattern', {
-    before: { config: { bangs: { 'foo': '' } } },
-    action: ActionCreators.updateBangPattern('foo', 'https://example.com/search?q={{{s}}}'),
+  reducer("handles updating an existing bang pattern", {
+    before: {
+      config: { bangs: { foo: "" } },
+      records: [{ index: 0, bang: "foo", pattern: "" }]
+    },
+    action: ActionCreators.updateBangPattern(
+      "foo",
+      "https://example.com/search?q={{{s}}}"
+    ),
     after: {
       config: {
-        bangs: { 'foo': 'https://example.com/search?q={{{s}}}' }
-      }
+        bangs: { foo: "https://example.com/search?q={{{s}}}" }
+      },
+      records: [
+        {
+          index: 0,
+          bang: "foo",
+          pattern: "https://example.com/search?q={{{s}}}"
+        }
+      ]
     }
   });
 
-  reducer('handles deleting a bang', {
-    before: { config: { bangs: { 'foo': 'https://example.com/search?q={{{s}}}' } } },
-    action: ActionCreators.deleteBang('foo'),
+  reducer("handles deleting a bang", {
+    before: {
+      config: { bangs: { foo: "https://example.com/search?q={{{s}}}" } },
+      records: [
+        {
+          index: 0,
+          bang: "foo",
+          pattern: "https://example.com/search?q={{{s}}}"
+        }
+      ]
+    },
+    action: ActionCreators.deleteBang("foo"),
     after: {
       config: {
         bangs: {}
-      }
+      },
+      records: []
     }
   });
 });
