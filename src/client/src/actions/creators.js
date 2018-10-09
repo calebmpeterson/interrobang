@@ -1,6 +1,13 @@
 import ActionTypes from '../constants/ActionTypes';
 
 class ActionCreators {
+  registerUserSuccess = (user, username, password) => ({
+    type: ActionTypes.REGISTER_USER_SUCCESS,
+    user,
+    username,
+    password
+  })
+
   addBang = () => ({
     type: ActionTypes.ADD_BANG
   })

@@ -61,12 +61,9 @@ export const registerUser = (username, password) => {
     return BackendlessApi
       .register(username, password, passwordCheck)
       .then(
-        registeredUser => dispatch({
-          type: ActionTypes.REGISTER_USER_SUCCESS,
-          user: registeredUser,
-          username,
-          password
-        }),
+        registeredUser => dispatch(
+          ActionCreators.registerUserSuccess(registeredUser, username, password)
+        ),
         error => dispatch({
           type: ActionTypes.REGISTER_USER_FAILURE,
           error

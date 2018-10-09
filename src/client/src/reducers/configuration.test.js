@@ -1,45 +1,79 @@
 import ActionCreators from '../actions/creators';
-import configuration from './configuration';
+import configuration, { ONBOARDING_CONFIGURATION } from './configuration';
+
+import { harness } from '../utils/TestUtils';
+
+const reducer = harness(configuration);
 
 describe('configuration state management', () => {
-  it('has default state', () => {
-    expect(configuration(undefined, {}))
-      .toMatchObject({
-        loading: false,
-        loaded: false,
-        persisting: false,
-        persisted: false,
-        error: undefined,
-        config: undefined
-      });
+  reducer('has default state', {
+    before: undefined,
+    action: {},
+    after: {
+      loading: false,
+      loaded: false,
+      persisting: false,
+      persisted: false,
+      error: undefined,
+      config: undefined
+    }
   });
 
-  it('handles default configuration when onboarding', () => {
-
+  reducer('handles default configuration when onboarding', {
+    before: {},
+    action: ActionCreators.registerUserSuccess({}, 'test@example.com', 's3cr3t'),
+    after: {
+      config: ONBOARDING_CONFIGURATION
+    }
   });
 
   it('handles configuration loading', () => {
 
   });
 
-  it('handles updating the default search pattern', () => {
-    expect(configuration({ config: { 'search-engine': 'foo' } }, ActionCreators.updateSearchEngine('bar')))
-      .toMatchObject({ config: { 'search-engine': 'bar' } });
+  reducer('handles updating the default search pattern', {
+    before: { config: { 'search-engine': 'foo' } },
+    action: ActionCreators.updateSearchEngine('bar'),
+    after: { config: { 'search-engine': 'bar' } }
   });
 
-  it('handles adding a new bang', () => {
-
+  reducer('handles adding a new bang (which is empty be default)', {
+    before: { config: { bangs: {} } },
+    action: ActionCreators.addBang(),
+    after: {
+      config: {
+        bangs: { '': '' }
+      }
+    }
   });
 
-  it('handles updating an existing bang', () => {
-
+  reducer('handles updating an existing bang', {
+    before: { config: { bangs: { '': '' } } },
+    action: ActionCreators.updateBang('', 'foo'),
+    after: {
+      config: {
+        bangs: { 'foo': '' }
+      }
+    }
   });
 
-  it('handles updating an existing bang pattern', () => {
-
+  reducer('handles updating an existing bang pattern', {
+    before: { config: { bangs: { 'foo': '' } } },
+    action: ActionCreators.updateBangPattern('foo', 'https://example.com/search?q={{{s}}}'),
+    after: {
+      config: {
+        bangs: { 'foo': 'https://example.com/search?q={{{s}}}' }
+      }
+    }
   });
 
-  it('handles deleting a bang', () => {
-
+  reducer('handles deleting a bang', {
+    before: { config: { bangs: { 'foo': 'https://example.com/search?q={{{s}}}' } } },
+    action: ActionCreators.deleteBang('foo'),
+    after: {
+      config: {
+        bangs: {}
+      }
+    }
   });
 });
