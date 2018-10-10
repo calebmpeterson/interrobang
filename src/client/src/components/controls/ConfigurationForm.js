@@ -1,8 +1,9 @@
 import React from "react";
 
 import get from "lodash/get";
-import map from "lodash/map";
 import isEmpty from "lodash/isEmpty";
+import map from "lodash/map";
+import size from "lodash/size";
 
 import {
   addBang,
@@ -81,7 +82,7 @@ const BangControl = props => (
           value={props.bang}
           onChange={onUpdateBang(props.bang)}
           autoComplete="off"
-          autoFocus
+          autoFocus={props.autoFocus}
         />
         <input
           name="pattern"
@@ -125,11 +126,13 @@ export default class ConfigurationForm extends React.Component {
 
     const searchEngine = get(config, "search-engine");
 
-    const bangControls = map(records, record => (
+    const bangControls = map(records, (record, index) => (
       <BangControl
         key={record.index}
         bang={get(record, "bang")}
         pattern={get(record, "pattern")}
+        autoFocus={index === size(records) - 1}
+        index={index}
       />
     ));
 
