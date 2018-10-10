@@ -1,119 +1,159 @@
 .search-form-container {
-  margin-top: 15%; }
+  margin-top: 15%;
+}
 
 .more-wrapper {
   font-size: 600%;
   margin-top: 6rem;
-  margin-bottom: -8rem; }
+  margin-bottom: -8rem;
+}
 
 .more {
   position: relative;
-  animation: more 2s ease infinite; }
+  animation: more 2s ease infinite;
+}
 
 @keyframes more {
   0% {
-    opacity: 0.0;
-    top: -5rem; }
+    opacity: 0;
+    top: -5rem;
+  }
   90% {
-    opacity: 1.0;
-    top: 5rem; }
+    opacity: 1;
+    top: 5rem;
+  }
   100% {
-    opacity: 0.0;
-    top: 5rem; } }
+    opacity: 0;
+    top: 5rem;
+  }
+}
 
 .omnibar {
-  margin-bottom: 5rem; }
+  margin-bottom: 5rem;
+}
 
 .rocket-launch {
   font-size: 12rem;
-  text-shadow: 0px 7px 15px rgba(0, 0, 0, 0.25); }
+  text-shadow: 0px 7px 15px rgba(0, 0, 0, 0.25);
+}
 
 .chevron-top {
   background-image: url(/assets/chevron-top.svg);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 18rem; }
+  padding-bottom: 18rem;
+}
 
 .chevron-bottom {
   background-image: url(/assets/chevron-bottom.svg);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 18rem; }
+  padding-bottom: 18rem;
+}
 
 .feature p,
 .feature li {
-  font-size: 120%; }
+  font-size: 120%;
+}
 
 .browser-icon {
   font-size: 4rem;
-  line-height: 1; }
+  line-height: 1;
+}
 
 .popover {
-  box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.05), 0px 3px 6px 1px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.05),
+    0px 3px 6px 1px rgba(0, 0, 0, 0.1);
+}
 
 .popover {
   font-size: 1.1rem;
   text-align: center;
-  max-width: 400px; }
+  max-width: 400px;
+}
 
 .btn {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .btn.btn-link {
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 pre {
-  tab-size: 2; }
+  tab-size: 2;
+}
 
 code {
-  white-space: pre; }
+  white-space: pre;
+}
 
 .modal-xl {
-  max-width: 90%; }
+  max-width: 90%;
+}
 
 .rounded {
-  border-radius: 0.3em !important; }
+  border-radius: 0.3em !important;
+}
 
 .bg-success-to-primary-gradient {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#18bc9c+0,2c3e50+100 */
-  background: #18BC9C;
+  background: #18bc9c;
   /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #18BC9C 0%, #2C3E50 100%);
+  background: -moz-linear-gradient(-45deg, #18bc9c 0%, #2c3e50 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #18BC9C 0%, #2C3E50 100%);
+  background: -webkit-linear-gradient(-45deg, #18bc9c 0%, #2c3e50 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #18BC9C 0%, #2C3E50 100%);
+  background: linear-gradient(135deg, #18bc9c 0%, #2c3e50 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#18BC9C', endColorstr='#2C3E50',GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */ }
+  /* IE6-9 fallback on horizontal gradient */
+}
 
 /* Shadows - from getmdl.io */
 .focus-shadow {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36); }
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
+}
 
 .shadow-2dp {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
 
 .shadow-3dp {
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.2),
+    0 1px 8px 0 rgba(0, 0, 0, 0.12);
+}
 
-.shadow-4dp, .navbar-floating {
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2); }
+.shadow-4dp,
+.navbar-floating {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
 
 .shadow-6dp {
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
 
 .shadow-8dp {
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
 
 .shadow-16dp {
-  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
 
 .shadow-24dp {
-  box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14),
+    0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
+}
 
 .navbar-floating {
   z-index: 1100;
-  background-color: #18BC9C; }
+  background-color: #18bc9c;
+}
