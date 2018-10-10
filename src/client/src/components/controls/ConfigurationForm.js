@@ -124,12 +124,7 @@ export default class ConfigurationForm extends React.Component {
     const { config, records } = this.props.configuration;
 
     const searchEngine = get(config, "search-engine");
-    const bangs = map(get(config, "bangs"), (pattern, bang) => ({
-      bang,
-      pattern
-    }));
 
-    let index = 0;
     const bangControls = map(records, record => (
       <BangControl
         key={record.index}

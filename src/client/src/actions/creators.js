@@ -1,4 +1,4 @@
-import ActionTypes from '../constants/ActionTypes';
+import ActionTypes from "../constants/ActionTypes";
 
 class ActionCreators {
   registerUserSuccess = (user, username, password) => ({
@@ -6,33 +6,39 @@ class ActionCreators {
     user,
     username,
     password
-  })
+  });
+
+  requestConfigurationSuccess = (config, user) => ({
+    type: ActionTypes.REQUEST_CONFIGURATION_SUCCESS,
+    config,
+    user
+  });
 
   addBang = () => ({
     type: ActionTypes.ADD_BANG
-  })
+  });
 
   updateBang = (oldBang, newBang) => ({
     type: ActionTypes.UPDATE_BANG,
     oldBang,
     newBang
-  })
+  });
 
   updateBangPattern = (bang, pattern) => ({
     type: ActionTypes.UPDATE_BANG_PATTERN,
     bang,
     pattern
-  })
+  });
 
-  deleteBang = (bang) => ({
+  deleteBang = bang => ({
     type: ActionTypes.DELETE_BANG,
     bang
-  })
+  });
 
-  updateSearchEngine = (pattern) => ({
+  updateSearchEngine = pattern => ({
     type: ActionTypes.UPDATE_SEARCH_ENGINE,
     pattern
-  })
+  });
 }
 
 export default new ActionCreators();

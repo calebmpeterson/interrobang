@@ -1,15 +1,15 @@
-import { push } from 'react-router-redux';
+import { push } from "react-router-redux";
 
-import ActionTypes from '../constants/ActionTypes';
-import store from '../store';
-import BackendlessApi from '../api/backendless';
-import { createLandingURL } from '../api/backendless';
+import ActionTypes from "../constants/ActionTypes";
+import store from "../store";
+import BackendlessApi from "../api/backendless";
+import { createLandingURL } from "../api/backendless";
 
-import ActionCreators from './creators';
+import ActionCreators from "./creators";
 
 const { dispatch } = store;
 
-export const viewRegistration = () => dispatch(push('/register'));
+export const viewRegistration = () => dispatch(push("/register"));
 
 export const requestCurrentUser = () => {
   return dispatch(() => {
@@ -17,35 +17,38 @@ export const requestCurrentUser = () => {
       type: ActionTypes.REQUEST_CURRENT_USER
     });
 
-    return BackendlessApi
-      .getCurrentUser()
-      .then(
-        user => dispatch({
+    return BackendlessApi.getCurrentUser().then(
+      user =>
+        dispatch({
           type: ActionTypes.REQUEST_CURRENT_USER_SUCCESS,
           user
         }),
-        error => dispatch({
+      error =>
+        dispatch({
           type: ActionTypes.REQUEST_CURRENT_USER_FAILURE,
           error
         })
-      );
+    );
   });
 };
 
-export const updateRegistrationUsername = (username) => dispatch({
-  type: ActionTypes.UPDATE_REGISTRATION_USERNAME,
-  username
-});
+export const updateRegistrationUsername = username =>
+  dispatch({
+    type: ActionTypes.UPDATE_REGISTRATION_USERNAME,
+    username
+  });
 
-export const updateRegistrationPassword = (password) => dispatch({
-  type: ActionTypes.UPDATE_REGISTRATION_PASSWORD,
-  password
-});
+export const updateRegistrationPassword = password =>
+  dispatch({
+    type: ActionTypes.UPDATE_REGISTRATION_PASSWORD,
+    password
+  });
 
-export const updateRegistrationPasswordCheck = (passwordCheck) => dispatch({
-  type: ActionTypes.UPDATE_REGISTRATION_PASSWORD_CHECK,
-  passwordCheck
-});
+export const updateRegistrationPasswordCheck = passwordCheck =>
+  dispatch({
+    type: ActionTypes.UPDATE_REGISTRATION_PASSWORD_CHECK,
+    passwordCheck
+  });
 
 export const registerUser = (username, password) => {
   return (dispatch, getState) => {
@@ -58,17 +61,17 @@ export const registerUser = (username, password) => {
       password
     });
 
-    return BackendlessApi
-      .register(username, password, passwordCheck)
-      .then(
-        registeredUser => dispatch(
+    return BackendlessApi.register(username, password, passwordCheck).then(
+      registeredUser =>
+        dispatch(
           ActionCreators.registerUserSuccess(registeredUser, username, password)
         ),
-        error => dispatch({
+      error =>
+        dispatch({
           type: ActionTypes.REGISTER_USER_FAILURE,
           error
         })
-      );
+    );
   };
 };
 
@@ -98,7 +101,7 @@ export const viewCommunicationSetup = () => {
 
 export const copySearchPatternURL = () => {
   if (document.execCommand) {
-    document.execCommand('copy');
+    document.execCommand("copy");
   }
 };
 
@@ -113,20 +116,20 @@ export const submitSubscriptionUpdate = (subscribed, signup = false) => {
       signup
     });
 
-    return BackendlessApi
-      .updateSubscription(user, subscribed)
-      .then(
-        updatedUser => dispatch({
+    return BackendlessApi.updateSubscription(user, subscribed).then(
+      updatedUser =>
+        dispatch({
           type: ActionTypes.SUBMIT_SUBSCRIPTION_UPDATE_SUCCESS,
           user: updatedUser,
           signup
         }),
-        error => dispatch({
+      error =>
+        dispatch({
           type: ActionTypes.SUBMIT_SUBSCRIPTION_UPDATE_FAILURE,
           error,
           signup
         })
-      );
+    );
   });
 };
 
@@ -146,15 +149,17 @@ export const viewConfiguration = () => {
   dispatch(push(`/configuration`));
 };
 
-export const updateLoginUsername = (username) => dispatch({
-  type: ActionTypes.UPDATE_LOGIN_USERNAME,
-  username
-});
+export const updateLoginUsername = username =>
+  dispatch({
+    type: ActionTypes.UPDATE_LOGIN_USERNAME,
+    username
+  });
 
-export const updateLoginPassword = (password) => dispatch({
-  type: ActionTypes.UPDATE_LOGIN_PASSWORD,
-  password
-});
+export const updateLoginPassword = password =>
+  dispatch({
+    type: ActionTypes.UPDATE_LOGIN_PASSWORD,
+    password
+  });
 
 export const loginUser = (credentials, dueToRegistration = false) => {
   return (dispatch, getState) => {
@@ -168,19 +173,19 @@ export const loginUser = (credentials, dueToRegistration = false) => {
       dueToRegistration
     });
 
-    return BackendlessApi
-      .login(username, password)
-      .then(
-        user => dispatch({
+    return BackendlessApi.login(username, password).then(
+      user =>
+        dispatch({
           type: ActionTypes.LOGIN_USER_SUCCESS,
           user: user,
           dueToRegistration
         }),
-        error => dispatch({
+      error =>
+        dispatch({
           type: ActionTypes.LOGIN_USER_FAILURE,
           error
         })
-      );
+    );
   };
 };
 
@@ -190,40 +195,36 @@ export const logoutUser = () => {
       type: ActionTypes.LOGOUT
     });
 
-    return BackendlessApi
-      .logout()
-      .then(
-        () => dispatch({
+    return BackendlessApi.logout().then(
+      () =>
+        dispatch({
           type: ActionTypes.LOGOUT_SUCCESS
         }),
-        error => dispatch({
+      error =>
+        dispatch({
           type: ActionTypes.LOGOUT_FAILURE
         })
-      );
+    );
   });
 };
 
-export const loadConfiguration = (user) => {
+export const loadConfiguration = user => {
   return dispatch(() => {
     dispatch({
       type: ActionTypes.REQUEST_CONFIGURATION,
       user
     });
 
-    return BackendlessApi
-      .restoreConfig(user)
-      .then(
-        config => dispatch({
-          type: ActionTypes.REQUEST_CONFIGURATION_SUCCESS,
-          config,
-          user
-        }),
-        error => dispatch({
+    return BackendlessApi.restoreConfig(user).then(
+      config =>
+        dispatch(ActionCreators.requestConfigurationSuccess(config, user)),
+      error =>
+        dispatch({
           type: ActionTypes.REQUEST_CONFIGURATION_FAILURE,
           error,
           user
         })
-      );
+    );
   });
 };
 
@@ -240,36 +241,39 @@ export const saveConfiguration = ({ setup }) => {
       setup
     });
 
-    return BackendlessApi
-      .persistConfig(user, config)
-      .then(
-        saved => dispatch({
+    return BackendlessApi.persistConfig(user, config).then(
+      saved =>
+        dispatch({
           type: ActionTypes.PERSIST_CONFIGURATION_SUCCESS,
           user,
           config,
           saved,
           setup
         }),
-        error => dispatch({
+      error =>
+        dispatch({
           type: ActionTypes.PERSIST_CONFIGURATION_FAILURE,
           error,
           user,
           config,
           setup
         })
-      );
+    );
   });
 };
 
 export const addBang = () => dispatch(ActionCreators.addBang());
 
-export const updateBang = (oldBang, newBang) => dispatch(ActionCreators.updateBang(oldBang, newBang));
+export const updateBang = (oldBang, newBang) =>
+  dispatch(ActionCreators.updateBang(oldBang, newBang));
 
-export const updateBangPattern = (bang, pattern) => dispatch(ActionCreators.updateBangPattern(bang, pattern));
+export const updateBangPattern = (bang, pattern) =>
+  dispatch(ActionCreators.updateBangPattern(bang, pattern));
 
-export const deleteBang = (bang) => dispatch(ActionCreators.deleteBang(bang));
+export const deleteBang = bang => dispatch(ActionCreators.deleteBang(bang));
 
-export const updateSearchEngine = (pattern) => dispatch(ActionCreators.updateSearchEngine(pattern));
+export const updateSearchEngine = pattern =>
+  dispatch(ActionCreators.updateSearchEngine(pattern));
 
 export const viewLandingPage = () => {
   const { user } = store.getState();
@@ -280,13 +284,14 @@ export const viewAccountRecovery = () => {
   dispatch({
     type: ActionTypes.VIEW_ACCOUNT_RECOVERY
   });
-  dispatch(push('/recover'));
+  dispatch(push("/recover"));
 };
 
-export const updateRecoveryUsername = (username) => dispatch({
-  type: ActionTypes.UPDATE_RECOVERY_USERNAME,
-  username
-});
+export const updateRecoveryUsername = username =>
+  dispatch({
+    type: ActionTypes.UPDATE_RECOVERY_USERNAME,
+    username
+  });
 
 export const recoverAccount = () => {
   return dispatch((d, getState) => {
@@ -298,22 +303,21 @@ export const recoverAccount = () => {
       username
     });
 
-    return BackendlessApi
-      .recover(username)
-      .then(
-        () => dispatch({
+    return BackendlessApi.recover(username).then(
+      () =>
+        dispatch({
           type: ActionTypes.REQUEST_ACCOUNT_RECOVERY_SUCCESS,
           username
         }),
-        error => dispatch({
+      error =>
+        dispatch({
           type: ActionTypes.REQUEST_ACCOUNT_RECOVERY_FAILURE,
           username,
           error
         })
-      );
+    );
   });
 };
-
 
 export const viewAccountRecovered = () => {
   dispatch({
@@ -323,4 +327,5 @@ export const viewAccountRecovered = () => {
   dispatch(push(`/recovered`));
 };
 
-export const viewBrowserConfiguration = () => dispatch(push(`/configuration/browser`));
+export const viewBrowserConfiguration = () =>
+  dispatch(push(`/configuration/browser`));
