@@ -59,6 +59,7 @@ typings/
 
 # Sandbox files
 src/sandbox/
+sandbox
 
 # Builds
 build
