@@ -1,15 +1,15 @@
-const Backendless = require('backendless');
+const Backendless = require("backendless");
 
-const get = require('lodash/get');
-const isString = require('lodash/isString');
-const isObject = require('lodash/isObject');
+const get = require("lodash/get");
+const isString = require("lodash/isString");
+const isObject = require("lodash/isObject");
 
 const APP_ID = process.env.REACT_APP_APP_ID;
 const APP_KEY = process.env.REACT_APP_APP_KEY;
 const REST_KEY = process.env.REACT_APP_REST_KEY;
-const SERVER_CODE_USER = 'ServerCodeUser';
+const SERVER_CODE_USER = "ServerCodeUser";
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   console.log(`Backendless APP_ID:   ${APP_ID}`);
   console.log(`Backendless APP_KEY:  ${APP_KEY}`);
   console.log(`Backendless REST_KEY: ${REST_KEY}`);
@@ -23,13 +23,13 @@ async function getCurrentUser() {
 
 async function register(email, password, passwordCheck, subscribe = false) {
   if (password !== passwordCheck) {
-    return Promise.reject({ message: 'Passwords do not match' });
+    return Promise.reject({ message: "Passwords do not match" });
   }
 
   const user = new Backendless.User();
-  user['email'] = email;
-  user['password'] = password;
-  user['subscribed'] = subscribe;
+  user["email"] = email;
+  user["password"] = password;
+  user["subscribed"] = subscribe;
 
   return Backendless.UserService.register(user);
 }
@@ -47,13 +47,18 @@ async function recover(email) {
 }
 
 async function updateSubscription(user, subscribed) {
-  user['subscribed'] = subscribed;
+  user["subscribed"] = subscribed;
+  return Backendless.UserService.update(user);
+}
+
+async function updateActivation(user, activated) {
+  user["activated"] = activated;
   return Backendless.UserService.update(user);
 }
 
 function getUserToken(user) {
   if (isObject(user)) {
-    return get(user, 'user-token');
+    return get(user, "user-token");
   }
   if (isString(user)) {
     return user;
@@ -74,8 +79,13 @@ function getUserId(user) {
 async function persistConfig(user, config) {
   const userId = getUserId(user);
   const filename = `${userId}.config.json`;
-  const json = Buffer.from(JSON.stringify(config, null, '  '));
-  const saved = await Backendless.Files.saveFile('configurations', filename, json, true);
+  const json = Buffer.from(JSON.stringify(config, null, "  "));
+  const saved = await Backendless.Files.saveFile(
+    "configurations",
+    filename,
+    json,
+    true
+  );
 
   const fileURL = `configurations/${filename}`;
 
@@ -107,18 +117,22 @@ async function restoreConfig(user) {
   return json;
 }
 
-const PREFIX = 'b';
+const PREFIX = "b";
 
 export function createSearchURL(user) {
   return user.missing || user.loading
-    ? ''
-    : `${window.location.protocol}//${window.location.host}/${PREFIX}/${user.objectId}/search?query=%s`;
+    ? ""
+    : `${window.location.protocol}//${window.location.host}/${PREFIX}/${
+        user.objectId
+      }/search?query=%s`;
 }
 
 export function createLandingURL(user) {
   return user.missing || user.loading
-    ? ''
-    : `${window.location.protocol}//${window.location.host}/${PREFIX}/${user.objectId}`;
+    ? ""
+    : `${window.location.protocol}//${window.location.host}/${PREFIX}/${
+        user.objectId
+      }`;
 }
 
 export default {
@@ -126,6 +140,7 @@ export default {
   login,
   logout,
   recover,
+  updateActivation,
   updateSubscription,
   getCurrentUser,
   getUserToken,

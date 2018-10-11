@@ -1,4 +1,4 @@
-import keyMirror from 'key-mirror';
+import keyMirror from "key-mirror";
 
 export default keyMirror({
   REQUEST_CURRENT_USER: null,
@@ -16,6 +16,10 @@ export default keyMirror({
   VIEW_CONFIGURATION_SETUP: null,
   VIEW_BROWSER_SETUP: null,
   VIEW_COMMUNICATION_SETUP: null,
+
+  SUBMIT_ACTIVATION_UPDATE: null,
+  SUBMIT_ACTIVATION_UPDATE_SUCCESS: null,
+  SUBMIT_ACTIVATION_UPDATE_FAILURE: null,
 
   SUBMIT_SUBSCRIPTION_UPDATE: null,
   SUBMIT_SUBSCRIPTION_UPDATE_SUCCESS: null,

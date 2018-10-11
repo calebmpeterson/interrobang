@@ -39,6 +39,24 @@ class ActionCreators {
     type: ActionTypes.UPDATE_SEARCH_ENGINE,
     pattern
   });
+
+  submitActivationUpdate = (user, activated) => ({
+    type: ActionTypes.SUBMIT_ACTIVATION_UPDATE,
+    activated,
+    user
+  });
+
+  submitActivationUpdateSuccess = (user, activated) => ({
+    type: ActionTypes.SUBMIT_ACTIVATION_UPDATE_SUCCESS,
+    activated,
+    user
+  });
+
+  submitActivationUpdateFailure = (error, activated) => ({
+    type: ActionTypes.SUBMIT_ACTIVATION_UPDATE,
+    activated,
+    error
+  });
 }
 
 export default new ActionCreators();

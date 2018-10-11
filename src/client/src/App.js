@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React, { Component } from "react";
+import { Provider } from "react-redux";
 
-import './style.css';
+import "./style.css";
 
-import store from './store';
+import store from "./store";
 
-import './chronicles/Onboarding';
-import './chronicles/Login';
-import './chronicles/Logout';
-import './chronicles/AccountRecovery';
+import "./chronicles/Onboarding";
+import "./chronicles/Login";
+import "./chronicles/Logout";
+import "./chronicles/AccountRecovery";
+import "./chronicles/Activation";
 
-import Root from './components/Root';
+import Root from "./components/Root";
 
-import { requestCurrentUser } from './actions';
+import { requestCurrentUser } from "./actions";
 
-import BackendlessApi from './api/backendless';
+import BackendlessApi from "./api/backendless";
 global.BackendlessApi = BackendlessApi;
 
 class App extends Component {

@@ -105,6 +105,23 @@ export const copySearchPatternURL = () => {
   }
 };
 
+export const submitActivationUpdate = activated => {
+  return dispatch((d, getState) => {
+    const { user } = getState();
+
+    dispatch(ActionCreators.submitActivationUpdate(user, activated));
+
+    return BackendlessApi.updateActivation(user, activated).then(
+      updatedUser =>
+        dispatch(
+          ActionCreators.submitActivationUpdateSuccess(updatedUser, activated)
+        ),
+      error =>
+        dispatch(ActionCreators.submitActivationUpdateFailure(error, activated))
+    );
+  });
+};
+
 export const submitSubscriptionUpdate = (subscribed, signup = false) => {
   return dispatch((d, getState) => {
     const { user } = getState();
@@ -232,7 +249,6 @@ export const saveConfiguration = ({ setup }) => {
   return dispatch((d, getState) => {
     const { user, configuration } = getState();
     const { config } = configuration;
-    console.log(user, configuration.config);
 
     dispatch({
       type: ActionTypes.PERSIST_CONFIGURATION,
