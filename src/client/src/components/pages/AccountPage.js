@@ -4,15 +4,19 @@ import { connect } from "react-redux";
 import { createSearchURL } from "../../api/backendless";
 
 import Layout from "./Layout";
+import If from "../controls/If";
+import ConfirmingButton from "../controls/ConfirmingButton";
 
 import { deleteAllData, viewLogin, viewConfiguration } from "../../actions";
 import BackendlessApi from "../../api/backendless";
+import { selectDeleted } from "../../selectors/configuration";
 
 const mapStateToProps = state => {
   return {
     searchURL: createSearchURL(state.user),
     user: state.user,
-    configFileUrl: BackendlessApi.getConfigFileUrl(state.user)
+    configFileUrl: BackendlessApi.getConfigFileUrl(state.user),
+    deleted: selectDeleted(state)
   };
 };
 
@@ -89,12 +93,22 @@ class AccountPage extends React.Component {
                     </p>
                   </div>
 
-                  <button
-                    className="btn btn-outline-danger"
-                    onClick={deleteAllData}
-                  >
-                    Delete
-                  </button>
+                  <If test={this.props.deleted}>
+                    <button className="btn btn-outline-danger" disabled>
+                      Deleted
+                    </button>
+                  </If>
+
+                  <If test={!this.props.deleted}>
+                    <ConfirmingButton
+                      className="btn btn-outline-danger"
+                      confirmation="Are you sure?"
+                      confirmationClassName="btn btn-danger"
+                      onClick={deleteAllData}
+                    >
+                      Delete
+                    </ConfirmingButton>
+                  </If>
                 </div>
               </div>
             </div>

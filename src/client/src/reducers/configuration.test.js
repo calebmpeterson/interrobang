@@ -135,7 +135,8 @@ describe("configuration state management", () => {
       config: {
         bangs: {}
       },
-      records: []
+      records: [],
+      deleted: true
     }
   });
 });

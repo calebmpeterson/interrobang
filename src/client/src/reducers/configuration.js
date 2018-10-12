@@ -139,9 +139,10 @@ export default function(state = DEFAULT_STATE, action) {
       });
 
     case ActionTypes.DELETE_ALL_DATA:
-      return merge({}, state, {
+      return assign({}, state, {
         config: EMPTY_CONFIGURATION,
-        records: []
+        records: [],
+        deleted: true
       });
 
     default:

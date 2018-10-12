@@ -8,9 +8,15 @@ export const selectBangs = state =>
 
 export const selectRecords = state => get(state, ["configuration", "records"]);
 
+export const selectDeleted = state => get(state, ["configuration", "deleted"]);
+
 export const FromConfiguration = {
   selectSearchEnging: configuration =>
     get(configuration, ["config", "search-engine"]),
+
   selectBangs: configuration => get(configuration, ["config", "bangs"]),
-  selectRecords: configuration => get(configuration, ["records"])
+
+  selectRecords: configuration => get(configuration, ["records"]),
+
+  selectDeleted: configuration => get(configuration, ["deleted"])
 };
