@@ -1,26 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { isEmpty } from 'lodash';
+import { isEmpty } from "lodash";
 
-import { updateLoginUsername, updateLoginPassword, loginUser, viewRegistration, viewAccountRecovery } from '../../actions';
+import {
+  updateLoginUsername,
+  updateLoginPassword,
+  loginUser,
+  viewRegistration,
+  viewAccountRecovery
+} from "../../actions";
 
-import Layout from './Layout';
+import Layout from "./Layout";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state.login;
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    handleUpdateUsername: (event) => updateLoginUsername(event.target.value),
-    handleUpdatePassword: (event) => updateLoginPassword(event.target.value),
-    handleSubmit: (event) => {
+    handleUpdateUsername: event => updateLoginUsername(event.target.value),
+    handleUpdatePassword: event => updateLoginPassword(event.target.value),
+    handleSubmit: event => {
       event.preventDefault();
       event.stopPropagation();
       dispatch(loginUser());
     },
-    viewRegistration: (event) => viewRegistration(),
+    viewRegistration: event => viewRegistration(),
     viewAccountRecovery: () => viewAccountRecovery()
   };
 };
@@ -40,36 +46,71 @@ class LoginPage extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">E-mail address</label>
-            <input type="email" className="form-control form-control-lg" placeholder="Your e-mail address..." value={username} onChange={this.props.handleUpdateUsername} autoFocus required />
+            <input
+              type="email"
+              className="form-control form-control-lg"
+              placeholder="Your e-mail address..."
+              value={username}
+              onChange={this.props.handleUpdateUsername}
+              autoFocus
+              required
+            />
           </div>
 
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="form-control form-control-lg" placeholder="Enter a password" value={password} onChange={this.props.handleUpdatePassword} required />
+            <input
+              type="password"
+              className="form-control form-control-lg"
+              placeholder="Enter a password"
+              value={password}
+              onChange={this.props.handleUpdatePassword}
+              required
+            />
           </div>
 
           {!isEmpty(error) && errorElement}
 
           <div className="my-5" />
 
-          <button type="submit" className="btn btn-lg btn-block btn-success" disabled={!canProceed}>
+          <button
+            type="submit"
+            className="btn btn-lg btn-block btn-success"
+            disabled={!canProceed}
+          >
             Login
           </button>
 
-          <div className="mt-3 d-none d-md-block">
-            <button type="button" className="btn btn-link w-50" onClick={this.props.viewAccountRecovery}>
+          <div className="mt-3 d-none d-lg-block">
+            <button
+              type="button"
+              className="btn btn-link w-50"
+              onClick={this.props.viewAccountRecovery}
+            >
               Forgot your password?
             </button>
-            <button type="button" className="btn btn-link w-50" onClick={this.props.viewRegistration}>
+            <button
+              type="button"
+              className="btn btn-link w-50"
+              onClick={this.props.viewRegistration}
+            >
               Create an account
             </button>
           </div>
 
-          <div className="mt-3 d-md-none">
-            <button type="button" className="btn btn-block btn-link" onClick={this.props.viewAccountRecovery}>
+          <div className="mt-3 d-lg-none">
+            <button
+              type="button"
+              className="btn btn-block btn-outline-success"
+              onClick={this.props.viewAccountRecovery}
+            >
               Forgot your password?
             </button>
-            <button type="button" className="btn btn-block btn-link" onClick={this.props.viewRegistration}>
+            <button
+              type="button"
+              className="btn btn-block btn-outline-success"
+              onClick={this.props.viewRegistration}
+            >
               Create an account
             </button>
           </div>
@@ -79,4 +120,7 @@ class LoginPage extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPage);
