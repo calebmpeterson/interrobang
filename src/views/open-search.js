@@ -1,5 +1,7 @@
-const openSearchXml = (props) => `
-<OpenSearchDescription xmlns="http://a9.com/spec/opensearch/1.1/">
+const openSearchXml = props => `
+<OpenSearchDescription
+    xmlns="http://a9.com/spec/opensearch/1.1/"
+    xmlns:suggestions="http://www.opensearch.org/specifications/opensearch/extensions/suggestions/1.1">
   <ShortName>Interrobang</ShortName>
   <LongName>Interrobang Web Search</LongName>
   <Description>Interrobang - custom search !bangs, standard DuckDuckGo !bangs, selectable default search engine</Description>
@@ -9,8 +11,12 @@ const openSearchXml = (props) => `
   <Language>en-us</Language>
   <Developer>Caleb Peterson</Developer>
   <Contact>caleb.peterson@cubicle6.com</Contact>
-  <Url type="text/html" template="https://interrobang.online/${props.gist}/search?query={searchTerms}" />
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://interrobang.online/${props.gist}/open-search.xml" />
+  <Url type="text/html" template="https://interrobang.online/${
+    props.searchUrl
+  }/search?query={searchTerms}" />
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://interrobang.online/${
+    props.searchUrl
+  }/open-search.xml" />
 </OpenSearchDescription>
 `;
 
