@@ -351,4 +351,10 @@ export const viewAccountRecovered = () => {
 export const viewBrowserConfiguration = () =>
   dispatch(push(`/configuration/browser`));
 
+export const updateNewPassword = value =>
+  dispatch(ActionCreators.updateNewPassword(value));
+
+export const updateNewPasswordCheck = value =>
+  dispatch(ActionCreators.updateNewPasswordCheck(value));
+
 export const deleteAllData = () => dispatch(ActionCreators.deleteAllData());
