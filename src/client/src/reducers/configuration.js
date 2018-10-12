@@ -138,6 +138,12 @@ export default function(state = DEFAULT_STATE, action) {
         config: { "search-engine": action.pattern }
       });
 
+    case ActionTypes.DELETE_ALL_DATA:
+      return merge({}, state, {
+        config: EMPTY_CONFIGURATION,
+        records: []
+      });
+
     default:
       return state;
   }

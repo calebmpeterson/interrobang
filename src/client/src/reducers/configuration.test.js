@@ -118,4 +118,24 @@ describe("configuration state management", () => {
       records: []
     }
   });
+
+  reducer("handles deleting all data", {
+    before: {
+      config: { bangs: { foo: "https://example.com/search?q={{{s}}}" } },
+      records: [
+        {
+          index: 0,
+          bang: "foo",
+          pattern: "https://example.com/search?q={{{s}}}"
+        }
+      ]
+    },
+    action: ActionCreators.deleteAllData(),
+    after: {
+      config: {
+        bangs: {}
+      },
+      records: []
+    }
+  });
 });

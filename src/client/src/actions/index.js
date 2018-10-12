@@ -166,6 +166,11 @@ export const viewConfiguration = () => {
   dispatch(push(`/configuration`));
 };
 
+export const viewAccount = () => {
+  dispatch(ActionCreators.viewAccount());
+  dispatch(push(`/settings`));
+};
+
 export const updateLoginUsername = username =>
   dispatch({
     type: ActionTypes.UPDATE_LOGIN_USERNAME,
@@ -245,7 +250,7 @@ export const loadConfiguration = user => {
   });
 };
 
-export const saveConfiguration = ({ setup }) => {
+export const saveConfiguration = ({ setup } = {}) => {
   return dispatch((d, getState) => {
     const { user, configuration } = getState();
     const { config } = configuration;
@@ -345,3 +350,5 @@ export const viewAccountRecovered = () => {
 
 export const viewBrowserConfiguration = () =>
   dispatch(push(`/configuration/browser`));
+
+export const deleteAllData = () => dispatch(ActionCreators.deleteAllData());

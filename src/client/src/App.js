@@ -10,6 +10,7 @@ import "./chronicles/Login";
 import "./chronicles/Logout";
 import "./chronicles/AccountRecovery";
 import "./chronicles/Activation";
+import "./chronicles/DeleteAllData";
 
 import Root from "./components/Root";
 

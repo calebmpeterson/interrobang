@@ -1,6 +1,10 @@
 import ActionTypes from "../constants/ActionTypes";
 
 class ActionCreators {
+  viewAccount = () => ({
+    type: ActionTypes.VIEW_ACCOUNT
+  });
+
   registerUserSuccess = (user, username, password) => ({
     type: ActionTypes.REGISTER_USER_SUCCESS,
     user,
@@ -56,6 +60,10 @@ class ActionCreators {
     type: ActionTypes.SUBMIT_ACTIVATION_UPDATE,
     activated,
     error
+  });
+
+  deleteAllData = () => ({
+    type: ActionTypes.DELETE_ALL_DATA
   });
 }
 

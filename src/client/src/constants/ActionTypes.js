@@ -27,6 +27,7 @@ export default keyMirror({
 
   VIEW_LOGIN: null,
   VIEW_CONFIGURATION: null,
+  VIEW_ACCOUNT: null,
 
   UPDATE_LOGIN_USERNAME: null,
   UPDATE_LOGIN_PASSWORD: null,
@@ -61,5 +62,7 @@ export default keyMirror({
 
   LOGOUT: null,
   LOGOUT_SUCCESS: null,
-  LOGOUT_FAILURE: null
+  LOGOUT_FAILURE: null,
+
+  DELETE_ALL_DATA: null
 });
