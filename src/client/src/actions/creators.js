@@ -62,6 +62,16 @@ class ActionCreators {
     error
   });
 
+  updateNewPassword = password => ({
+    type: ActionTypes.UPDATE_NEW_PASSWORD,
+    password
+  });
+
+  updateNewPasswordCheck = password => ({
+    type: ActionTypes.UPDATE_NEW_PASSWORD_CHECK,
+    password
+  });
+
   deleteAllData = () => ({
     type: ActionTypes.DELETE_ALL_DATA
   });

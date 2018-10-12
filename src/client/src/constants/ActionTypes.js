@@ -64,5 +64,8 @@ export default keyMirror({
   LOGOUT_SUCCESS: null,
   LOGOUT_FAILURE: null,
 
+  UPDATE_NEW_PASSWORD: null,
+  UPDATE_NEW_PASSWORD_CHECK: null,
+
   DELETE_ALL_DATA: null
 });
