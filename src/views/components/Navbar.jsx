@@ -40,24 +40,43 @@ class Navbar extends React.Component {
             </a>
           </If>
 
-          <If test={canSetup}>
-            <div className={`d-none d-md-block`}>
-              <a
-                className={`btn btn-link mr-2`}
-                href="/account/#/configuration/browser"
-              >
-                Setup Your Browser
-              </a>
-            </div>
-          </If>
-
-          <If test={canConfigure}>
-            <a
-              className={`btn ${secondaryVariantButtonClassName}`}
-              href="/account/#/configuration"
-            >
-              Configure <Icon icon="settings" />
-            </a>
+          <If test={canSetup || canConfigure}>
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a
+                  class="btn btn-outline-primary dropdown-toggle"
+                  href="#"
+                  id="navbar-configure-dropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <Icon icon="settings" />
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="navbar-configure-dropdown"
+                >
+                  <If test={canConfigure}>
+                    <a class="dropdown-item" href="/account/#/configuration">
+                      Configuration
+                    </a>
+                  </If>
+                  <If test={canSetup || canConfigure}>
+                    <div class="dropdown-divider" />
+                  </If>
+                  <If test={canSetup}>
+                    <a
+                      class="dropdown-item"
+                      href="/account/#/configuration/browser"
+                    >
+                      Setup your browser
+                    </a>
+                  </If>
+                </div>
+              </li>
+            </ul>
           </If>
         </div>
         <script type="text/javascript" src="/assets/js/navbar.js" />
