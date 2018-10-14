@@ -120,7 +120,9 @@ class Layout extends React.Component {
             <link
               rel="search"
               type="application/opensearchdescription+xml"
-              href={`/${this.props.searchUrl}/open-search.xml`}
+              href={`https://interrobang.online/${
+                this.props.searchUrl
+              }/open-search.xml`}
             />
           </If>
         </head>
