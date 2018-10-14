@@ -6,7 +6,6 @@ function suggest(query, config) {}
 const Selectors = {
   allBangs: bangs =>
     chain(bangs)
-      .keys()
       .sort()
       .value(),
 

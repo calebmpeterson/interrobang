@@ -1,6 +1,8 @@
 const chalk = require("chalk");
+const { keys } = require("lodash");
 
 const { getConfig } = require("../config/backendless");
+const { getDuckDuckGoBangs } = require("../cache");
 
 module.exports = {
   method: "GET",
@@ -9,10 +11,14 @@ module.exports = {
     const { userId } = request.params;
 
     try {
+      const duckDuckGoBangs = await getDuckDuckGoBangs(request.server);
       const config = await getConfig(userId);
+      const configBangs = keys(config.bangs);
+      const bangs = [...configBangs, ...duckDuckGoBangs];
+
       return reply.view("backendless-search-landing", {
         userId,
-        bangs: config.bangs
+        bangs
       });
     } catch (e) {
       console.error(chalk`{red ${e.message}}`);

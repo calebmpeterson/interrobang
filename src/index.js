@@ -1,39 +1,42 @@
-const { Server } = require('hapi');
-const ReactViews = require('hapi-react-views');
-const Handlebars = require('handlebars');
+const { Server } = require("hapi");
+const ReactViews = require("hapi-react-views");
 
-require('babel-core/register')({
-  presets: ['react', 'env']
+const { initializeCache } = require("./cache");
+
+require("babel-core/register")({
+  presets: ["react", "env"]
 });
 
-require('babel-polyfill');
+require("babel-polyfill");
 
-const { get } = require('lodash');
+const { get } = require("lodash");
 
-const extensions = require('./extensions');
-const routes = require('./routes');
+const extensions = require("./extensions");
+const routes = require("./routes");
 
-require('./resources/loaders/markdown-loader');
+require("./resources/loaders/markdown-loader");
 
 const PORT = process.env.PORT || 3333;
 const server = new Server({
   port: PORT,
   debug: {
-    log: ['error'],
-    request: ['error']
+    log: ["error"],
+    request: ["error"]
   }
 });
 
 async function initialize() {
-  await server.register(require('inert'));
-  await server.register(require('vision'));
+  await server.register(require("inert"));
+  await server.register(require("vision"));
 
   await server.register({
-    plugin: require('hapi-dev-errors'),
+    plugin: require("hapi-dev-errors"),
     options: {
-      showErrors: process.env.NODE_ENV !== 'production'
+      showErrors: process.env.NODE_ENV !== "production"
     }
   });
+
+  initializeCache(server);
 
   server.views({
     engines: {
@@ -41,13 +44,13 @@ async function initialize() {
     },
     compileOptions: {},
     relativeTo: __dirname,
-    path: 'views'
+    path: "views"
   });
 
   extensions(server);
   routes(server);
 
-  await server.start((error) => {
+  await server.start(error => {
     if (error) {
       throw error;
     }
