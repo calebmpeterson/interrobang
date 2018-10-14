@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 
 import map from "lodash/map";
 
-import {
-  viewLogin,
-  viewBrowserConfiguration,
-  saveConfiguration
-} from "../../actions";
+import { viewLogin, saveConfiguration } from "../../actions";
 
 import Layout from "./Layout";
 import Icon from "../controls/Icon";

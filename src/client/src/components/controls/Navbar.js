@@ -1,5 +1,4 @@
 import React from "react";
-import defer from "lodash/defer";
 
 export class Dropdown extends React.Component {
   constructor(props) {
