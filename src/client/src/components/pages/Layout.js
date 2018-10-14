@@ -29,7 +29,7 @@ class Layout extends React.Component {
       <div>
         <nav className="navbar navbar-expand-sm fixed-top navbar-light bg-white shadow-2dp">
           <div className="container">
-            <a className="navbar-brand mr-3" href="/">
+            <a className="navbar-brand mr-3" href={`/b/${userId}`}>
               Interrobang
             </a>
 
