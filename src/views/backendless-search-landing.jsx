@@ -3,7 +3,6 @@ const { map } = require("lodash");
 
 const { Selectors } = require("../suggestions");
 const Layout = require("./layout");
-const If = require("./helpers/If");
 const Icon = require("./components/Icon");
 const Footer = require("./components/Footer");
 
