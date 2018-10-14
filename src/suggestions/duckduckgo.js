@@ -13,28 +13,33 @@ function parseBang(text) {
 }
 
 async function fetchDuckDuckGoBangs() {
-  const { payload } = await Wreck.get(BANGS_LITE);
-  const $ = cheerio.load(payload);
+  try {
+    const { payload } = await Wreck.get(BANGS_LITE);
+    const $ = cheerio.load(payload);
 
-  const bangsElement = $(ALPHABETICAL_LIST_ELEMENT)
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === ALPHABETICAL_LIST_HEADER
-      );
-    })
-    .next();
+    const bangsElement = $(ALPHABETICAL_LIST_ELEMENT)
+      .filter(function() {
+        return (
+          $(this)
+            .text()
+            .trim() === ALPHABETICAL_LIST_HEADER
+        );
+      })
+      .next();
 
-  const bangsText = bangsElement.text().split("\n");
+    const bangsText = bangsElement.text().split("\n");
 
-  const bangs = chain(bangsText)
-    .filter(line => !isEmpty(line))
-    .map(parseBang)
-    .commit()
-    .value();
+    const bangs = chain(bangsText)
+      .filter(line => !isEmpty(line))
+      .map(parseBang)
+      .commit()
+      .value();
 
-  return bangs;
+    return bangs;
+  } catch (e) {
+    console.error(`Failed to scrape !bangs from DuckDuckGo`, e);
+    return [];
+  }
 }
 
 module.exports = {
