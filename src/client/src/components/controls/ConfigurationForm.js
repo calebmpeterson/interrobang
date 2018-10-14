@@ -15,6 +15,7 @@ import {
 
 import Icon from "./Icon";
 import If from "./If";
+import ConfirmingButton from "../controls/ConfirmingButton";
 
 const SEARCH_PARAM = "{{{s}}}";
 
@@ -94,13 +95,15 @@ const BangControl = props => (
           autoComplete="off"
         />
         <div className="input-group-append">
-          <a
+          <ConfirmingButton
             className="btn btn-outline-danger"
             title="Delete this search !bang"
+            confirmation="Really delete?"
+            confirmationClassName="btn btn-danger"
             onClick={onDeleteBang(props.bang)}
           >
             <Icon icon="close" />
-          </a>
+          </ConfirmingButton>
         </div>
       </div>
       <If test={isEmpty(props.bang) || isEmpty(props.pattern)}>

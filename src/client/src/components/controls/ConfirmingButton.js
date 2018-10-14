@@ -9,6 +9,7 @@ export default class ConfirmationButton extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
   onClick(event) {
@@ -16,6 +17,10 @@ export default class ConfirmationButton extends React.Component {
       this.props.onClick(event);
     }
     this.setState({ confirming: !this.state.confirming });
+  }
+
+  onBlur(event) {
+    this.setState({ confirming: false });
   }
 
   render() {
@@ -30,6 +35,7 @@ export default class ConfirmationButton extends React.Component {
         type="button"
         className={className || "btn btn-outline-secondary"}
         onClick={this.onClick}
+        onBlur={this.onBlur}
       >
         {children}
       </button>
