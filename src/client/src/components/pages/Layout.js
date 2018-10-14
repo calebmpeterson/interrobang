@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 
 import get from "lodash/get";
 
-import { logoutUser, viewAccount } from "../../actions";
+import { logoutUser, viewAccount, viewConfiguration } from "../../actions";
 import If from "../controls/If";
 import Icon from "../controls/Icon";
+import { Dropdown as NavbarDropdown } from "../controls/Navbar";
+import MenuItem from "../controls/MenuItem";
 
 const mapStateToProps = state => {
   const userId = get(state, "user.objectId", "");
@@ -16,8 +18,11 @@ const mapStateToProps = state => {
   };
 };
 
-const onManageAccount = event => {
-  event.preventDefault();
+const onConfigure = () => {
+  viewConfiguration();
+};
+
+const onManageAccount = () => {
   viewAccount();
 };
 
@@ -57,27 +62,26 @@ class Layout extends React.Component {
 
             <div className="mr-auto" />
 
-            <If test={email}>
-              <a
-                className="nav-link ml-3"
-                href="#account"
-                onClick={onManageAccount}
-              >
-                <span className="d-none d-md-inline-block">
-                  {email}
-                  &nbsp;
-                </span>
-                <Icon icon="account" />
-              </a>
-            </If>
             <If test={canLogout}>
-              <button
-                className="btn btn-outline-secondary"
-                onClick={logoutUser}
+              <NavbarDropdown
+                title={email}
+                menuClassName="dropdown-menu-right"
+                linkClassName="btn btn-outline-primary"
               >
-                <span className="d-none d-md-inline-block">Logout&nbsp;</span>
-                <Icon icon="logout-variant" />
-              </button>
+                <MenuItem onClick={onConfigure}>
+                  <Icon icon="settings" /> Configuration
+                </MenuItem>
+
+                <MenuItem onClick={onManageAccount}>
+                  <Icon icon="account" /> Manage Account
+                </MenuItem>
+
+                <div className="dropdown-divider" />
+
+                <MenuItem onClick={logoutUser}>
+                  <Icon icon="logout-variant" /> Logout
+                </MenuItem>
+              </NavbarDropdown>
             </If>
           </div>
         </nav>
