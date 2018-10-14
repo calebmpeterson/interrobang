@@ -57,8 +57,26 @@ class ActionCreators {
   });
 
   submitActivationUpdateFailure = (error, activated) => ({
-    type: ActionTypes.SUBMIT_ACTIVATION_UPDATE,
+    type: ActionTypes.SUBMIT_ACTIVATION_UPDATE_FAILURE,
     activated,
+    error
+  });
+
+  submitPasswordChange = (user, password) => ({
+    type: ActionTypes.SUBMIT_PASSWORD_CHANGE,
+    password,
+    user
+  });
+
+  submitPasswordChangeSuccess = (user, password) => ({
+    type: ActionTypes.SUBMIT_PASSWORD_CHANGE_SUCCESS,
+    password,
+    user
+  });
+
+  submitPasswordChangeFailure = (error, password) => ({
+    type: ActionTypes.SUBMIT_PASSWORD_CHANGE_FAILURE,
+    password,
     error
   });
 

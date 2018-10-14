@@ -13,7 +13,8 @@ import {
   updateNewPasswordCheck,
   deleteAllData,
   viewLogin,
-  viewConfiguration
+  viewConfiguration,
+  submitPasswordChange
 } from "../../actions";
 import BackendlessApi from "../../api/backendless";
 import { selectDeleted } from "../../selectors/configuration";
@@ -27,6 +28,8 @@ const mapStateToProps = state => {
     passwordCheck: state.password.newPasswordCheck,
     passwordMatch: state.password.newPasswordMatch,
     canChangePassword: state.password.canChangePassword,
+    passwordChanged: state.password.passwordChanged,
+    passwordChangeError: state.password.error,
     deleted: selectDeleted(state)
   };
 };
@@ -39,7 +42,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     handleChangePassword: event => {
       event.preventDefault();
       event.stopPropagation();
-      console.log("Change password");
+      submitPasswordChange();
     }
   };
 };
@@ -56,13 +59,27 @@ class AccountPage extends React.Component {
       password,
       passwordCheck,
       passwordMatch,
-      canChangePassword
+      canChangePassword,
+      passwordChanged,
+      passwordChangeError
     } = this.props;
 
     const passwordMismatchError = (
       <div className="text-danger">
         <If test={!passwordMatch}>The passwords entered do not match</If>
         <If test={passwordMatch}>&nbsp;</If>
+      </div>
+    );
+
+    const passwordChangedMessageElement = passwordChanged && (
+      <div className="text-success">
+        <Icon icon="check" /> Password changed
+      </div>
+    );
+
+    const passwordChangeErrorElement = (
+      <div className="text-danger">
+        <If test={passwordChangeError}>{passwordChangeError}</If>
       </div>
     );
 
@@ -134,16 +151,20 @@ class AccountPage extends React.Component {
                     </div>
 
                     {passwordMismatchError}
+                    {passwordChangedMessageElement}
+                    {passwordChangeErrorElement}
 
                     <div className="my-3" />
 
-                    <button
-                      type="submit"
-                      className="btn btn-outline-success"
-                      disabled={!canChangePassword}
-                    >
-                      Change Password
-                    </button>
+                    <If test={!passwordChanged}>
+                      <button
+                        type="submit"
+                        className="btn btn-outline-success"
+                        disabled={!canChangePassword}
+                      >
+                        Change Password
+                      </button>
+                    </If>
                   </form>
                 </div>
               </div>

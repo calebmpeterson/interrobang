@@ -66,4 +66,36 @@ describe("change password state management", () => {
       canChangePassword: true
     }
   });
+
+  reducer("handles password change success", {
+    before: {
+      newPassword: "s3cr3t",
+      newPasswordCheck: "s3cr3t"
+    },
+    action: ActionCreators.submitPasswordChangeSuccess({}, "my-new-password"),
+    after: {
+      newPassword: "",
+      newPasswordCheck: "",
+      newPasswordMatch: true,
+      canChangePassword: false,
+      passwordChanged: true
+    }
+  });
+
+  reducer("handles password change failure", {
+    before: {
+      newPassword: "s3cr3t",
+      newPasswordCheck: "s3cr3t"
+    },
+    action: ActionCreators.submitPasswordChangeFailure(
+      "boom!",
+      "my-new-password"
+    ),
+    after: {
+      newPassword: "s3cr3t",
+      newPasswordCheck: "s3cr3t",
+      passwordChanged: false,
+      error: "boom!"
+    }
+  });
 });

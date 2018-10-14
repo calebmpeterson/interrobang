@@ -150,6 +150,24 @@ export const submitSubscriptionUpdate = (subscribed, signup = false) => {
   });
 };
 
+export const submitPasswordChange = password => {
+  return dispatch((d, getState) => {
+    const { user, password } = getState();
+    const { newPassword } = password;
+
+    dispatch(ActionCreators.submitPasswordChange(user, newPassword));
+
+    return BackendlessApi.changePassword(user, newPassword).then(
+      updatedUser =>
+        dispatch(
+          ActionCreators.submitPasswordChangeSuccess(updatedUser, newPassword)
+        ),
+      error =>
+        dispatch(ActionCreators.submitPasswordChangeFailure(error, newPassword))
+    );
+  });
+};
+
 export const viewLogin = () => {
   dispatch({
     type: ActionTypes.VIEW_LOGIN

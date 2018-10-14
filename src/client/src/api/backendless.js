@@ -56,6 +56,11 @@ async function updateActivation(user, activated) {
   return Backendless.UserService.update(user);
 }
 
+async function changePassword(user, password) {
+  user["password"] = password;
+  return Backendless.UserService.update(user);
+}
+
 function getUserToken(user) {
   if (isObject(user)) {
     return get(user, "user-token");
@@ -142,6 +147,7 @@ export default {
   recover,
   updateActivation,
   updateSubscription,
+  changePassword,
   getCurrentUser,
   getUserToken,
   getConfigFileUrl,

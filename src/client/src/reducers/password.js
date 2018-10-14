@@ -36,6 +36,25 @@ export default function(state = DEFAULT_STATE, action) {
         canChangePassword: canProceed(action.password, state.newPassword)
       });
 
+    case ActionTypes.SUBMIT_PASSWORD_CHANGE_SUCCESS:
+      return merge({}, state, {
+        newPassword: "",
+        newPasswordCheck: "",
+        newPasswordMatch: verifyPassword("", ""),
+        canChangePassword: canProceed("", ""),
+        passwordChanged: true
+      });
+
+    case ActionTypes.SUBMIT_PASSWORD_CHANGE_FAILURE:
+      return merge({}, state, {
+        passwordChanged: false,
+        error: "boom!"
+      });
+
+    case ActionTypes.LOGIN_USER_SUCCESS:
+    case ActionTypes.LOGOUT_SUCCESS:
+      return DEFAULT_STATE;
+
     default:
       return state;
   }
