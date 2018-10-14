@@ -9,6 +9,7 @@ import unset from "lodash/unset";
 
 import ActionTypes from "../constants/ActionTypes";
 
+import { generateOnboardingMessageAndConfig } from "../utils/OnboardingUtils";
 import { deserializeBangs, sortRecords } from "../utils/ConfigUtils";
 
 const DEFAULT_ERROR_MESSAGE = `Failed to load configuration`;
@@ -38,11 +39,14 @@ export const ONBOARDING_CONFIGURATION = {
 export default function(state = DEFAULT_STATE, action) {
   switch (action.type) {
     case ActionTypes.REGISTER_USER_SUCCESS:
+      const onboarding = generateOnboardingMessageAndConfig(action.user);
       return {
         loading: false,
         loaded: true,
         error: undefined,
-        config: ONBOARDING_CONFIGURATION
+        messages: [onboarding.message],
+        config: onboarding.config,
+        records: sortRecords(deserializeBangs(onboarding.config.bangs))
       };
 
     case ActionTypes.REQUEST_CONFIGURATION:

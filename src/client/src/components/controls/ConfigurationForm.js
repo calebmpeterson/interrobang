@@ -141,9 +141,7 @@ export default class ConfigurationForm extends React.Component {
         <form>
           <div className="row">
             <div className="col">
-              <label>
-                <strong>Search !Bangs</strong>
-              </label>
+              <h3>Search !Bangs</h3>
             </div>
           </div>
           <div className="row">
@@ -195,9 +193,7 @@ export default class ConfigurationForm extends React.Component {
 
           <div className="row mt-5">
             <div className="col">
-              <label>
-                <strong>Default Search</strong>
-              </label>
+              <h3>Default Search</h3>
               <p>
                 This is the default search pattern used when your query has no
                 search <em>!bang</em>

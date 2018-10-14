@@ -1,24 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import map from 'lodash/map';
+import map from "lodash/map";
 
-import { viewRegistration, saveConfiguration } from '../../actions';
+import { viewRegistration, saveConfiguration } from "../../actions";
 
-import Layout from './Layout';
-import Icon from '../controls/Icon';
-import If from '../controls/If';
-import ConfigurationForm from '../controls/ConfigurationForm';
-import SetupProgress from '../controls/SetupProgress';
+import Layout from "./Layout";
+import Icon from "../controls/Icon";
+import If from "../controls/If";
+import ConfigurationForm from "../controls/ConfigurationForm";
+import SetupProgress from "../controls/SetupProgress";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     configuration: state.configuration,
     user: state.user
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     saveConfiguration() {
       saveConfiguration({ setup: true });
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-class SetupConfigurationPage  extends React.Component {
+class SetupConfigurationPage extends React.Component {
   componentDidMount() {
     if (this.props.user.missing && !this.props.user.loading) {
       viewRegistration();
@@ -37,8 +37,13 @@ class SetupConfigurationPage  extends React.Component {
     const { error, messages, persisting } = this.props.configuration;
 
     const messageElements = map(messages, (message, index) => (
-      <div key={index} className="border border-info rounded text-info p-3">
-        <Icon icon="information-outline" />&nbsp;{message}
+      <div
+        key={index}
+        className="bg-info text-white rounded p-3 mb-3 shadow-3dp"
+      >
+        <Icon icon="information-outline" />
+        &nbsp;
+        <strong>{message}</strong>
       </div>
     ));
 
@@ -55,7 +60,9 @@ class SetupConfigurationPage  extends React.Component {
 
           <If test={error}>
             <div className="border border-danger rounded text-danger p-3 mb-3">
-              <Icon icon="alert-circle" />&nbsp;{error}
+              <Icon icon="alert-circle" />
+              &nbsp;
+              {error}
             </div>
           </If>
 
@@ -63,7 +70,12 @@ class SetupConfigurationPage  extends React.Component {
 
           <div className="row">
             <div className="col text-right">
-              <button type="button" disabled={persisting} className="btn btn-success" onClick={this.props.saveConfiguration}>
+              <button
+                type="button"
+                disabled={persisting}
+                className="btn btn-success"
+                onClick={this.props.saveConfiguration}
+              >
                 <If test={!persisting}>Save &amp; Continue &raquo;</If>
                 <If test={persisting}>Saving</If>
               </button>
@@ -75,4 +87,7 @@ class SetupConfigurationPage  extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SetupConfigurationPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SetupConfigurationPage);
