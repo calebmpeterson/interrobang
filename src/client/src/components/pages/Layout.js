@@ -73,25 +73,29 @@ class Layout extends React.Component {
 
             <If test={canLogout}>
               <NavbarDropdown
+                href="#/menu"
                 title={email}
                 menuClassName="dropdown-menu-right"
                 linkClassName="btn btn-outline-primary"
               >
-                <MenuItem onClick={onConfigure}>
+                <MenuItem href="#/configuration" onClick={onConfigure}>
                   <Icon icon="settings" /> Configuration
                 </MenuItem>
 
-                <MenuItem onClick={onSetupBrowser}>
+                <MenuItem
+                  href="#/configuration/browser"
+                  onClick={onSetupBrowser}
+                >
                   <Icon icon="web" /> Setup Browser
                 </MenuItem>
 
-                <MenuItem onClick={onManageAccount}>
+                <MenuItem href="#/settings" onClick={onManageAccount}>
                   <Icon icon="account" /> Manage Account
                 </MenuItem>
 
                 <div className="dropdown-divider" />
 
-                <MenuItem onClick={logoutUser}>
+                <MenuItem href="#/logout" onClick={logoutUser}>
                   <Icon icon="logout-variant" /> Logout
                 </MenuItem>
               </NavbarDropdown>

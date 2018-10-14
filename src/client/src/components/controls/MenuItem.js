@@ -8,7 +8,11 @@ export default class MenuItem extends React.Component {
 
   render() {
     return (
-      <a className="dropdown-item" href="#" onClick={this.onClick}>
+      <a
+        className="dropdown-item"
+        href={this.props.href}
+        onClick={this.onClick}
+      >
         {this.props.children}
       </a>
     );

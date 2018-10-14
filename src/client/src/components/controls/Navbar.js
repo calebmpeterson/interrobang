@@ -17,7 +17,7 @@ export class Dropdown extends React.Component {
   }
 
   render() {
-    const { title, linkClassName, menuClassName, children } = this.props;
+    const { title, linkClassName, menuClassName, children, href } = this.props;
 
     const showClassName = this.state.show ? "show" : "";
 
@@ -28,7 +28,7 @@ export class Dropdown extends React.Component {
         <li className={`nav-item dropdown ${showClassName}`}>
           <a
             className={`${linkClassName || "nav-link"} dropdown-toggle`}
-            href="#"
+            href={href}
             id={dropdownId}
             role="button"
             aria-haspopup="true"
