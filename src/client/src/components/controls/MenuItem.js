@@ -11,7 +11,7 @@ export default class MenuItem extends React.Component {
       <a
         className="dropdown-item"
         href={this.props.href}
-        onClick={this.onClick}
+        onMouseDown={this.onClick}
       >
         {this.props.children}
       </a>

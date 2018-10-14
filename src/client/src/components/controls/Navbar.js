@@ -9,11 +9,16 @@ export class Dropdown extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
   onClick(event) {
     event.preventDefault();
     this.setState({ show: !this.state.show });
+  }
+
+  onBlur() {
+    this.setState({ show: false });
   }
 
   render() {
@@ -34,6 +39,7 @@ export class Dropdown extends React.Component {
             aria-haspopup="true"
             aria-expanded="false"
             onClick={this.onClick}
+            onBlur={this.onBlur}
           >
             {title}
           </a>
