@@ -1,5 +1,5 @@
-const Wreck = require('wreck');
-const { get, isString, isObject, merge } = require('lodash');
+const Wreck = require("wreck");
+const { merge } = require("lodash");
 
 const APP_ID = process.env.APP_ID;
 const REST_KEY = process.env.REST_KEY;
@@ -13,9 +13,9 @@ function getConfigFileUrl(userId) {
 
 function createExtendedConfig(userId) {
   return {
-    'bangs': {
-      '!': `/b/${userId}`,
-      '!config': `/account/#/configuration`
+    bangs: {
+      "!": `/b/${userId}`,
+      "!config": `/account/#/configuration`
     }
   };
 }
