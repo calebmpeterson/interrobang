@@ -41,10 +41,10 @@ class Navbar extends React.Component {
           </If>
 
           <If test={canSetup || canConfigure}>
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
+            <ul className="navbar-nav">
+              <li className="nav-item dropdown">
                 <a
-                  class="btn btn-outline-primary dropdown-toggle"
+                  className="btn btn-outline-primary dropdown-toggle"
                   href="#"
                   id="navbar-configure-dropdown"
                   role="button"
@@ -55,20 +55,23 @@ class Navbar extends React.Component {
                   <Icon icon="settings" />
                 </a>
                 <div
-                  class="dropdown-menu dropdown-menu-right"
+                  className="dropdown-menu dropdown-menu-right"
                   aria-labelledby="navbar-configure-dropdown"
                 >
                   <If test={canConfigure}>
-                    <a class="dropdown-item" href="/account/#/configuration">
+                    <a
+                      className="dropdown-item"
+                      href="/account/#/configuration"
+                    >
                       Configuration
                     </a>
                   </If>
                   <If test={canSetup || canConfigure}>
-                    <div class="dropdown-divider" />
+                    <div className="dropdown-divider" />
                   </If>
                   <If test={canSetup}>
                     <a
-                      class="dropdown-item"
+                      className="dropdown-item"
                       href="/account/#/configuration/browser"
                     >
                       Setup your browser

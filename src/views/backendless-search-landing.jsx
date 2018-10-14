@@ -1,5 +1,7 @@
 const React = require("react");
+const { map } = require("lodash");
 
+const { Selectors } = require("../suggestions");
 const Layout = require("./layout");
 const If = require("./helpers/If");
 const Icon = require("./components/Icon");
@@ -7,6 +9,13 @@ const Footer = require("./components/Footer");
 
 class Index extends React.Component {
   render() {
+    const queryAutocompleteId = "query-autocomplete";
+
+    const autocompleteOptions = map(
+      Selectors.allBangs(this.props.bangs),
+      bang => <option key={bang}>!{bang}</option>
+    );
+
     return (
       <Layout
         title="Interrobang"
@@ -30,6 +39,8 @@ class Index extends React.Component {
                     className="form-control is-valid"
                     type="text"
                     placeholder="What do you wish of me?"
+                    autoComplete={"off"}
+                    list={queryAutocompleteId}
                     autoFocus
                   />
                   <div className="input-group-append">
@@ -59,6 +70,8 @@ class Index extends React.Component {
             </div>
           </div>
         </div>
+
+        <datalist id={queryAutocompleteId}>{autocompleteOptions}</datalist>
 
         <Footer />
       </Layout>
