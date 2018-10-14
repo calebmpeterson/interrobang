@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 
 import get from "lodash/get";
 
-import { logoutUser, viewAccount, viewConfiguration } from "../../actions";
+import {
+  logoutUser,
+  viewAccount,
+  viewConfiguration,
+  viewBrowserConfiguration
+} from "../../actions";
 import If from "../controls/If";
 import Icon from "../controls/Icon";
 import { Dropdown as NavbarDropdown } from "../controls/Navbar";
@@ -20,6 +25,10 @@ const mapStateToProps = state => {
 
 const onConfigure = () => {
   viewConfiguration();
+};
+
+const onSetupBrowser = () => {
+  viewBrowserConfiguration();
 };
 
 const onManageAccount = () => {
@@ -70,6 +79,10 @@ class Layout extends React.Component {
               >
                 <MenuItem onClick={onConfigure}>
                   <Icon icon="settings" /> Configuration
+                </MenuItem>
+
+                <MenuItem onClick={onSetupBrowser}>
+                  <Icon icon="web" /> Setup Browser
                 </MenuItem>
 
                 <MenuItem onClick={onManageAccount}>
