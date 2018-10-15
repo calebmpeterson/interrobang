@@ -3,6 +3,10 @@ const { expect } = require("chai");
 const { fetchDuckDuckGoBangs } = require("../../src/suggestions/duckduckgo");
 
 describe("DuckDuckGo !bang scraping", () => {
+  beforeEach(function() {
+    this.timeout(10000);
+  });
+
   it("should return a large array", done => {
     fetchDuckDuckGoBangs().then(bangs => {
       expect(bangs).to.be.an.instanceOf(Array);
