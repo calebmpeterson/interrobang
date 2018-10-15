@@ -17,6 +17,10 @@ const openSearchXml = props => `
   <Url type="application/opensearchdescription+xml" rel="self" template="https://interrobang.online/${
     props.searchUrl
   }/open-search.xml" />
+  <Url type="application/x-suggestions+json"
+        template=""https://interrobang.online/${
+          props.searchUrl
+        }/suggest?query={searchTerms}"/>
 </OpenSearchDescription>
 `;
 
