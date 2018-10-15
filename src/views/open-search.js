@@ -5,16 +5,11 @@ const openSearchXml = props => `
   <ShortName>Interrobang</ShortName>
   <Description>Interrobang - custom search !bangs, standard DuckDuckGo !bangs, selectable default search engine</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <OutputEncoding>UTF-8</OutputEncoding>
-  <Language>en-us</Language>
   <Developer>Caleb Peterson</Developer>
   <Contact>caleb.peterson@cubicle6.com</Contact>
   <Url type="text/html" method="get" template="https://interrobang.online/${
     props.searchUrl
   }/search?query={searchTerms}" />
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://interrobang.online/${
-    props.searchUrl
-  }/open-search.xml" />
   <Url type="application/x-suggestions+json"
         template="https://interrobang.online/${
           props.searchUrl

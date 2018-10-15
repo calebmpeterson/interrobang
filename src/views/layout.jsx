@@ -123,7 +123,7 @@ class Layout extends React.Component {
               type="application/opensearchdescription+xml"
               href={`https://interrobang.online/${
                 this.props.searchUrl
-              }/open-search.xml`}
+              }/opensearch.xml`}
             />
           </If>
         </head>
