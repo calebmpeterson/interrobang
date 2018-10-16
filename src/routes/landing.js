@@ -8,11 +8,7 @@ module.exports = {
     const { search, userId } = request.query;
 
     if (search === "opensearch" && userId) {
-      const response = reply.response(
-        openSearchXml({ searchUrl: `b/${userId}` })
-      );
-      response.type("application/xml");
-      return response;
+      return reply.view("landing-open-search", { userId });
     }
 
     return reply.view("landing");
