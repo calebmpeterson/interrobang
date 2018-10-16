@@ -6,6 +6,7 @@ module.exports = {
   handler: (request, reply) => {
     console.log(request.query);
     const { search, userId } = request.query;
+
     if (search === "opensearch" && userId) {
       const response = reply.response(
         openSearchXml({ searchUrl: `b/${userId}` })
@@ -13,6 +14,7 @@ module.exports = {
       response.type("application/xml");
       return response;
     }
+
     return reply.view("landing");
   }
 };
