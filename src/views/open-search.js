@@ -1,7 +1,7 @@
 const openSearchXml = props => `
 <OpenSearchDescription
     xmlns="http://a9.com/-/spec/opensearch/1.1/">
-  <ShortName>Interrobang</ShortName>
+  <ShortName>${props.title || "Interrobang"}</ShortName>
   <Description>Interrobang - custom search !bangs, standard DuckDuckGo !bangs, selectable default search engine</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Url type="text/html" method="get" template="https://interrobang.online/${
