@@ -4,11 +4,10 @@ module.exports = {
   method: "GET",
   path: "/",
   handler: (request, reply) => {
-    console.log(request.query);
-    const { search, userId } = request.query;
+    const { search, userId, redirect } = request.query;
 
     if (search === "opensearch" && userId) {
-      return reply.view("landing-open-search", { userId });
+      return reply.view("landing-open-search", { userId, redirect });
     }
 
     return reply.view("landing");
