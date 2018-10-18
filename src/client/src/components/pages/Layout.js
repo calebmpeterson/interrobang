@@ -83,7 +83,7 @@ class Layout extends React.Component {
                 </MenuItem>
 
                 <MenuItem
-                  href="#/configuration/browser"
+                  href="#/configuration/opensearch"
                   onClick={onSetupBrowser}
                 >
                   <Icon icon="web" /> Setup Browser

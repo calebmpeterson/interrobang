@@ -366,8 +366,14 @@ export const viewAccountRecovered = () => {
   dispatch(push(`/recovered`));
 };
 
-export const viewBrowserConfiguration = () =>
-  dispatch(push(`/configuration/browser`));
+export const viewBrowserConfiguration = () => {
+  return dispatch((d, getState) => {
+    const { user } = getState();
+    const userId = user.objectId;
+    const url = `/?search=opensearch&userId=${userId}&redirect=configuration/browser`;
+    window.location.href = url;
+  });
+};
 
 export const updateNewPassword = value =>
   dispatch(ActionCreators.updateNewPassword(value));

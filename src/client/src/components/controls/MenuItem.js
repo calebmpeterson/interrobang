@@ -2,6 +2,7 @@ import React from "react";
 
 export default class MenuItem extends React.Component {
   onClick = event => {
+    event.stopPropagation();
     event.preventDefault();
     this.props.onClick();
   };

@@ -116,6 +116,8 @@ class Layout extends React.Component {
           />
           <link rel="stylesheet" href="/assets/css/style.css" />
 
+          {this.props.headTags}
+
           <If test={this.props.searchUrl}>
             <link
               rel="search"
