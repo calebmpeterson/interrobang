@@ -1,6 +1,8 @@
 const Wreck = require("wreck");
 const { merge } = require("lodash");
 
+const router = require("../services/router");
+
 const APP_ID = process.env.APP_ID;
 const REST_KEY = process.env.REST_KEY;
 
@@ -14,8 +16,8 @@ function getConfigFileUrl(userId) {
 function createExtendedConfig(userId) {
   return {
     bangs: {
-      "!": `/b/${userId}`,
-      "!config": `/account/#/configuration`
+      "!": router.landing(userId),
+      "!config": router.configuration(userId)
     }
   };
 }
@@ -26,6 +28,7 @@ async function getConfig(userId) {
 
   const { payload } = await Wreck.get(url);
   const config = JSON.parse(payload.toString());
+
   return merge({}, config, createExtendedConfig(userId));
 }
 
