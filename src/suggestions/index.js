@@ -1,7 +1,26 @@
 const numeral = require("numeral");
-const { chain } = require("lodash");
+const { chain, isEmpty } = require("lodash");
 
-function suggest(query, config) {}
+function suggest(userId, config, query = "") {
+  if (isEmpty(config)) {
+    return {
+      query,
+      results: []
+    };
+  }
+
+  const metaBangResults = [
+    { query: "!!", count: 1, url: `/b/${userId}` },
+    { query: "!!config", count: 1, url: `/account/#/configuration` }
+  ];
+
+  const queryResults = [];
+
+  return {
+    query,
+    results: [...queryResults, ...metaBangResults]
+  };
+}
 
 const Selectors = {
   allBangs: bangs =>

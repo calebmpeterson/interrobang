@@ -4,7 +4,7 @@ const { getConfig } = require("../config/backendless");
 const {
   convertToOpenSearchSuggestions
 } = require("../suggestions/open-search");
-const { search } = require("../query");
+const { suggest } = require("../suggestions");
 
 module.exports = {
   method: "GET",
@@ -17,29 +17,14 @@ module.exports = {
 
     try {
       const config = await getConfig(userId);
-      const result = search(config, query);
+      const suggestions = suggest(userId, config, query);
 
-      const visitor = request.server.methods.getAnalyticsVisitor(request);
-      visitor.event("Suggest", userId, result.bang).send();
+      const openSearchSuggestions = convertToOpenSearchSuggestions(suggestions);
 
-      const suggestions = convertToOpenSearchSuggestions({
-        query,
-        results: [
-          { query: "foo", count: 100000, url: "https://example.com" },
-          { query: "bar", count: 100000, url: "https://example.com" },
-          { query: "baz", count: 100000, url: "https://example.com" }
-        ]
-      });
-
-      return suggestions;
+      return openSearchSuggestions;
     } catch (e) {
-      console.error(chalk`{red ${e.message}}`);
-      return reply.view("backendless-config-error", {
-        userId,
-        query,
-        message: `Oops! Look's like we couldn't find your configuration`,
-        config: e.config
-      });
+      console.error(chalk`{red ${e.message}}`, e);
+      return [query, [`Error generating suggestions: ${e.message}`]];
     }
   }
 };
