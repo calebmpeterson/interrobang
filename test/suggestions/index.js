@@ -4,6 +4,10 @@ const { suggest } = require("../../src/suggestions");
 
 const TEST_USER_ID = "123456";
 
+const emptyConfig = {
+  bangs: {}
+};
+
 const config = {
   bangs: {
     foo: "https://example.com/search?q={{{s}}}"
@@ -11,8 +15,16 @@ const config = {
 };
 
 const metaBangResults = [
-  { query: "!!", count: 1, url: `/b/${TEST_USER_ID}` },
-  { query: "!!config", count: 1, url: `/account/#/configuration` }
+  {
+    query: "!!",
+    count: 1,
+    url: `https://interrobang.online/b/${TEST_USER_ID}`
+  },
+  {
+    query: "!!config",
+    count: 1,
+    url: `https://interrobang.online/account/#/configuration`
+  }
 ];
 
 describe("suggestion generation", () => {
@@ -39,6 +51,7 @@ describe("suggestion generation", () => {
   describe("proper behavior", () => {
     it("pass the query back in the result object", () => {
       expect(suggest(TEST_USER_ID, config, "")).to.haveOwnProperty("query", "");
+
       expect(suggest(TEST_USER_ID, config, "foo")).to.haveOwnProperty(
         "query",
         "foo"
@@ -54,8 +67,15 @@ describe("suggestion generation", () => {
     });
 
     it("always includes !! and !!config if the query starts with a !", () => {
-      expect(suggest(TEST_USER_ID, config, "!")).to.deep.include({
-        results: [...metaBangResults]
+      expect(suggest(TEST_USER_ID, emptyConfig, "!")).to.deep.include({
+        results: [
+          {
+            query: "!",
+            count: 1,
+            url: `https://interrobang.online/b/${TEST_USER_ID}/search?query=!`
+          },
+          ...metaBangResults
+        ]
       });
     });
 
@@ -63,9 +83,40 @@ describe("suggestion generation", () => {
       expect(suggest(TEST_USER_ID, config, "!f")).to.deep.include({
         results: [
           {
+            query: "!f",
+            count: 1,
+            url: `https://interrobang.online/b/${TEST_USER_ID}/search?query=!f`
+          },
+          {
             query: "!foo",
             count: 1,
-            url: `/b/${TEST_USER_ID}/search?query=!foo`
+            url: `https://interrobang.online/b/${TEST_USER_ID}/search?query=!foo`
+          },
+          ...metaBangResults
+        ]
+      });
+    });
+
+    it("handles a specific query correctly", () => {
+      expect(suggest(TEST_USER_ID, config, "foo bar")).to.deep.include({
+        results: [
+          {
+            query: "foo bar",
+            count: 1,
+            url: `https://interrobang.online/b/${TEST_USER_ID}/search?query=foo bar`
+          },
+          ...metaBangResults
+        ]
+      });
+    });
+
+    it("handles a specific !bang query correctly", () => {
+      expect(suggest(TEST_USER_ID, config, "!foo bar")).to.deep.include({
+        results: [
+          {
+            query: "!foo bar",
+            count: 1,
+            url: `https://interrobang.online/b/${TEST_USER_ID}/search?query=!foo bar`
           },
           ...metaBangResults
         ]

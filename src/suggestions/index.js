@@ -1,5 +1,7 @@
 const numeral = require("numeral");
-const { chain, isEmpty } = require("lodash");
+const { chain, isEmpty, startsWith } = require("lodash");
+
+const router = require("../services/router");
 
 function suggest(userId, config, query = "") {
   if (isEmpty(config)) {
@@ -10,15 +12,28 @@ function suggest(userId, config, query = "") {
   }
 
   const metaBangResults = [
-    { query: "!!", count: 1, url: `/b/${userId}` },
-    { query: "!!config", count: 1, url: `/account/#/configuration` }
+    { query: "!!", count: 1, url: router.landing(userId) },
+    { query: "!!config", count: 1, url: router.configuration() }
   ];
 
-  const queryResults = [];
+  const echoQuery = {
+    query: query,
+    count: 1,
+    url: router.search(userId, query)
+  };
+
+  const queryResults = chain(config.bangs)
+    .mapValues((pattern, bang) => ({
+      query: `!${bang}`,
+      count: 1,
+      url: router.search(userId, `!${bang}`)
+    }))
+    .filter((pattern, bang) => startsWith(`!${bang}`, query))
+    .value();
 
   return {
     query,
-    results: [...queryResults, ...metaBangResults]
+    results: [echoQuery, ...queryResults, ...metaBangResults]
   };
 }
 
