@@ -16,8 +16,11 @@ import Root from "./components/Root";
 
 import { requestCurrentUser } from "./actions";
 
+import Router from "./common/Router";
 import BackendlessApi from "./api/backendless";
+
 global.BackendlessApi = BackendlessApi;
+global.Router = Router;
 
 class App extends Component {
   componentDidMount() {
