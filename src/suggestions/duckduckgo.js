@@ -32,7 +32,7 @@ async function fetchDuckDuckGoBangs() {
     const bangs = chain(bangsText)
       .filter(line => !isEmpty(line))
       .map(parseBang)
-      .commit()
+      .compact()
       .value();
 
     return bangs;
