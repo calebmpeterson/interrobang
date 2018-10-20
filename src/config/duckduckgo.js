@@ -1,6 +1,6 @@
 const Wreck = require("wreck");
 const cheerio = require("cheerio");
-const { chain, isEmpty } = require("lodash");
+const { chain, fromPairs, isEmpty, map } = require("lodash");
 
 const BANGS_LITE = "https://duckduckgo.com/bang_lite.html";
 const ALPHABETICAL_LIST_ELEMENT = `h4`;
@@ -42,6 +42,18 @@ async function fetchDuckDuckGoBangs() {
   }
 }
 
+function createDuckDuckGoConfig(duckDuckGoBangsList) {
+  return {
+    bangs: fromPairs(
+      map(duckDuckGoBangsList, bang => [
+        bang,
+        `https://duckduckgo.com/?q=!${bang} {{{s}}}`
+      ])
+    )
+  };
+}
+
 module.exports = {
-  fetchDuckDuckGoBangs
+  fetchDuckDuckGoBangs,
+  createDuckDuckGoConfig
 };

@@ -1,4 +1,4 @@
-const { fetchDuckDuckGoBangs } = require("../suggestions/duckduckgo");
+const { fetchDuckDuckGoBangs } = require("../config/duckduckgo");
 
 function initialize(server) {
   return server.method("getDuckDuckGoBangs", fetchDuckDuckGoBangs, {

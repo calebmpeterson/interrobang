@@ -1,7 +1,8 @@
 const { merge } = require("lodash");
 
 function mergeConfigurations(userConfig, ...otherConfigs) {
-  return merge({}, ...otherConfigs, userConfig);
+  console.log();
+  return merge({ bangs: {} }, ...otherConfigs, userConfig);
 }
 
 module.exports = {

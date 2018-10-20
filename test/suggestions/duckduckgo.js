@@ -1,6 +1,6 @@
 const { expect } = require("chai");
 
-const { fetchDuckDuckGoBangs } = require("../../src/suggestions/duckduckgo");
+const { fetchDuckDuckGoBangs } = require("../../src/config/duckduckgo");
 
 describe("DuckDuckGo !bang scraping", () => {
   beforeEach(function() {

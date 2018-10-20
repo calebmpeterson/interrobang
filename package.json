@@ -65,6 +65,7 @@
     "lodash": "^4.17.5",
     "mdi": "^2.1.19",
     "numeral": "^2.0.6",
+    "pluralize": "^7.0.0",
     "popper.js": "1.12.9",
     "pretty-quick": "^1.7.0",
     "react": "^16.2.0",

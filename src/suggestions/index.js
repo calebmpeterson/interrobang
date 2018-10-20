@@ -1,4 +1,5 @@
 const numeral = require("numeral");
+const pluralize = require("pluralize");
 const { chain, isEmpty, startsWith } = require("lodash");
 
 const router = require("../services/router");
@@ -46,7 +47,9 @@ const Selectors = {
   query: suggestion => suggestion.query,
 
   formattedCount: suggestion =>
-    numeral(suggestion.count).format("0,0") + " results",
+    numeral(suggestion.count).format("0,0") +
+    " " +
+    pluralize("result", suggestion.count),
 
   url: suggestion => suggestion.url
 };

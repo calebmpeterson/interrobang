@@ -2,9 +2,11 @@ const chalk = require("chalk");
 
 const { getConfig } = require("../config/backendless");
 const { getDuckDuckGoBangs } = require("../cache");
+const { createDuckDuckGoConfig } = require("../config/duckduckgo");
 const {
   convertToOpenSearchSuggestions
 } = require("../suggestions/open-search");
+const { mergeConfigurations } = require("../config/merge");
 const { suggest } = require("../suggestions");
 
 module.exports = {
@@ -17,12 +19,12 @@ module.exports = {
     console.log(`Suggest ${userId} ${query}`);
 
     try {
-      const config = await getConfig(userId);
+      const userConfig = await getConfig(userId);
       const publicBangs = await getDuckDuckGoBangs(request.server);
+      const publicConfig = createDuckDuckGoConfig(publicBangs);
+      const completeConfig = mergeConfigurations(userConfig, publicConfig);
 
-      // TODO merge user's config with public config from DDG !bangs
-      const suggestions = suggest(userId, config, query);
-
+      const suggestions = suggest(userId, completeConfig, query);
       const openSearchSuggestions = convertToOpenSearchSuggestions(suggestions);
 
       return openSearchSuggestions;

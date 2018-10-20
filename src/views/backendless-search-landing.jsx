@@ -15,6 +15,10 @@ class Index extends React.Component {
       bang => <option key={bang}>!{bang}</option>
     );
 
+    const openSearchIframeURL = `/?search=opensearch&userId=${
+      this.props.userId
+    }`;
+
     return (
       <Layout
         title="Interrobang"
@@ -71,6 +75,8 @@ class Index extends React.Component {
         </div>
 
         <datalist id={queryAutocompleteId}>{autocompleteOptions}</datalist>
+
+        <iframe style={{ display: "none" }} src={openSearchIframeURL} />
 
         <Footer />
       </Layout>
