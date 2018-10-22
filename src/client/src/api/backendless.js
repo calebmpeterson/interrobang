@@ -99,8 +99,6 @@ async function persistConfig(user, config) {
   Backendless.Files.Permissions.DELETE.deny(fileURL);
 
   Backendless.Files.Permissions.READ.grantRole(SERVER_CODE_USER, fileURL);
-  Backendless.Files.Permissions.WRITE.grantRole(SERVER_CODE_USER, fileURL);
-  Backendless.Files.Permissions.DELETE.grantRole(SERVER_CODE_USER, fileURL);
 
   Backendless.Files.Permissions.READ.grantUser(userId, fileURL);
   Backendless.Files.Permissions.WRITE.grantUser(userId, fileURL);
