@@ -9,6 +9,7 @@ import SetupCommunicationPage from "./pages/SetupCommunicationPage";
 
 import LoginPage from "./pages/LoginPage";
 import ConfigurationPage from "./pages/ConfigurationPage";
+import BrowserLoginPage from "./pages/BrowserLoadingPage";
 import BrowserPage from "./pages/BrowserPage";
 import AccountPage from "./pages/AccountPage";
 
@@ -38,8 +39,13 @@ export default class Root extends React.Component {
               component={SetupCommunicationPage}
             />
 
-            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/login" component={BrowserLoginPage} />
             <Route exact path="/configuration" component={ConfigurationPage} />
+            <Route
+              exact
+              path="/configuration/opensearch"
+              component={BrowserLoginPage}
+            />
             <Route
               exact
               path="/configuration/browser"

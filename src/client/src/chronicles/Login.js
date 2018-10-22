@@ -1,18 +1,19 @@
-import includes from 'lodash/includes';
+import includes from "lodash/includes";
 
-import { Chronicle } from '../middleware/chronicle';
-import ActionTypes from '../constants/ActionTypes';
+import { Chronicle } from "../middleware/chronicle";
+import ActionTypes from "../constants/ActionTypes";
 
-import { viewLogin, viewConfiguration, loadConfiguration } from '../actions';
+import { viewLogin, viewConfiguration, loadConfiguration } from "../actions";
 
 const NO_LOGIN_REDIRECT = [
-  '/register',
-  '/recover',
-  '/recovered'
+  "/register",
+  "/recover",
+  "/recovered",
+  "/configuration/opensearch"
 ];
 
 new Chronicle({
-  name: 'Login',
+  name: "Login",
 
   when: ActionTypes.LOGIN_USER_SUCCESS,
 
@@ -25,22 +26,21 @@ new Chronicle({
 });
 
 new Chronicle({
-  name: 'Load Configuration',
+  name: "Load Configuration",
 
   when: ActionTypes.REQUEST_CURRENT_USER_SUCCESS,
 
   then(state, action) {
     if (!state.user.missing) {
       loadConfiguration(state.user);
-    }
-    else if (!includes(NO_LOGIN_REDIRECT, state.router.location.pathname)) {
+    } else if (!includes(NO_LOGIN_REDIRECT, state.router.location.pathname)) {
       viewLogin();
     }
   }
 });
 
 new Chronicle({
-  name: 'Re-login',
+  name: "Re-login",
 
   when: ActionTypes.REQUEST_CURRENT_USER_FAILURE,
 
