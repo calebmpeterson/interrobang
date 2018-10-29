@@ -106,14 +106,13 @@ class Layout extends React.Component {
             name="msapplication-square310x310logo"
             content="/assets/favicon/mstile-310x310.png"
           />
+
+          <link rel="stylesheet" href="/style/css/bootstrap.min.css" />
           <link
             rel="stylesheet"
-            href="/assets/bootstrap/css/bootstrap.min.css"
+            href="/style/css/materialdesignicons.min.css"
           />
-          <link
-            rel="stylesheet"
-            href="/assets/mdi/css/materialdesignicons.min.css"
-          />
+
           <link rel="stylesheet" href="/assets/css/style.css" />
 
           {this.props.headTags}
@@ -132,7 +131,7 @@ class Layout extends React.Component {
             src="https://code.jquery.com/jquery-1.12.4.min.js"
             crossOrigin="anonymous"
           />
-          <script src="/assets/bootstrap/js/bootstrap.bundle.js" />
+          <script src="/style/js/bootstrap.bundle.js" />
           <script src="/assets/scrollpos-styler/scrollPosStyler.js" />
 
           <Navbar variant={this.props.navbarVariant} {...this.props} />

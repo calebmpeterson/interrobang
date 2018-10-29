@@ -29,6 +29,8 @@ async function initialize() {
   await server.register(require("inert"));
   await server.register(require("vision"));
 
+  await server.register(require("h2o2"));
+
   await server.register({
     plugin: require("hapi-dev-errors"),
     options: {
@@ -49,6 +51,9 @@ async function initialize() {
 
   extensions(server);
   routes(server);
+
+  // Export for debugging
+  global.server = server;
 
   await server.start(error => {
     if (error) {
