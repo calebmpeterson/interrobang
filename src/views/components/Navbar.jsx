@@ -19,9 +19,17 @@ class Navbar extends React.Component {
         className={`navbar navbar-expand-sm fixed-top ${navbarVariantClassName}`}
       >
         <div className="container">
-          <a className="navbar-brand mr-auto" href="/">
+          <a className="navbar-brand" href="/">
             Interrobang
           </a>
+
+          <ul className="navbar-nav ml-3 mr-auto">
+            <li className="nav-item active">
+              <a className="nav-link" href="/about/privacy-policy/">
+                Privacy Policy
+              </a>
+            </li>
+          </ul>
 
           <If test={canLogin}>
             <a
