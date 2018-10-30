@@ -1,3 +1,4 @@
-module.exports = function (server) {
-  require('./analytics')(server);
+module.exports = function(server) {
+  require("./analytics")(server);
+  require("./memory-usage")(server);
 };
