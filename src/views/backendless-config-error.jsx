@@ -1,5 +1,9 @@
 const React = require("react");
 
+const { get, has, startsWith } = require("lodash");
+
+const router = require("../services/router");
+
 const Layout = require("./layout");
 const Footer = require("./components/Footer");
 const If = require("./components/If");
@@ -7,6 +11,12 @@ const Icon = require("./components/Icon");
 
 class Index extends React.Component {
   render() {
+    const hasSearchEngine = has(this.props, "config.search-engine");
+    const searchEnginePattern = get(this.props, "config.search-engine");
+    const isBangQuery = startsWith(this.props.query, "!");
+
+    console.log(hasSearchEngine, searchEnginePattern, isBangQuery);
+
     return (
       <Layout
         title="Interrobang"
@@ -30,7 +40,7 @@ class Index extends React.Component {
                     className="form-control is-valid"
                     type="text"
                     placeholder="What do you wish of me?"
-                    value={this.props.query}
+                    defaultValue={this.props.query}
                     autoFocus
                   />
                   <div className="input-group-append">
@@ -48,32 +58,52 @@ class Index extends React.Component {
               </form>
             </div>
           </div>
-          <div className="row mt-4 text-center">
-            <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-              <small className="text-muted">
-                Custom search <em>!bangs</em>. DuckDuckGo default{" "}
-                <em>!bangs</em>. Pick your search engine.
-                <br />
-                <a href={`/account/#/configuration`}>Edit your configuration</a>
-                .
-              </small>
-            </div>
-          </div>
 
           <div className="row mt-4">
             <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-              <div className="card border border-danger mt-3">
-                <div className="card-header">
-                  <h5 className="text-danger float-left">
-                    {this.props.message}
+              <div className="card border border-danger my-3">
+                <div className="card-header text-danger">
+                  <h5>
+                    <Icon icon="alert-octagon" /> {this.props.message}
                   </h5>
                 </div>
-                <If test={this.props.config}>
-                  <div className="card-body">
-                    <pre>
-                      <code>{this.props.config}</code>
-                    </pre>
-                  </div>
+
+                <If test={hasSearchEngine}>
+                  {() => (
+                    <div className="p-3">
+                      In the meantime, you can&nbsp;
+                      <a
+                        href={router.defaultSearch(
+                          searchEnginePattern,
+                          this.props.query
+                        )}
+                      >
+                        search directly on your default search engine &raquo;
+                      </a>
+                    </div>
+                  )}
+                </If>
+
+                <If test={!hasSearchEngine && isBangQuery}>
+                  {() => (
+                    <div className="p-3">
+                      In the meantime, you can&nbsp;
+                      <a href={router.duckDuckGoSearch(this.props.query)}>
+                        search directly on DuckDuckGo &raquo;
+                      </a>
+                    </div>
+                  )}
+                </If>
+
+                <If test={!hasSearchEngine && !isBangQuery}>
+                  {() => (
+                    <div className="p-3">
+                      In the meantime, you can&nbsp;
+                      <a href={router.duckDuckGoSearch(this.props.query)}>
+                        search directly on DuckDuckGo &raquo;
+                      </a>
+                    </div>
+                  )}
                 </If>
               </div>
             </div>

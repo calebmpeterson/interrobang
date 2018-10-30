@@ -76,8 +76,6 @@ class Index extends React.Component {
 
         <datalist id={queryAutocompleteId}>{autocompleteOptions}</datalist>
 
-        <iframe style={{ display: "none" }} src={openSearchIframeURL} />
-
         <Footer />
       </Layout>
     );

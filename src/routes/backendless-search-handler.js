@@ -1,11 +1,12 @@
-const chalk = require('chalk');
+const chalk = require("chalk");
 
-const { getConfig } = require('../config/backendless');
-const { search } = require('../query');
+const { getConfig } = require("../config/backendless");
+const { search } = require("../query");
+const { maybeThrowError } = require("../config/errors");
 
 module.exports = {
-  method: 'GET',
-  path: '/b/{userId}/search',
+  method: "GET",
+  path: "/b/{userId}/search",
   handler: async (request, reply) => {
     const { userId } = request.params;
     const { query } = request.query;
@@ -14,17 +15,18 @@ module.exports = {
       const config = await getConfig(userId);
       const result = search(config, query);
 
+      maybeThrowError(query, config);
+
       const visitor = request.server.methods.getAnalyticsVisitor(request);
-      visitor.event('Search', userId, result.bang).send();
+      visitor.event("Search", userId, result.bang).send();
 
       return reply.redirect(encodeURI(result.target));
-    }
-    catch (e) {
+    } catch (e) {
       console.error(chalk`{red ${e.message}}`);
-      return reply.view('backendless-config-error', {
+      return reply.view("backendless-config-error", {
         userId,
         query,
-        message: `Oops! Look's like we couldn't find your configuration`,
+        message: `Oops! We got an error on that...`,
         config: e.config
       });
     }
