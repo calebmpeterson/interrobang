@@ -19,9 +19,8 @@ module.exports = {
     console.log(`Suggest ${userId} ${query}`);
 
     try {
-      const userConfig = await getConfig(userId);
-      const publicBangs = await getDuckDuckGoBangs(request.server);
-      const publicConfig = createDuckDuckGoConfig(publicBangs);
+      const userConfig = await getConfig(request.params.userId);
+      const publicConfig = await getDuckDuckGoBangs(request.server);
       const completeConfig = mergeConfigurations(userConfig, publicConfig);
 
       const suggestions = suggest(userId, completeConfig, query);

@@ -11,8 +11,9 @@ module.exports = {
     const { userId } = request.params;
 
     try {
-      const duckDuckGoBangs = await getDuckDuckGoBangs(request.server);
+      const duckDuckGoConfig = await getDuckDuckGoBangs(request.server);
       const config = await getConfig(userId);
+      const duckDuckGoBangs = keys(duckDuckGoConfig.bangs);
       const configBangs = keys(config.bangs);
       const bangs = [...configBangs, ...duckDuckGoBangs];
 

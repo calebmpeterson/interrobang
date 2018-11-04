@@ -10,9 +10,7 @@ module.exports = {
   path: "/b/{userId}/diagnostics/config",
   handler: async (request, reply) => {
     const userConfig = await getConfig(request.params.userId);
-
-    const publicBangs = await getDuckDuckGoBangs(request.server);
-    const publicConfig = createDuckDuckGoConfig(publicBangs);
+    const publicConfig = await getDuckDuckGoBangs(request.server);
     const completeConfig = mergeConfigurations(userConfig, publicConfig);
 
     return completeConfig;
