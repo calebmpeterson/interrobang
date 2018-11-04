@@ -123,4 +123,32 @@ describe("suggestion generation", () => {
       });
     });
   });
+
+  describe("empty query behavior", () => {
+    it("only returns meta bangs on empty query", () => {
+      expect(suggest(TEST_USER_ID, config, "")).to.deep.include({
+        results: [
+          {
+            query: "",
+            count: 1,
+            url: `https://interrobang.online/b/${TEST_USER_ID}/search?query=`
+          },
+          ...metaBangResults
+        ]
+      });
+    });
+
+    it("only returns meta bangs on simple '!' query", () => {
+      expect(suggest(TEST_USER_ID, config, "!")).to.deep.include({
+        results: [
+          {
+            query: "!",
+            count: 1,
+            url: `https://interrobang.online/b/${TEST_USER_ID}/search?query=!`
+          },
+          ...metaBangResults
+        ]
+      });
+    });
+  });
 });

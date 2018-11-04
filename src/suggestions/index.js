@@ -4,6 +4,8 @@ const { chain, isEmpty, startsWith } = require("lodash");
 
 const router = require("../services/router");
 
+const isQuerySuggestable = query => !isEmpty(query) && query !== "!";
+
 function suggest(userId, config, query = "") {
   if (isEmpty(config)) {
     return {
@@ -23,14 +25,16 @@ function suggest(userId, config, query = "") {
     url: router.search(userId, query)
   };
 
-  const queryResults = chain(config.bangs)
-    .mapValues((pattern, bang) => ({
-      query: `!${bang}`,
-      count: 1,
-      url: router.search(userId, `!${bang}`)
-    }))
-    .filter((pattern, bang) => startsWith(`!${bang}`, query))
-    .value();
+  const queryResults = isQuerySuggestable(query)
+    ? chain(config.bangs)
+        .mapValues((pattern, bang) => ({
+          query: `!${bang}`,
+          count: 1,
+          url: router.search(userId, `!${bang}`)
+        }))
+        .filter((pattern, bang) => startsWith(`!${bang}`, query))
+        .value()
+    : [];
 
   return {
     query,
