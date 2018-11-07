@@ -8,7 +8,6 @@ import {
   logoutUser,
   viewAccount,
   viewConfiguration,
-  viewBrowserConfiguration,
   viewNotifications
 } from "../../actions";
 import If from "../controls/If";
