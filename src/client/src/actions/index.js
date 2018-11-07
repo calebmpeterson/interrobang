@@ -382,3 +382,10 @@ export const updateNewPasswordCheck = value =>
   dispatch(ActionCreators.updateNewPasswordCheck(value));
 
 export const deleteAllData = () => dispatch(ActionCreators.deleteAllData());
+
+export const viewNotifications = () => {
+  dispatch({
+    type: ActionTypes.VIEW_NOTIFICATIONS
+  });
+  dispatch(push("/notifications"));
+};

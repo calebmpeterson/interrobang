@@ -7,7 +7,8 @@ import {
   logoutUser,
   viewAccount,
   viewConfiguration,
-  viewBrowserConfiguration
+  viewBrowserConfiguration,
+  viewNotifications
 } from "../../actions";
 import If from "../controls/If";
 import Icon from "../controls/Icon";
@@ -70,6 +71,17 @@ class Layout extends React.Component {
             </If>
 
             <div className="mr-auto" />
+
+            <div className="mr-3">
+              <button
+                className="btn btn-outline-info"
+                onClick={viewNotifications}
+              >
+                <Icon icon="bell" />
+                &nbsp;
+                <span className="badge badge-light">4</span>
+              </button>
+            </div>
 
             <If test={canLogout}>
               <NavbarDropdown

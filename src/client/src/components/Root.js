@@ -16,6 +16,8 @@ import AccountPage from "./pages/AccountPage";
 import AccountRecoveryPage from "./pages/AccountRecoveryPage";
 import AccountRecoveredPage from "./pages/AccountRecoveredPage";
 
+import NotificationsPage from "./pages/NotificationsPage";
+
 import { history } from "../middleware/history";
 
 export default class Root extends React.Component {
@@ -55,6 +57,8 @@ export default class Root extends React.Component {
 
             <Route exact path="/recover" component={AccountRecoveryPage} />
             <Route exact path="/recovered" component={AccountRecoveredPage} />
+
+            <Route exact path="/notifications" component={NotificationsPage} />
 
             <Route component={LoginPage} />
           </Switch>

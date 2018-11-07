@@ -16,6 +16,7 @@ import user from "../reducers/user";
 import recovery from "../reducers/recovery";
 import configuration from "../reducers/configuration";
 import password from "../reducers/password";
+import notifications from "../reducers/notifications";
 
 const store = createStore(
   combineReducers({
@@ -26,6 +27,7 @@ const store = createStore(
     user,
     configuration,
     password,
+    notifications,
     router: routerReducer
   }),
   applyMiddleware(history, thunk, chronicle, logger)
