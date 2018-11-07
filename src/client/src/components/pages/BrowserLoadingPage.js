@@ -1,8 +1,13 @@
 import React from "react";
 
 import Layout from "./Layout";
+import { viewBrowserConfiguration } from "../../actions";
 
-class BrowserLoginPage extends React.Component {
+class BrowserLoadingPage extends React.Component {
+  componentDidMount() {
+    viewBrowserConfiguration();
+  }
+
   render() {
     return (
       <Layout>
@@ -27,4 +32,4 @@ class BrowserLoginPage extends React.Component {
   }
 }
 
-export default BrowserLoginPage;
+export default BrowserLoadingPage;

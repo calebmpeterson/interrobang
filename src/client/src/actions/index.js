@@ -6,6 +6,7 @@ import BackendlessApi from "../api/backendless";
 import { createLandingURL } from "../api/backendless";
 
 import ActionCreators from "./creators";
+import Router from "../common/Router";
 
 const { dispatch } = store;
 
@@ -370,7 +371,7 @@ export const viewBrowserConfiguration = () => {
   return dispatch((d, getState) => {
     const { user } = getState();
     const userId = user.objectId;
-    const url = `/?search=opensearch&userId=${userId}&redirect=configuration/browser`;
+    const url = new Router().installOpenSearchDefinition(userId);
     window.location.href = url;
   });
 };

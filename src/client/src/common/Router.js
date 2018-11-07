@@ -22,6 +22,14 @@ class Router {
   duckDuckGoSearch(query) {
     return `https://duckduckgo.com/?q=${query}`;
   }
+
+  initiateOpenSearchInstallation() {
+    return `#/configuration/opensearch`;
+  }
+
+  installOpenSearchDefinition(userId) {
+    return `/?search=opensearch&userId=${userId}&redirect=configuration/browser`;
+  }
 }
 
 module.exports = Router;

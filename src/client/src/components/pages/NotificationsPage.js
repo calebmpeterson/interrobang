@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import map from "lodash/map";
 
 import { viewLogin, viewConfiguration } from "../../actions";
-
+import { selectNotificationItems } from "../../selectors/notifications";
 import Layout from "./Layout";
 import Icon from "../controls/Icon";
 
 const mapStateToProps = state => {
   return {
-    notifications: state.notifications,
+    items: selectNotificationItems(state),
     user: state.user
   };
 };
@@ -28,7 +28,7 @@ class ConfigurationPage extends React.Component {
   }
 
   render() {
-    const { items } = this.props.notifications;
+    const { items } = this.props;
 
     const messageElements = map(items, (item, index) => (
       <div key={index} className="border rounded p-3">

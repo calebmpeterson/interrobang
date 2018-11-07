@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import get from "lodash/get";
+import size from "lodash/size";
 
 import {
   logoutUser,
@@ -14,22 +15,21 @@ import If from "../controls/If";
 import Icon from "../controls/Icon";
 import { Dropdown as NavbarDropdown } from "../controls/Navbar";
 import MenuItem from "../controls/MenuItem";
+import { selectNotificationItems } from "../../selectors/notifications";
 
 const mapStateToProps = state => {
   const userId = get(state, "user.objectId", "");
   const email = get(state, "user.email", "");
+  const notificationItems = selectNotificationItems(state);
   return {
     userId,
-    email
+    email,
+    notificationCount: size(notificationItems)
   };
 };
 
 const onConfigure = () => {
   viewConfiguration();
-};
-
-const onSetupBrowser = () => {
-  viewBrowserConfiguration();
 };
 
 const onManageAccount = () => {
@@ -38,7 +38,14 @@ const onManageAccount = () => {
 
 class Layout extends React.Component {
   render() {
-    const { canLogout, canSearch, column, userId, email } = this.props;
+    const {
+      canLogout,
+      canSearch,
+      column,
+      userId,
+      email,
+      notificationCount
+    } = this.props;
     const colClassName = column || "col";
     return (
       <div>
@@ -79,7 +86,7 @@ class Layout extends React.Component {
               >
                 <Icon icon="bell" />
                 &nbsp;
-                <span className="badge badge-light">4</span>
+                <span className="badge badge-light">{notificationCount}</span>
               </button>
             </div>
 
@@ -94,10 +101,7 @@ class Layout extends React.Component {
                   <Icon icon="settings" /> Configuration
                 </MenuItem>
 
-                <MenuItem
-                  href="#/configuration/opensearch"
-                  onClick={onSetupBrowser}
-                >
+                <MenuItem href="#/configuration/opensearch">
                   <Icon icon="web" /> Setup Browser
                 </MenuItem>
 

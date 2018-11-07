@@ -2,10 +2,12 @@ import map from "lodash/map";
 
 import ActionTypes from "../constants/ActionTypes";
 
+import Router from "../common/Router";
+
 const messages = [
   [
     `OpenSearch & Suggestions`,
-    `Interrobang now supports the [OpenSearch](https://github.com/dewitt/opensearch) standard. This means search engine setup is easier and **search suggestions are now available**!`
+    `Interrobang now supports the [OpenSearch](https://github.com/dewitt/opensearch) standard. This means search engine setup is easier and **search suggestions are now available**!\n\n**[SETUP NOW](${new Router().initiateOpenSearchInstallation()})**`
   ]
 ];
 

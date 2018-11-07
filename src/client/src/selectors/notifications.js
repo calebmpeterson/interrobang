@@ -1,7 +1,10 @@
 import get from "lodash/get";
 
-export default {
-  selectLoading: state => get(state, ["notifications", "loading"], false),
-  selectItems: state => get(state, ["notifications", "items"], []),
-  selectError: state => get(state, ["notifications", "error"], null)
-};
+export const selectLoading = state =>
+  get(state, ["notifications", "loading"], false);
+
+export const selectNotificationItems = state =>
+  get(state, ["notifications", "items"], []);
+
+export const selectError = state =>
+  get(state, ["notifications", "error"], null);
