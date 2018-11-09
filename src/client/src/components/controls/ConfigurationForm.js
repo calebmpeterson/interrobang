@@ -39,6 +39,9 @@ const BangControlHeader = props => (
   <div className="row">
     <div className="col">
       <div className="input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text border-0 bg-white">!</span>
+        </div>
         <input
           type="text"
           readOnly
@@ -75,6 +78,9 @@ const BangControl = props => (
   <div className="row mb-3">
     <div className="col">
       <div className="input-group">
+        <div className="input-group-prepend">
+          <span className="input-group-text">!</span>
+        </div>
         <input
           name="bang"
           type="text"
