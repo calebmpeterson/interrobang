@@ -60,7 +60,7 @@ class Navbar extends React.Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <Icon icon="settings" />
+                  <Icon icon="account" />
                 </a>
                 <div
                   className="dropdown-menu dropdown-menu-right"
@@ -71,18 +71,22 @@ class Navbar extends React.Component {
                       className="dropdown-item"
                       href="/account/#/configuration"
                     >
-                      Configuration
+                      <Icon icon="settings" /> Configuration
                     </a>
                   </If>
-                  <If test={canSetup || canConfigure}>
-                    <div className="dropdown-divider" />
-                  </If>
+
                   <If test={canSetup}>
                     <a
                       className="dropdown-item"
                       href="/account/#/configuration/browser"
                     >
-                      Setup your browser
+                      <Icon icon="web" /> Setup Browser
+                    </a>
+                  </If>
+
+                  <If test={canSetup || canConfigure}>
+                    <a className="dropdown-item" href="/account/#/settings">
+                      <Icon icon="account" /> Manage Account
                     </a>
                   </If>
                 </div>

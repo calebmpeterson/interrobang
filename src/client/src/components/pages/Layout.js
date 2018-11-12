@@ -15,6 +15,7 @@ import Icon from "../controls/Icon";
 import { Dropdown as NavbarDropdown } from "../controls/Navbar";
 import MenuItem from "../controls/MenuItem";
 import { selectNotificationItems } from "../../selectors/notifications";
+import Visible from "../controls/Visible";
 
 const mapStateToProps = state => {
   const userId = get(state, "user.objectId", "");
@@ -45,7 +46,20 @@ class Layout extends React.Component {
       email,
       notificationCount
     } = this.props;
+
     const colClassName = column || "col";
+
+    const accountDropdownTitle = (
+      <React.Fragment>
+        <Visible xs="none" sm="none">
+          {email}
+        </Visible>
+        <Visible md="none" lg="none" xl="none">
+          <Icon icon="account" />
+        </Visible>
+      </React.Fragment>
+    );
+
     return (
       <div>
         <nav className="navbar navbar-expand-sm fixed-top navbar-light bg-white shadow-2dp">
@@ -92,7 +106,7 @@ class Layout extends React.Component {
             <If test={canLogout}>
               <NavbarDropdown
                 href="#/menu"
-                title={email}
+                title={accountDropdownTitle}
                 menuClassName="dropdown-menu-right"
                 linkClassName="btn btn-outline-primary"
               >
