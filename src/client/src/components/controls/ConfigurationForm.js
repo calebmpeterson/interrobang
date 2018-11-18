@@ -102,7 +102,7 @@ const BangControl = props => (
         />
         <div className="input-group-append">
           <ConfirmingButton
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-dark"
             title="Delete this search !bang"
             confirmation="Really delete?"
             confirmationClassName="btn btn-danger"

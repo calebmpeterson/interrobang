@@ -111,7 +111,7 @@ class Layout extends React.Component {
                 linkClassName="btn btn-outline-primary"
               >
                 <MenuItem href="#/configuration" onClick={onConfigure}>
-                  <Icon icon="settings" /> Configuration
+                  <Icon icon="settings" /> Configure
                 </MenuItem>
 
                 <MenuItem href="#/configuration/opensearch">

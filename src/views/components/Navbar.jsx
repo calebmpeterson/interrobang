@@ -71,7 +71,7 @@ class Navbar extends React.Component {
                       className="dropdown-item"
                       href="/account/#/configuration"
                     >
-                      <Icon icon="settings" /> Configuration
+                      <Icon icon="settings" /> Configure
                     </a>
                   </If>
 

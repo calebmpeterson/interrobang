@@ -20,8 +20,8 @@ const DefaultFooterContent = () => (
     </a>
     {delim}
     Made by <a href={`mailto:${contact}`}>Caleb Peterson</a> with{" "}
-    <i className="mdi mdi-nodejs text-success" /> and{" "}
-    <i className="mdi mdi-react text-success" />
+    <i className="mdi mdi-nodejs text-primary" /> and{" "}
+    <i className="mdi mdi-react text-primary" />
     <span className="d-none d-md-inline">{delim}</span>
     <br className="d-md-none" />
     <a href="https://www.github.com/calebmpeterson/interrobang" target="_blank">

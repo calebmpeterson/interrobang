@@ -31,6 +31,9 @@
     "/assets": {
       "target": "http://localhost:3333"
     },
+    "/style": {
+      "target": "http://localhost:3333"
+    },
     "/b": {
       "target": "http://localhost:3333"
     }

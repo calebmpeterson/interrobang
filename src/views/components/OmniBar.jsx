@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Icon from './Icon';
-import If from './If';
+import Icon from "./Icon";
+import If from "./If";
 
 function OmniBarMobile(props) {
   return (
@@ -15,7 +15,12 @@ function OmniBarMobile(props) {
                   <Icon icon="home" />
                 </span>
               </div>
-              <input id="search-input" type="text" className="form-control search-input" placeholder="" />
+              <input
+                id="search-input"
+                type="text"
+                className="form-control search-input"
+                placeholder=""
+              />
               <div className="input-group-append">
                 <span className="input-group-text">
                   <Icon icon="content-copy" />
@@ -39,7 +44,9 @@ function OmniBarDesktop(props) {
         <div className="card-header">
           <ul className="nav nav-tabs card-header-tabs">
             <li className="nav-item">
-              <a className="nav-link active" href="#">New Tab <small>&times;</small></a>
+              <a className="nav-link active" href="#">
+                New Tab <Icon icon="remove" />
+              </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
@@ -51,32 +58,39 @@ function OmniBarDesktop(props) {
 
         <div className="card-body">
           <form className="form-inline d-flex">
-            <button className="btn btn-outline-secondary mr-1">
-              <i className="mdi mdi-arrow-left"></i>
+            <button className="btn btn-outline-dark mr-1" disabled>
+              <i className="mdi mdi-arrow-left" />
             </button>
-            <button className="btn btn-outline-secondary mr-1" disabled>
-              <i className="mdi mdi-arrow-right"></i>
+            <button className="btn btn-outline-dark mr-1" disabled>
+              <i className="mdi mdi-arrow-right" />
             </button>
-            <button className="btn btn-outline-secondary mr-1">
-              <i className="mdi mdi-refresh"></i>
+            <button className="btn btn-outline-dark mr-1" disabled>
+              <i className="mdi mdi-refresh" />
             </button>
 
-            <div className="input-group align-self-stretch" style={{flexGrow: 1}}>
+            <div
+              className="input-group align-self-stretch"
+              style={{ flexGrow: 1 }}
+            >
               <div className="input-group-prepend">
-                  <span className="input-group-text">
-                    <i className="mdi mdi-magnify"></i>
-                  </span>
+                <span className="input-group-text">
+                  <i className="mdi mdi-magnify" />
+                </span>
               </div>
-              <input id="search-input" type="text" className="form-control search-input" placeholder="" />
+              <input
+                id="search-input"
+                type="text"
+                className="form-control search-input"
+                placeholder=""
+              />
             </div>
 
-            <button className="btn btn-outline-secondary ml-1">
-              <i className="mdi mdi-dots-vertical"></i>
+            <button className="btn btn-outline-dark ml-1" disabled>
+              <i className="mdi mdi-dots-vertical" />
             </button>
           </form>
         </div>
       </div>
-
     </div>
   );
 }

@@ -39,7 +39,7 @@ class Index extends React.Component {
                 <div className="input-group input-group-lg">
                   <input
                     name="query"
-                    className="form-control is-valid"
+                    className="form-control is-valid shadow-2dp"
                     type="text"
                     placeholder="What do you wish of me?"
                     autoComplete={"off"}
@@ -66,9 +66,6 @@ class Index extends React.Component {
               <small className="text-muted">
                 Custom search <em>!bangs</em>. DuckDuckGo default{" "}
                 <em>!bangs</em>. Pick your search engine.
-                <br />
-                <a href={`/account/#/configuration`}>Edit your configuration</a>
-                .
               </small>
             </div>
           </div>

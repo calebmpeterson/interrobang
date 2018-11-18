@@ -1,7 +1,6 @@
 const React = require("react");
 
 const Layout = require("./layout");
-const If = require("./helpers/If");
 const Icon = require("./components/Icon");
 const Footer = require("./components/Footer");
 
