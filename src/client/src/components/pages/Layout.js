@@ -76,15 +76,16 @@ class Layout extends React.Component {
               >
                 <div className="input-group">
                   <input
-                    className="form-control"
+                    className="form-control border-primary"
+                    style={{ height: "auto" }}
                     name="query"
                     type="text"
                     placeholder="Search..."
                   />
                   <div className="input-group-append">
-                    <span className="input-group-text">
+                    <button type="submit" className="btn btn-outline-primary">
                       <Icon icon="magnify" />
-                    </span>
+                    </button>
                   </div>
                 </div>
               </form>
