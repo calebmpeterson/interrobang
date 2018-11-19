@@ -30,7 +30,7 @@ class Index extends React.Component {
 
               <div className="progress my-3">
                 <div
-                  className="progress-bar bg-info progress-bar-striped progress-bar-animated"
+                  className="progress-bar gradient-secondary progress-bar-animated"
                   role="progressbar"
                   aria-valuenow="75"
                   aria-valuemin="0"
