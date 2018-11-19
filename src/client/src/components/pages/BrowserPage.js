@@ -72,7 +72,7 @@ class BrowserPage extends React.Component {
               </p>
 
               <div className="my-5">
-                <h5>Manual Setup</h5>
+                <h4>Manual Setup</h4>
                 <p>
                   If your browser doesn't support the OpenSearch standard (most
                   modern browsers do), you can also manually set up Interrobang.
@@ -81,7 +81,7 @@ class BrowserPage extends React.Component {
 
                 <div className="input-group input-group-lg">
                   <input
-                    className="form-control border-primary"
+                    className="form-control border-primary shadow-2dp"
                     readOnly
                     ref={this.refSearchURL}
                     value={this.props.searchURL}

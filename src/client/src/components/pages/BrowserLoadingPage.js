@@ -16,7 +16,7 @@ class BrowserLoadingPage extends React.Component {
             <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
               <div className="progress my-3">
                 <div
-                  className="progress-bar gradient-primary progress-bar-animated"
+                  className="progress-bar gradient-secondary progress-bar-animated"
                   role="progressbar"
                   aria-valuenow="100"
                   aria-valuemin="0"
