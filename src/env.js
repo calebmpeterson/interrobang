@@ -15,10 +15,15 @@ function getApplicationVersion() {
   return get(vcapApplication, ['version'], 'DEV');
 }
 
+function getWebhookStartupNotification() {
+  return process.env.WEBHOOK_STARTUP_NOTIFICATION;
+}
+
 module.exports = {
   UA_ACCOUNT_ID: 'UA-116565361-1',
   getApplicationName,
   getApplicationVersion,
+  getWebhookStartupNotification,
   SETUP_BROWSER_URL: 'https://www.howtogeek.com/114176/HOW-TO-EASILY-CREATE-SEARCH-PLUGINS-ADD-ANY-SEARCH-ENGINE-TO-YOUR-BROWSER/',
   SETUP_CHROME_URL: 'https://support.google.com/chrome/answer/95426?hl=en',
   SETUP_FIREFOX_URL: 'https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox#w_add-a-search-engine',
