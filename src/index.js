@@ -55,6 +55,8 @@ async function initialize() {
 
   // Export for debugging
   global.server = server;
+  
+  console.log(`Initialization complete. Starting server...`);
 
   await server.start(error => {
     if (error) {
@@ -62,8 +64,9 @@ async function initialize() {
     }
 
     console.log(`Server running on port ${PORT}`);
-    console.log(`Startup notification webhook: ${getWebhookStartupNotification()}`);
   });
+  
+  console.log(`Startup notification webhook: ${getWebhookStartupNotification()}`);
 }
 
 initialize();
