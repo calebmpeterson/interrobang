@@ -1,7 +1,8 @@
 const { Server } = require("hapi");
 const ReactViews = require("hapi-react-views");
+const Wreck = require("wreck");
 
-const { getWebhookStartupNotification } = require('./env');
+const { getApplicationVersion, getWebhookStartupNotification } = require('./env');
 const { initializeCache } = require("./cache");
 
 require("babel-core/register")({
@@ -66,7 +67,10 @@ async function initialize() {
     console.log(`Server running on port ${PORT}`);
   });
   
-  console.log(`Startup notification webhook: ${getWebhookStartupNotification()}`);
+  if (getWebhookStartupNotification()) {
+    console.log(`Startup notification webhook: ${getWebhookStartupNotification()}`);
+    Wreck.post(getWebhookStartupNotification(), { payload: { instance: getApplicationVersion() } });
+  }
 }
 
 initialize();
