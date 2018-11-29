@@ -42,7 +42,9 @@ class Index extends React.Component {
                     className="form-control is-valid shadow-2dp"
                     type="text"
                     placeholder="What do you wish of me?"
-                    autoComplete={"off"}
+                    autoComplete="off"
+                    autoCapitalize="off"
+                    autoCorrect="off"
                     list={queryAutocompleteId}
                     autoFocus
                   />
