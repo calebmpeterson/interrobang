@@ -10,7 +10,7 @@ describe("DuckDuckGo !bang scraping", () => {
   it("should return a large array", done => {
     fetchDuckDuckGoBangs().then(bangs => {
       expect(bangs).to.be.an.instanceOf(Array);
-      expect(bangs.length).to.be.greaterThan(10000);
+      expect(bangs.length).to.be.greaterThan(1000);
       done();
     });
   });
