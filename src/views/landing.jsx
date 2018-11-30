@@ -3,7 +3,7 @@ const Markdown = require("react-markdown");
 
 const Layout = require("./layout");
 const OmniBar = require("./components/OmniBar");
-const Footer = require("./components/Footer");
+const { Footer, MiniFooter } = require("@interrobang/ui");
 const Icon = require("./components/Icon");
 
 const personalize = require("../resources/personalize.md");
@@ -124,12 +124,16 @@ class Index extends React.Component {
               </div>
             </Content>
 
-            <Footer />
+            <div className="pt-5">
+              <Footer anchorClassName="text-white" />
 
-            <Footer>
-              Chevron graphics licensed CC-BY 3.0 from{" "}
-              <a href="https://html5up.net/directive">HTML5UP.net</a>
-            </Footer>
+              <MiniFooter>
+                Chevron graphics licensed CC-BY 3.0 from{" "}
+                <a className="text-white" href="https://html5up.net/directive">
+                  HTML5UP.net
+                </a>
+              </MiniFooter>
+            </div>
           </div>
         </div>
 
