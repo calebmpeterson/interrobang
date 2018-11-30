@@ -40,7 +40,7 @@ class ConfigurationPage extends React.Component {
     ));
 
     return (
-      <Layout title="Configuration" canLogout canSearch>
+      <Layout title="Configuration" canLogout canSearch hasFooter>
         <div>
           {messageElements}
 

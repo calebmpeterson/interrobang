@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import get from "lodash/get";
 import size from "lodash/size";
 
+import { Footer } from "@interrobang/ui";
+
 import {
   logoutUser,
   viewAccount,
@@ -44,7 +46,8 @@ class Layout extends React.Component {
       column,
       userId,
       email,
-      notificationCount
+      notificationCount,
+      hasFooter
     } = this.props;
 
     const colClassName = column || "col";
@@ -100,7 +103,7 @@ class Layout extends React.Component {
               >
                 <Icon icon="bell" />
                 &nbsp;
-                <span className="badge badge-light">{notificationCount}</span>
+                <span className="badge badge-info">{notificationCount}</span>
               </button>
             </div>
 
@@ -146,6 +149,15 @@ class Layout extends React.Component {
             <div className={colClassName}>{this.props.children}</div>
           </div>
         </div>
+
+        <If test={hasFooter}>
+          {() => (
+            <Footer
+              className="py-5 gradient-1-135 text-white"
+              anchorClassName="text-white"
+            />
+          )}
+        </If>
       </div>
     );
   }

@@ -20,6 +20,7 @@ function OmniBarMobile(props) {
                 type="text"
                 className="form-control search-input"
                 placeholder=""
+                style={{ fontSize: "110%" }}
               />
               <div className="input-group-append">
                 <span className="input-group-text">
@@ -82,6 +83,7 @@ function OmniBarDesktop(props) {
                 type="text"
                 className="form-control search-input"
                 placeholder=""
+                style={{ fontSize: "110%" }}
               />
             </div>
 

@@ -34,7 +34,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
     handleUpdateNewPassword: event => updateNewPassword(event.target.value),
     handleUpdateNewPasswordCheck: event =>
@@ -84,7 +84,7 @@ class AccountPage extends React.Component {
     );
 
     return (
-      <Layout canLogout>
+      <Layout canLogout hasFooter>
         <div className="container">
           <div className="row mt-5">
             <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">

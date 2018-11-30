@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@interrobang/ui": "1.0.13",
     "backendless": "4.4.3",
     "history": "^4.7.2",
     "key-mirror": "^1.0.1",
