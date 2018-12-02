@@ -1,8 +1,8 @@
 const React = require("react");
 
+const { MiniFooter } = require("@interrobang/ui");
+
 const Layout = require("./layout");
-const Icon = require("./components/Icon");
-const Footer = require("./components/Footer");
 
 class Index extends React.Component {
   render() {
@@ -50,7 +50,7 @@ class Index extends React.Component {
           </div>
         </div>
 
-        <Footer fixedBottom />
+        <MiniFooter fixedBottom />
       </Layout>
     );
   }

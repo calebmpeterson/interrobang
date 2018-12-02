@@ -1,11 +1,11 @@
 const React = require("react");
 
 const { get, has, startsWith } = require("lodash");
+const { MiniFooter } = require("@interrobang/ui");
 
 const router = require("../services/router");
 
 const Layout = require("./layout");
-const Footer = require("./components/Footer");
 const If = require("./components/If");
 const Icon = require("./components/Icon");
 
@@ -71,7 +71,9 @@ class Index extends React.Component {
                 <If test={hasSearchEngine}>
                   {() => (
                     <div className="p-3">
-                      In the meantime, you can&nbsp;
+                      While we work on getting this fixed...
+                      <br />
+                      You can&nbsp;
                       <a
                         href={router.defaultSearch(
                           searchEnginePattern,
@@ -110,7 +112,7 @@ class Index extends React.Component {
           </div>
         </div>
 
-        <Footer />
+        <MiniFooter />
       </Layout>
     );
   }

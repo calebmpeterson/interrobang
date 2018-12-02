@@ -1,10 +1,11 @@
 const React = require("react");
 const { map } = require("lodash");
 
+const { MiniFooter } = require("@interrobang/ui");
+
 const { Selectors } = require("../suggestions");
 const Layout = require("./layout");
 const Icon = require("./components/Icon");
-const Footer = require("./components/Footer");
 
 class Index extends React.Component {
   render() {
@@ -75,7 +76,7 @@ class Index extends React.Component {
 
         <datalist id={queryAutocompleteId}>{autocompleteOptions}</datalist>
 
-        <Footer />
+        <MiniFooter />
       </Layout>
     );
   }
