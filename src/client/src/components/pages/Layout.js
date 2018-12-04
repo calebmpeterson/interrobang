@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
 import get from "lodash/get";
 import size from "lodash/size";
 
-import { Footer } from "@interrobang/ui";
+import { Footer, NavBar } from "@interrobang/ui";
 
 import {
   logoutUser,
@@ -13,11 +13,7 @@ import {
   viewNotifications
 } from "../../actions";
 import If from "../controls/If";
-import Icon from "../controls/Icon";
-import { Dropdown as NavbarDropdown } from "../controls/Navbar";
-import MenuItem from "../controls/MenuItem";
 import { selectNotificationItems } from "../../selectors/notifications";
-import Visible from "../controls/Visible";
 
 const mapStateToProps = state => {
   const userId = get(state, "user.objectId", "");
@@ -46,119 +42,46 @@ class Layout extends React.Component {
       column,
       userId,
       email,
-      notificationCount,
-      hasFooter
+      notificationCount
     } = this.props;
 
     const colClassName = column || "col";
 
-    const accountDropdownTitle = (
-      <React.Fragment>
-        <Visible xs="none" sm="none">
-          {email}
-        </Visible>
-        <Visible md="none" lg="none" xl="none">
-          <Icon icon="account" />
-        </Visible>
-      </React.Fragment>
-    );
-
     return (
-      <div>
-        <nav className="navbar navbar-expand-sm fixed-top navbar-light bg-white shadow-2dp">
-          <div className="container">
-            <a className="navbar-brand mr-3" href={`/b/${userId}`}>
-              Interrobang
-            </a>
+      <Fragment>
+        <NavBar
+          userId={userId}
+          username={email}
+          notificationCount={notificationCount}
+          onViewNotifications={viewNotifications}
+          onViewConfiguration={onConfigure}
+          onManageAccount={onManageAccount}
+          onLogout={logoutUser}
+          canLogout={canLogout}
+          canSearch={canSearch}
+        />
 
-            <If test={canSearch}>
-              <form
-                className="form-inline d-none d-md-block"
-                method="GET"
-                action={`/b/${userId}/search`}
-              >
-                <div className="input-group">
-                  <input
-                    className="form-control border-primary"
-                    style={{ height: "auto" }}
-                    name="query"
-                    type="text"
-                    placeholder="Search..."
-                  />
-                  <div className="input-group-append">
-                    <button type="submit" className="btn btn-outline-primary">
-                      <Icon icon="magnify" />
-                    </button>
-                  </div>
+        <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
+          <div className="container my-5 flex-grow-1">
+            <If test={this.props.title}>
+              <div className="row my-5 pt-5">
+                <div className={colClassName}>
+                  <h1 className="text-center">{this.props.title}</h1>
                 </div>
-              </form>
-            </If>
-
-            <div className="mr-auto" />
-
-            <div className="mr-3">
-              <button
-                className="btn btn-outline-info"
-                onClick={viewNotifications}
-              >
-                <Icon icon="bell" />
-                &nbsp;
-                <span className="badge badge-info">{notificationCount}</span>
-              </button>
-            </div>
-
-            <If test={canLogout}>
-              <NavbarDropdown
-                href="#/menu"
-                title={accountDropdownTitle}
-                menuClassName="dropdown-menu-right"
-                linkClassName="btn btn-outline-primary"
-              >
-                <MenuItem href="#/configuration" onClick={onConfigure}>
-                  <Icon icon="settings" /> Configure
-                </MenuItem>
-
-                <MenuItem href="#/configuration/opensearch">
-                  <Icon icon="web" /> Setup Browser
-                </MenuItem>
-
-                <MenuItem href="#/settings" onClick={onManageAccount}>
-                  <Icon icon="account" /> Manage Account
-                </MenuItem>
-
-                <div className="dropdown-divider" />
-
-                <MenuItem href="#/logout" onClick={logoutUser}>
-                  <Icon icon="logout-variant" /> Logout
-                </MenuItem>
-              </NavbarDropdown>
-            </If>
-          </div>
-        </nav>
-
-        <div className="container my-5">
-          <If test={this.props.title}>
-            <div className="row my-5 pt-5">
-              <div className={colClassName}>
-                <h1 className="text-center">{this.props.title}</h1>
               </div>
+            </If>
+
+            <div className="row">
+              <div className={colClassName}>{this.props.children}</div>
             </div>
-          </If>
-
-          <div className="row">
-            <div className={colClassName}>{this.props.children}</div>
           </div>
-        </div>
 
-        <If test={hasFooter}>
-          {() => (
-            <Footer
-              className="py-5 gradient-1-135 text-white"
-              anchorClassName="text-white"
-            />
-          )}
-        </If>
-      </div>
+          <Footer
+            className="py-5 gradient-1-135 text-white"
+            anchorClassName="text-white"
+          />
+        </div>
+      </Fragment>
     );
   }
 }

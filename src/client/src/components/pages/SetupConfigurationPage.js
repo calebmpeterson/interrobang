@@ -39,7 +39,7 @@ class SetupConfigurationPage extends React.Component {
     const messageElements = map(messages, (message, index) => (
       <div
         key={index}
-        className="bg-info text-white rounded p-3 mb-3 shadow-3dp"
+        className="bg-secondary text-white rounded p-3 mb-3 shadow-3dp"
       >
         <Icon icon="information-outline" />
         &nbsp;

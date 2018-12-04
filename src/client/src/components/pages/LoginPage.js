@@ -42,7 +42,7 @@ class LoginPage extends React.Component {
     );
 
     return (
-      <Layout title="Login" column="col-md-6 offset-md-3">
+      <Layout title="Login" column="col-md-6 offset-md-3" hasFooter>
         <form onSubmit={this.props.handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">E-mail address</label>

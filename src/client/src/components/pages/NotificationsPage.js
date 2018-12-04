@@ -42,7 +42,7 @@ class ConfigurationPage extends React.Component {
     ));
 
     return (
-      <Layout title="Notifications" canLogout>
+      <Layout title="Notifications" canLogout hasFooter>
         <div className="row mt-3 mb-5">
           <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
             {messageElements}
