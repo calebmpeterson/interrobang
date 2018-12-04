@@ -137,45 +137,6 @@ class Index extends React.Component {
           </div>
         </div>
 
-        <div className="d-none">
-          <div className="container py-5 my-5">
-            <Content className="text-center text-muted">
-              <Heading className="text-muted">
-                <Icon icon="find-replace" /> Recover an existing configuration
-              </Heading>
-
-              <p className="lead">
-                Already have your Interrobang configured? <br />
-                Enter the public Gist URL here:
-              </p>
-
-              <form className="form" method="GET" action={`/setup`}>
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <Icon icon="github-circle" />
-                    </span>
-                  </div>
-
-                  <input
-                    name="gistURL"
-                    className="form-control"
-                    type="text"
-                    placeholder="Public GitHub Gist URL"
-                    defaultValue=""
-                  />
-
-                  <div className="input-group-append">
-                    <button type="submit" className="btn btn-secondary">
-                      Recover
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </Content>
-          </div>
-        </div>
-
         <script defer src="/assets/js/landing.js" />
       </Layout>
     );
