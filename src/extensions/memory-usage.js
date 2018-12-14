@@ -13,7 +13,6 @@ module.exports = server => {
   server.ext({
     type: "onRequest",
     method: function(request, h) {
-      console.log("onRequest");
       return h.continue;
     }
   });
