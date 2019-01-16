@@ -19,9 +19,17 @@ const GA_COOKIE = "ga";
 const isAssetRequest = request =>
   startsWith(request.url.pathname, "/assets") ||
   startsWith(request.url.pathname, "/style");
+const isAccountRequest = request =>
+  startsWith(request.url.pathname, "/account");
 const isPingRequest = request => isEqual(request.url.pathname, "/ping");
 const isSuggestionRequest = request =>
   endsWith(request.url.pathname, "/suggest");
+
+const isRecordableRequest = request =>
+  !isAssetRequest(request) &&
+  !isPingRequest(request) &&
+  !isSuggestionRequest(request) &&
+  !isAccountRequest(request);
 
 const getClientId = request => {
   if (has(request, "params.userId")) {
@@ -69,11 +77,7 @@ module.exports = function(server) {
       try {
         const { pathname } = request.url;
         const { path } = request.route;
-        if (
-          !isAssetRequest(request) &&
-          !isPingRequest(request) &&
-          !isSuggestionRequest(request)
-        ) {
+        if (isRecordableRequest(request)) {
           console.log(
             "Request",
             request.route.path,
