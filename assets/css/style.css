@@ -58,6 +58,43 @@
   font-size: 120%;
 }
 
+.feature p:last-of-type,
+.feature ul:last-of-type {
+  margin-bottom: 0;
+}
+
+.feature .feature-content {
+  background-color: rgba(248, 248, 248, 0.9);
+  padding: 0px 15px;
+}
+
+.feature > div:before,
+.feature > div:after {
+  display: block;
+  content: "";
+  width: 100%;
+}
+
+.feature.feature-left > div:before {
+  border-bottom: 100px solid rgba(248, 248, 248, 0.9);
+  border-right: 100px solid transparent;
+}
+
+.feature.feature-left > div:after {
+  border-top: 100px solid rgba(248, 248, 248, 0.9);
+  border-left: 100px solid transparent;
+}
+
+.feature.feature-right > div:before {
+  border-bottom: 100px solid rgba(248, 248, 248, 0.9);
+  border-left: 100px solid transparent;
+}
+
+.feature.feature-right > div:after {
+  border-top: 100px solid rgba(248, 248, 248, 0.9);
+  border-right: 100px solid transparent;
+}
+
 .browser-icon {
   font-size: 4rem;
   line-height: 1;

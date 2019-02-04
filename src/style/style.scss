@@ -63,47 +63,88 @@
 .feature li {
   font-size: 120%;
 }
+.feature p,
+.feature ul {
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
 
+.feature {
+  $background-color-value: 248;
+
+  $background-color: rgba(
+    $background-color-value,
+    $background-color-value,
+    $background-color-value,
+    0.9
+  );
+
+  $border-size: 100px;
+  & .feature-content {
+    background-color: $background-color;
+    padding: 0px 15px;
+  }
+  & > div {
+    &:before,
+    &:after {
+      display: block;
+      content: "";
+      width: 100%;
+    }
+  }
+  &.feature-left > div {
+    &:before {
+      border-bottom: $border-size solid $background-color;
+      border-right: $border-size solid transparent;
+    }
+    &:after {
+      border-top: $border-size solid $background-color;
+      border-left: $border-size solid transparent;
+    }
+  }
+  &.feature-right > div {
+    &:before {
+      border-bottom: $border-size solid $background-color;
+      border-left: $border-size solid transparent;
+    }
+    &:after {
+      border-top: $border-size solid $background-color;
+      border-right: $border-size solid transparent;
+    }
+  }
+}
 .browser-icon {
   font-size: 4rem;
   line-height: 1;
 }
-
 .popover {
   box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.05),
     0px 3px 6px 1px rgba(0, 0, 0, 0.1);
 }
-
 .popover {
   font-size: 1.1rem;
   text-align: center;
   max-width: 400px;
 }
-
 .btn {
   text-transform: uppercase;
 }
-
 .btn.btn-link {
   text-decoration: none;
 }
-
 pre {
   tab-size: 2;
 }
-
 code {
   white-space: pre;
 }
-
 .modal-xl {
   max-width: 90%;
 }
-
 .rounded {
   border-radius: 0.3em !important;
 }
-
 .bg-success-to-primary-gradient {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#18bc9c+0,2c3e50+100 */
   background: $success; /* Old browsers */

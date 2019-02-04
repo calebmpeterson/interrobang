@@ -10,6 +10,21 @@ const personalize = require("../resources/personalize.md");
 const withDefaults = require("../resources/with-defaults.md");
 const withSearch = require("../resources/with-search.md");
 
+const backgroundCss = (backgroundUrl, position) => ({
+  background: `url(${backgroundUrl})`,
+  backgroundSize: "contain",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: `${position} bottom`
+});
+
+const WithBackground = ({ backgroundUrl, backgroundPosition, children }) => (
+  <div className="container">
+    <div style={backgroundCss(backgroundUrl, backgroundPosition)}>
+      {children}
+    </div>
+  </div>
+);
+
 class Index extends React.Component {
   render() {
     const Heading = props => (
@@ -18,8 +33,12 @@ class Index extends React.Component {
 
     const Content = props => (
       <div className={`row ${props.className || ""}`}>
-        <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8">
-          {props.children}
+        <div
+          className={
+            props.col || "col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8"
+          }
+        >
+          <div className="feature-content">{props.children}</div>
         </div>
       </div>
     );
@@ -59,49 +78,58 @@ class Index extends React.Component {
           <div className="chevron-top" id="more-target" />
         </div>
 
-        <div className="container">
-          <div className="container mt-5 py-5">
-            <div className="row align-items-center">
-              <div className="offset-md-1 col-md-10">
-                <OmniBar />
-              </div>
+        <div className="container mt-5 py-5">
+          <div className="row align-items-center">
+            <div className="offset-md-1 col-md-10">
+              <OmniBar />
             </div>
           </div>
-
-          <Content className="my-5 py-5 feature">
-            <h5 className="text-muted mb-5">
-              What are <em>!bangs</em>?
-            </h5>
-            <Heading>Search on thousands of sites directly</Heading>
-            <Markdown source={withDefaults} />
-            <Onward />
-          </Content>
         </div>
 
-        <div className="container">
-          <Content className="my-5 py-5 feature">
-            <h5 className="text-muted mb-5">
-              Make <em>!bangs</em> your own...
-            </h5>
-            <Heading>Personalize the power of search</Heading>
-            <Markdown source={personalize} />
-            <Onward />
-          </Content>
-        </div>
+        <WithBackground
+          backgroundUrl="/assets/img/undraw_bookmarks.svg"
+          backgroundPosition="right"
+        >
+          <div className="container">
+            <Content className="my-5 py-5 feature feature-left" col="col-md-8">
+              <h5 className="text-muted mb-5">
+                What are <em>!bangs</em>?
+              </h5>
+              <Heading>Search on thousands of sites directly</Heading>
+              <Markdown source={withDefaults} />
+            </Content>
+          </div>
+        </WithBackground>
 
-        <div className="container">
-          <Content className="mt-5 pt-5 feature">
-            <Heading>Keep using your favorite search engine</Heading>
-            <Markdown source={withSearch} />
-            <Onward />
-          </Content>
+        <WithBackground
+          backgroundUrl="/assets/img/undraw_operating_system.svg"
+          backgroundPosition="left"
+        >
+          <div className="container">
+            <Content
+              className="my-5 py-5 feature feature-right"
+              col="col-md-8 offset-md-4"
+            >
+              <h5 className="text-muted mb-5">
+                Make <em>!bangs</em> your own...
+              </h5>
+              <Heading>Personalize the power of search</Heading>
+              <Markdown source={personalize} />
+            </Content>
+          </div>
+        </WithBackground>
 
-          <Content className="text-center text-success d-none">
-            <h1 className="display-1 rocket-launch">
-              <Icon icon="rocket" />
-            </h1>
-          </Content>
-        </div>
+        <WithBackground
+          backgroundUrl="/assets/img/undraw_search_engines.svg"
+          backgroundPosition="right"
+        >
+          <div className="container">
+            <Content className="mt-5 pt-5 feature feature-left" col="col-md-8">
+              <Heading>Keep using your favorite search engine</Heading>
+              <Markdown source={withSearch} />
+            </Content>
+          </div>
+        </WithBackground>
 
         <div className="gradient-2-45 text-white">
           <div className="chevron-bottom" />
