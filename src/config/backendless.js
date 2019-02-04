@@ -26,10 +26,15 @@ async function getConfig(userId) {
   const url = getConfigFileUrl(userId);
   console.log(`Get config: ${url}`);
 
-  const { payload } = await Wreck.get(url);
-  const config = JSON.parse(payload.toString());
+  try {
+    const { payload } = await Wreck.get(url);
+    const config = JSON.parse(payload.toString());
 
-  return merge({}, config, createExtendedConfig(userId));
+    return merge({}, config, createExtendedConfig(userId));
+  } catch (err) {
+    console.error(`Failed to GET config: ${url}: ${err.message}`);
+    throw err;
+  }
 }
 
 module.exports = {
