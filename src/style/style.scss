@@ -1,5 +1,9 @@
 @import "~bootswatch/dist/flatly/variables";
 
+.text-underline {
+  text-decoration: underline;
+}
+
 .dropdown-menu {
   @extend .shadow-16dp;
 }
@@ -83,7 +87,7 @@
   $border-size: 100px;
   & .feature-content {
     background-color: $background-color;
-    padding: 0px 15px;
+    padding: 15px;
   }
   & > div {
     &:before,

@@ -5,6 +5,7 @@ const Layout = require("./layout");
 const OmniBar = require("./components/OmniBar");
 const { Footer, MiniFooter } = require("@interrobang/ui");
 const Icon = require("./components/Icon");
+const DeveloperBio = require("./components/DeveloperBio");
 
 const personalize = require("../resources/personalize.md");
 const withDefaults = require("../resources/with-defaults.md");
@@ -153,6 +154,8 @@ class Index extends React.Component {
             </Content>
 
             <div className="pt-5">
+              <DeveloperBio />
+
               <Footer anchorClassName="text-white" />
 
               <MiniFooter>
