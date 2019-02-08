@@ -17,6 +17,7 @@
     "sandbox:firebase": "npx better-npm-run sandbox:firebase",
     "test": "npx mocha --recursive",
     "test:watch": "npx mocha --recursive --watch",
+    "test:watch:file": "npx mocha --recursive --watch --file",
     "build": "npx npm-run-all build:style",
     "build:style": "npx node-sass --importer node_modules/node-sass-package-importer/dist/cli.js src/style/style.scss assets/css/style.css",
     "build:style:watch": "npm run build:style -- --watch",
@@ -50,7 +51,7 @@
     }
   },
   "dependencies": {
-    "@interrobang/ui": "^1.0.17",
+    "@interrobang/ui": "^1.0.18",
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
