@@ -11,7 +11,7 @@ export const selectRecords = state => get(state, ["configuration", "records"]);
 export const selectDeleted = state => get(state, ["configuration", "deleted"]);
 
 export const FromConfiguration = {
-  selectSearchEnging: configuration =>
+  selectSearchEngine: configuration =>
     get(configuration, ["config", "search-engine"]),
 
   selectBangs: configuration => get(configuration, ["config", "bangs"]),

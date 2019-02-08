@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@interrobang/ui@^1.0.14":
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/@interrobang/ui/-/ui-1.0.14.tgz#6802cf150c2eb259cc273b0b54f249fef84aa437"
-  integrity sha512-4oGuETWDo8fOpF07q8j+izRF9bAvrscS2VX5IaUQgsNX6DqzOzZR4gJ3xL4n9oYb2SWbHubzic1SPSU2TtzPLw==
+"@interrobang/ui@1.0.18":
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/@interrobang/ui/-/ui-1.0.18.tgz#63819b4a14d6853fcfb5b5a8fec43e5162defe34"
+  integrity sha512-OXzi7KpUu3n+8OxKcN5N6f9Fx/+cpeMkwMbqhSLOnS6hAvYFcWxdEtiOXCOx9dGbfA6W9Q91Wd3aOWZbAJJ7Lg==
   dependencies:
     react "^16.5.2"
     react-dom "^16.5.2"

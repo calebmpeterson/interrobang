@@ -1,9 +1,12 @@
 import includes from "lodash/includes";
+import isEmpty from "lodash/isEmpty";
 
 import { Chronicle } from "../middleware/chronicle";
 import ActionTypes from "../constants/ActionTypes";
 
 import { viewLogin, viewConfiguration, loadConfiguration } from "../actions";
+
+import { selectPostLoginRedirect } from "../selectors/login";
 
 const NO_LOGIN_REDIRECT = [
   "/register",
@@ -18,7 +21,10 @@ new Chronicle({
   when: ActionTypes.LOGIN_USER_SUCCESS,
 
   then(state, action) {
-    if (!action.dueToRegistration) {
+    const maybeRedirect = selectPostLoginRedirect(state);
+    if (!isEmpty(maybeRedirect)) {
+      window.location.href = maybeRedirect;
+    } else if (!action.dueToRegistration) {
       viewConfiguration();
       loadConfiguration(state.user);
     }
