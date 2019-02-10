@@ -8,6 +8,7 @@ import SetupBrowserPage from "./pages/SetupBrowserPage";
 import SetupCommunicationPage from "./pages/SetupCommunicationPage";
 
 import LoginPage from "./pages/LoginPage";
+import LogoutPage from "./pages/LogoutPage";
 import ConfigurationPage from "./pages/ConfigurationPage";
 import BrowserLoadingPage from "./pages/BrowserLoadingPage";
 import BrowserPage from "./pages/BrowserPage";
@@ -54,6 +55,8 @@ export default class Root extends React.Component {
           <Route exact path="/recovered" component={AccountRecoveredPage} />
 
           <Route exact path="/notifications" component={NotificationsPage} />
+
+          <Route exact path="/logout" component={LogoutPage} />
 
           <Route component={LoginPage} />
         </Switch>
