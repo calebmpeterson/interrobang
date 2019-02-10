@@ -138,11 +138,7 @@ class Index extends React.Component {
           <div className="container py-5">
             <Content className="text-center mb-5">
               <h1 className="display-3">Get Started</h1>
-              <p className="lead">
-                Create a <strong className="font-weight-bold">FREE</strong>{" "}
-                account
-                <br className="d-md-none" /> and you're ready to go!
-              </p>
+              <p className="lead">Create an account and you're ready to go!</p>
               <div className="shadow-6dp rounded">
                 <a
                   href="/account/#register"
