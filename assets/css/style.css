@@ -68,35 +68,25 @@
 }
 
 .feature .feature-content {
-  background-color: rgba(248, 248, 248, 0.9);
-  padding: 15px;
+  border: 1px solid #dee2e6;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 100px 15px;
+  box-shadow: 0px 4px 15px 1px rgba(0, 0, 0, 0.05),
+    0px 3px 6px 1px rgba(0, 0, 0, 0.1);
 }
 
-.feature > div:before,
-.feature > div:after {
-  display: block;
-  content: "";
-  width: 100%;
+.feature.feature-left .feature-content {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 100px;
 }
 
-.feature.feature-left > div:before {
-  border-bottom: 100px solid rgba(248, 248, 248, 0.9);
-  border-right: 100px solid transparent;
-}
-
-.feature.feature-left > div:after {
-  border-top: 100px solid rgba(248, 248, 248, 0.9);
-  border-left: 100px solid transparent;
-}
-
-.feature.feature-right > div:before {
-  border-bottom: 100px solid rgba(248, 248, 248, 0.9);
-  border-left: 100px solid transparent;
-}
-
-.feature.feature-right > div:after {
-  border-top: 100px solid rgba(248, 248, 248, 0.9);
-  border-right: 100px solid transparent;
+.feature.feature-right .feature-content {
+  border-top-left-radius: 100px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 3px;
 }
 
 .browser-icon {
