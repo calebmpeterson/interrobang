@@ -11,5 +11,8 @@
     "node": true,
     "mocha": true
   },
+  "globals": {
+    "Sentry": "readable"
+  },
   "extends": "eslint:recommended"
 }
