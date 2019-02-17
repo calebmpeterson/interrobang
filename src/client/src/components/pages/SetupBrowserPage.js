@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { DefaultRoutes as Routes } from "@interrobang/ui";
+
 import { createSearchURL } from "../../api/backendless";
 
 import Layout from "./Layout";
@@ -32,6 +34,14 @@ class SetupBrowserPage extends React.Component {
 
     this.refSearchURL = React.createRef();
   }
+
+  onContinue = () => {
+    if (process.env.REACT_APP_ENABLE_BILLING) {
+      window.location.href = Routes.setupBilling();
+    } else {
+      viewCommunicationSetup();
+    }
+  };
 
   render() {
     const BrowserButton = props => (
@@ -161,7 +171,7 @@ class SetupBrowserPage extends React.Component {
                 <button
                   type="button"
                   className="btn btn-success"
-                  onClick={viewCommunicationSetup}
+                  onClick={this.onContinue}
                 >
                   Continue &raquo;
                 </button>
