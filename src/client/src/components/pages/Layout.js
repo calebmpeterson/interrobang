@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import get from "lodash/get";
 import size from "lodash/size";
 
-import { Footer, NavBar } from "@interrobang/ui";
+import { Footer, NavBar, DefaultRoutes as Routes } from "@interrobang/ui";
 
 import {
   logoutUser,
@@ -14,6 +14,22 @@ import {
 } from "../../actions";
 import If from "../controls/If";
 import { selectNotificationItems } from "../../selectors/notifications";
+
+const ENABLE_BILLING = process.env.REACT_APP_ENABLE_BILLING === "true";
+
+const footerLinks = ENABLE_BILLING
+  ? {
+      links: {
+        main: {
+          Home: "/",
+          Pricing: Routes.pricing(),
+          "Privacy Policy": Routes.privacyPolicy(),
+          "Style Guide": Routes.styleguide(),
+          Roadmap: Routes.roadmap()
+        }
+      }
+    }
+  : null;
 
 const mapStateToProps = state => {
   const userId = get(state, "user.objectId", "");
@@ -53,12 +69,13 @@ class Layout extends React.Component {
           userId={userId}
           username={email}
           notificationCount={notificationCount}
+          canLogout={canLogout}
+          canSearch={canSearch}
+          hasBilling={ENABLE_BILLING}
           onViewNotifications={viewNotifications}
           onViewConfiguration={onConfigure}
           onManageAccount={onManageAccount}
           onLogout={logoutUser}
-          canLogout={canLogout}
-          canSearch={canSearch}
         />
 
         <div className="d-flex flex-column" style={{ minHeight: "100vh" }}>
@@ -79,6 +96,7 @@ class Layout extends React.Component {
           <Footer
             className="py-5 gradient-1-135 text-white"
             anchorClassName="text-white"
+            {...footerLinks}
           />
         </div>
       </Fragment>

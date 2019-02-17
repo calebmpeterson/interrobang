@@ -1,5 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
+import { DefaultRoutes as Routes } from "@interrobang/ui";
 
 import { createSearchURL } from "../../api/backendless";
 
@@ -34,7 +38,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = () => {
   return {
     handleUpdateNewPassword: event => updateNewPassword(event.target.value),
     handleUpdateNewPasswordCheck: event =>
@@ -96,9 +100,25 @@ class AccountPage extends React.Component {
             <div className="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
               <div className="list-group">
                 <div className="list-group-item">
-                  <strong>{this.props.user.email}</strong>
-                  <br />
-                  <span className="badge badge-success">Free Plan</span>
+                  <Form>
+                    <Form.Group controlId="formPlaintextEmail">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control disabled value={this.props.user.email} />
+                    </Form.Group>
+                  </Form>
+
+                  <If test={process.env.REACT_APP_ENABLE_BILLING}>
+                    {() => (
+                      <div className="mt-5">
+                        <Button
+                          variant="outline-info"
+                          onClick={this.onManageBilling}
+                        >
+                          Manage Billing
+                        </Button>
+                      </div>
+                    )}
+                  </If>
                 </div>
               </div>
             </div>

@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@interrobang/ui": "1.0.18",
+    "@interrobang/ui": "1.0.35",
     "backendless": "4.4.3",
     "history": "^4.7.2",
     "key-mirror": "^1.0.1",
     "lodash": "^4.17.5",
     "react": "^16.3.1",
+    "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.3.1",
     "react-markdown": "^4.0.3",
     "react-redux": "^5.0.7",
@@ -19,13 +20,31 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "better-npm-run": "^0.1.1"
+  },
   "scripts": {
     "start": "npx react-scripts start",
     "build": "npx react-scripts build",
+    "start:hosted": "better-npm-run start:hosted",
+    "build:hosted": "better-npm-run start:hosted",
     "test": "npx react-scripts test --env=jsdom",
     "test:watch": "npx react-scripts test --env=jsdom --watchAll",
     "eject": "npx react-scripts eject"
+  },
+  "betterScripts": {
+    "start:hosted": {
+      "command": "npx react-scripts start",
+      "env": {
+        "REACT_APP_ENABLE_BILLING": "true"
+      }
+    },
+    "build:hosted": {
+      "command": "npx react-scripts build",
+      "env": {
+        "REACT_APP_ENABLE_BILLING": "true"
+      }
+    }
   },
   "homepage": "/account",
   "proxy": {
@@ -36,6 +55,9 @@
       "target": "http://localhost:3333"
     },
     "/b": {
+      "target": "http://localhost:3333"
+    },
+    "/account": {
       "target": "http://localhost:3333"
     }
   }

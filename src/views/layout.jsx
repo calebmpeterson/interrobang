@@ -3,6 +3,16 @@ const React = require("react");
 const If = require("./helpers/If");
 const Navbar = require("./components/Navbar");
 
+const { NavBar, DefaultRoutes } = require("@interrobang/ui");
+const Routes = DefaultRoutes;
+
+const navbarLinks = process.env.ENABLE_BILLING
+  ? {
+      Pricing: Routes.pricing(),
+      Privacy: Routes.privacyPolicy()
+    }
+  : null;
+
 class Layout extends React.Component {
   render() {
     return (
@@ -134,7 +144,11 @@ class Layout extends React.Component {
           <script src="/style/js/bootstrap.bundle.js" />
           <script src="/assets/scrollpos-styler/scrollPosStyler.js" />
 
-          <Navbar variant={this.props.navbarVariant} {...this.props} />
+          <NavBar
+            variant={this.props.navbarVariant}
+            {...this.props}
+            links={navbarLinks}
+          />
 
           {this.props.children}
         </body>

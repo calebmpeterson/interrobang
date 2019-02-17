@@ -1,5 +1,5 @@
 {
-  "name": "zbang",
+  "name": "interrobang",
   "version": "1.0.0",
   "description": "Custom DDG bangs",
   "main": "src/index.js",
@@ -51,7 +51,7 @@
     }
   },
   "dependencies": {
-    "@interrobang/ui": "^1.0.18",
+    "@interrobang/ui": "1.0.35",
     "babel-core": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",

@@ -3,13 +3,29 @@ const Markdown = require("react-markdown");
 
 const Layout = require("./layout");
 const OmniBar = require("./components/OmniBar");
-const { Footer, MiniFooter } = require("@interrobang/ui");
+const { Footer, MiniFooter, DefaultRoutes } = require("@interrobang/ui");
 const Icon = require("./components/Icon");
 const DeveloperBio = require("./components/DeveloperBio");
 
 const personalize = require("../resources/personalize.md");
 const withDefaults = require("../resources/with-defaults.md");
 const withSearch = require("../resources/with-search.md");
+
+const Routes = DefaultRoutes;
+
+const footerLinks = process.env.ENABLE_BILLING
+  ? {
+      links: {
+        main: {
+          Home: "/",
+          Pricing: Routes.pricing(),
+          "Privacy Policy": Routes.privacyPolicy(),
+          "Style Guide": Routes.styleguide(),
+          Roadmap: Routes.roadmap()
+        }
+      }
+    }
+  : null;
 
 const backgroundCss = (backgroundUrl, position) => ({
   background: `url(${backgroundUrl})`,
@@ -152,7 +168,7 @@ class Index extends React.Component {
             <div className="pt-5">
               <DeveloperBio />
 
-              <Footer anchorClassName="text-white" />
+              <Footer anchorClassName="text-white" {...footerLinks} />
 
               <MiniFooter>
                 Chevron graphics licensed CC-BY 3.0 from{" "}
