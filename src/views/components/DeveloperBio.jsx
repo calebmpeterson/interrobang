@@ -5,7 +5,7 @@ class DeveloperBio extends React.Component {
     return (
       <div className="container my-5">
         <div className="row">
-          <div className="col-md-2 offset-md-2">
+          <div className="col-6 offset-3 col-md-2 offset-md-2">
             <img
               className="rounded-circle img-fluid border border-white"
               src="/assets/img/profile.png"
