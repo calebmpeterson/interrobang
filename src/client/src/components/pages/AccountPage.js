@@ -47,6 +47,9 @@ const mapDispatchToProps = () => {
       event.preventDefault();
       event.stopPropagation();
       submitPasswordChange();
+    },
+    handleManageBilling: () => {
+      window.location.href = Routes.billing();
     }
   };
 };
@@ -112,7 +115,7 @@ class AccountPage extends React.Component {
                       <div className="mt-5">
                         <Button
                           variant="outline-info"
-                          onClick={this.onManageBilling}
+                          onClick={this.props.handleManageBilling}
                         >
                           Manage Billing
                         </Button>
