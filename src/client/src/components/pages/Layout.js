@@ -94,7 +94,7 @@ class Layout extends React.Component {
           </div>
 
           <Footer
-            className="py-5 gradient-1-135 text-white"
+            className="py-5 gradient-2-135 text-white"
             anchorClassName="text-white"
             {...footerLinks}
           />
