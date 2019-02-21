@@ -9,10 +9,10 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@interrobang/ui@1.0.35":
-  version "1.0.35"
-  resolved "https://registry.yarnpkg.com/@interrobang/ui/-/ui-1.0.35.tgz#eb4028264c5fc8a88133e9f81995e7093d3ab04e"
-  integrity sha512-2PNDWkUh3q7VtVEfmDQQI0SqZqdRAMTekw8kwnVqV1DbrXQDtFKskzj3ZHDNwZVUS4hH1Sq2ifV1aIXCrJG0xw==
+"@interrobang/ui@1.0.36":
+  version "1.0.36"
+  resolved "https://registry.yarnpkg.com/@interrobang/ui/-/ui-1.0.36.tgz#48df075333455727fc0b3f0bfa5aa23f3c0eafa9"
+  integrity sha512-+QHlwV0mVhS6a0qKj+vffSb6y4I0BFOqAv/HiLl0ejmzZKbN4hSflPWAb3aYu7nlRTdyDS2tRAQDsQXgRosigQ==
   dependencies:
     react "^16.5.2"
     react-bootstrap "^1.0.0-beta.5"
