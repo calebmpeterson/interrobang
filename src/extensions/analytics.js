@@ -24,12 +24,21 @@ const isAccountRequest = request =>
 const isPingRequest = request => isEqual(request.url.pathname, "/ping");
 const isSuggestionRequest = request =>
   endsWith(request.url.pathname, "/suggest");
+const shouldIgnoreRequest = request =>
+  includes(request.url.pathname, "mysql") ||
+  includes(request.url.pathname, ".php") ||
+  includes(request.url.pathname, "phpmyadmin") ||
+  includes(request.url.pathname, "mysql") ||
+  includes(request.url.pathname, "wordpress") ||
+  includes(request.url.pathname, "wp-admin") ||
+  includes(request.url.pathname, "wp-login");
 
 const isRecordableRequest = request =>
   !isAssetRequest(request) &&
   !isPingRequest(request) &&
   !isSuggestionRequest(request) &&
-  !isAccountRequest(request);
+  !isAccountRequest(request) &&
+  !shouldIgnoreRequest(request);
 
 const getClientId = request => {
   if (has(request, "params.userId")) {
