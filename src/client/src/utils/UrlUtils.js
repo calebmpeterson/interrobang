@@ -1,3 +1,4 @@
+import startsWith from "lodash/startsWith";
 import {
   stringify as toQueryString,
   parse as parseQueryString
@@ -6,4 +7,4 @@ import {
 export const encodeParams = params => `?${toQueryString(params)}`;
 
 export const decodeParams = query =>
-  query.startsWith("?") ? parseQueryString(query.substring(1)) : query;
+  startsWith(query, "?") ? parseQueryString(query.substring(1)) : query;
