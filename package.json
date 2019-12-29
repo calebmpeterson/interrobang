@@ -66,7 +66,7 @@
     "create-react-app": "^1.5.2",
     "gists": "^1.0.1",
     "h2o2": "^8.1.2",
-    "handlebars": "^4.0.11",
+    "handlebars": "^4.3.0",
     "hapi": "^17.2.0",
     "hapi-dev-errors": "^3.1.0",
     "hapi-react-views": "^10.0.0",
