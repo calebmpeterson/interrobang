@@ -72,7 +72,7 @@
     "hapi-react-views": "^10.0.0",
     "husky": "^1.1.1",
     "inert": "^5.1.0",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "lodash": "^4.17.5",
     "mdi": "^2.1.19",
     "numeral": "^2.0.6",
